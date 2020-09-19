@@ -1,1 +1,24 @@
-<p>navigation component</p>
+<div class="navigation">
+  <a class="navigation-logo" routerLink="/">
+    <span class="navigation-title">Culture Portal</span>
+    <span class="navigation-topic">Architects of Belarus</span>
+  </a>
+
+  <ul class="navigation-list">
+    <li class="navigation-item">
+      <a class="navigation-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+    </li>
+    <li class="navigation-item">
+      <a class="navigation-link" routerLink="/authors" routerLinkActive="active">Architects</a>
+    </li>
+    <li class="navigation-item">
+      <a class="navigation-link" routerLink="/team" routerLinkActive="active">Team</a>
+    </li>
+    <li class="navigation-item">
+      <a class="navigation-link" routerLink="/worklog" routerLinkActive="active">Worklog</a>
+    </li>
+    <li class="navigation-item">
+      <a class="navigation-link" routerLink="/styleguide" routerLinkActive="active">Styleguide</a>
+    </li>
+  </ul>
+</div>
