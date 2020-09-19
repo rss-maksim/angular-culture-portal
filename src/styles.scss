@@ -1,4 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --nav-main-color: black;
+  --nav-background-color: lightgreen;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  --nav-active-background-color: lightcoral;
+  --nav-active-color: white;
+
+  --nav-hover-background-color: lightskyblue;
+  --nav-hover-color: black;
+
+  --nav-menu-background-color: lightblue;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-menu-panel {
+  border-radius: 10px;
+  background-color: var(--nav-menu-background-color);
+}

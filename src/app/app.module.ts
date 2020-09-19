@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
+import { MaterialModule } from './material/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MainComponent } from './pages/main/main.component';
 import { AuthorsListComponent } from './pages/authors-list/authors-list.component';
@@ -29,12 +31,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TeamComponent,
     WorklogComponent,
     Page404Component,
-    LanguagesComponent
+    LanguagesComponent,
   ],
   imports: [
     BrowserModule,
+    MaterialModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

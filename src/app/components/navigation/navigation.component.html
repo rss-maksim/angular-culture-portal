@@ -1,1 +1,21 @@
-<p>navigation component</p>
+<div class="header-menu">
+  <nav class="desktop">
+    <a routerLink="/home" routerLinkActive="active">Home</a>
+    <a routerLink="/authors" routerLinkActive="active">Find an architect</a>
+    <a routerLink="/team" routerLinkActive="active">Team</a>
+    <a routerLink="/worklog" routerLinkActive="active">WorkLog</a>
+    <a routerLink="/styleguide" routerLinkActive="active">Styleguide</a>
+  </nav>
+  <div class="mobile">
+    <button mat-icon-button [matMenuTriggerFor]="navigationMenu" aria-label="Navigation menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #navigationMenu="matMenu" yPosition="below">
+      <a routerLink="/home" routerLinkActive="active" mat-menu-item class="mobile-item">Home</a>
+      <a routerLink="/authors" routerLinkActive="active" mat-menu-item class="mobile-item">Find an architect</a>
+      <a routerLink="/team" routerLinkActive="active" mat-menu-item class="mobile-item">Team</a>
+      <a routerLink="/worklog" routerLinkActive="active" mat-menu-item class="mobile-item">WorkLog</a>
+      <a routerLink="/styleguide" routerLinkActive="active" mat-menu-item class="mobile-item">Styleguide</a>
+    </mat-menu>
+  </div>
+</div>

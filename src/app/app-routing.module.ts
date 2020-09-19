@@ -9,7 +9,8 @@ import { WorklogComponent } from './pages/worklog/worklog.component';
 import { Page404Component } from './pages/page404/page404.component';
 
 const routes: Routes = [
-  { path: '', component: MainComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: MainComponent },
   { path: 'authors', component: AuthorsListComponent },
   { path: 'author/:id', component: AuthorFullViewComponent },
   { path: 'team', component: TeamComponent },
