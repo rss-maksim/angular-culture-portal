@@ -1,5 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
 import { StoreModule } from '@ngrx/store';
@@ -7,6 +8,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
+
+import { environment } from 'src/environments/environment';
 
 import { MainComponent } from './pages/main/main.component';
 import { AuthorsListComponent } from './pages/authors-list/authors-list.component';
@@ -20,8 +23,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { LanguagesComponent } from './components/languages/languages.component';
-import { environment } from '../environments/environment';
 import { appReducer } from './redux/reducers/appReducer';
+import { SearchWidgetComponent } from './components/search-widget/search-widget.component';
+import { AuthorOfDayComponent } from './components/author-of-day/author-of-day.component';
 
 @NgModule({
   declarations: [
@@ -35,13 +39,16 @@ import { appReducer } from './redux/reducers/appReducer';
     TeamComponent,
     WorklogComponent,
     Page404Component,
-    LanguagesComponent
+    LanguagesComponent,
+    SearchWidgetComponent,
+    AuthorOfDayComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatMenuModule,
+    HttpClientModule,
     StoreModule.forRoot({ appReducer }),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({

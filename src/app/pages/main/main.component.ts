@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { AuthorModel } from 'src/app/models/author.model';
+import { AuthorsService } from '../../services/authors.service';
 
 @Component({
   selector: 'app-main',
@@ -6,10 +10,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+  authorOfDay$: Observable<AuthorModel>;
 
-  constructor() { }
+  constructor(private authorsService: AuthorsService) { }
 
   ngOnInit(): void {
+    this.authorOfDay$ = this.authorsService.getAuthorOfDay();
   }
 
 }
