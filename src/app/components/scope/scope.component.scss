@@ -1,0 +1,28 @@
+.scope-header {
+  padding-left: 30px;
+}
+
+.score {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.min-score {
+  color: red;
+}
+
+.max-score {
+  color: green;
+}
+
+.scope-container {
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px grey;
+  margin: 10px;
+  padding: 10px;
+}
+
+mat-slider {
+  margin-right: 10px;
+}

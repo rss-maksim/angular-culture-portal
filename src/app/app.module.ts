@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSliderModule } from '@angular/material/slider';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -27,6 +28,8 @@ import { LanguagesComponent } from './components/languages/languages.component';
 import { appReducer } from './redux/reducers/appReducer';
 import { SearchWidgetComponent } from './components/search-widget/search-widget.component';
 import { AuthorOfDayComponent } from './components/author-of-day/author-of-day.component';
+import { EvaluationComponent } from './components/evaluation/evaluation.component';
+import { ScopeComponent } from './components/scope/scope.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,9 @@ import { AuthorOfDayComponent } from './components/author-of-day/author-of-day.c
     Page404Component,
     LanguagesComponent,
     SearchWidgetComponent,
-    AuthorOfDayComponent
+    AuthorOfDayComponent,
+    EvaluationComponent,
+    ScopeComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +55,7 @@ import { AuthorOfDayComponent } from './components/author-of-day/author-of-day.c
     BrowserAnimationsModule,
     MatMenuModule,
     MatProgressSpinnerModule,
+    MatSliderModule,
     HttpClientModule,
     StoreModule.forRoot({ appReducer }),
     EffectsModule.forRoot([]),
