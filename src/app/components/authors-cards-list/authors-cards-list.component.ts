@@ -9,7 +9,9 @@ import {
   MatCardTitle,
   MatCardSubtitle,
   MatCardContent,
-  MatCardImage
+  MatCardImage,
+  MatCardFooter,
+  MatCardAvatar
 } from '@angular/material/card';
 import { MatButton } from '@angular/material/button';
 
