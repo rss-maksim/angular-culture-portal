@@ -11,7 +11,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { environment } from 'src/environments/environment';
+import { environment } from '../environments/environment';
 
 import { MainComponent } from './pages/main/main.component';
 import { AuthorsListComponent } from './pages/authors-list/authors-list.component';
