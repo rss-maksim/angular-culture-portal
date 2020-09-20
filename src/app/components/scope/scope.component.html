@@ -1,0 +1,14 @@
+<div *ngIf="scope.scopes; else slider" class="scope-container">
+  <h2 class="scope-header">
+    {{scope.description}} is
+    <span [class]="scoreClass">{{points}}</span>
+  </h2>
+  <div *ngFor="let subScope of scope.scopes">
+    <app-scope [scope]="subScope" (change)="onUpdate(subScope)"></app-scope>
+  </div>
+</div>
+<ng-template #slider>
+  <mat-slider [min]="scope.min" [max]="scope.max" [step]="scope.step" [thumbLabel]="true" [value]="scope.currentPoints"
+    (change)="onSliderChanged($event)"></mat-slider>
+  <span [class]="scoreClass">[{{points}}]</span><span> {{scope.description}}</span>
+</ng-template>

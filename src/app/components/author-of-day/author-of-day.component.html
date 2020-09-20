@@ -3,7 +3,9 @@
   <div *ngIf="authorOfDay; else spinner" class="author-of-day">
     <div class="col">
       <h1>{{authorOfDay.name}}</h1>
-      <img src="{{authorOfDay.image}}" alt="{{authorOfDay.name}}">
+      <a [routerLink]="['/author',authorOfDay.id]">
+        <img src="{{authorOfDay.image}}" alt="{{authorOfDay.name}}">
+      </a>
       <p>{{authorOfDay.years}}</p>
     </div>
     <div class="col">
