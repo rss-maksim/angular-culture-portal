@@ -1,4 +1,64 @@
+@import "../../../variables";
+
+.header {
+  background-color: $header-background-color;
+  color: $header-color;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+  letter-spacing: 3px;
+  word-spacing: 10px;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
 .author-of-day {
-  background-color: crimson;
+  background-color: $author-of-day-background-color;
   width: 100%;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  @media (max-width: $breakpoint-tablet) {
+    flex-direction: column;
+  }
+}
+
+.col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+img {
+  height: 80%;
+  border-radius: 10px;
+  transition: 0.5s;
+
+  &:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    transform: scale(1.1);
+  }
+}
+
+.button-more {
+  padding: 20px 50px;
+  border: 1px solid black;
+  background-color: $author-of-day-button-background-color;
+  color: $author-of-day-button-color;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px grey;
+  transition: all 0.5s;
+
+  &:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    background-color: $author-of-day-button-background-color;
+    transform: scale(1.2);
+  }
 }

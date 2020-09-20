@@ -1,4 +1,4 @@
-$breakpoint-tablet: 768px;
+@import "../../../variables";
 
 :host {
   width: 90%;
@@ -17,12 +17,12 @@ $breakpoint-tablet: 768px;
     display: flex;
     flex-direction: column;
     color: #ffffff;
-    font-family: 'Italianno', cursive;
+    font-family: "Italianno", cursive;
     text-decoration: none;
 
-      @media (max-width: $breakpoint-tablet) {
-        display: none;
-      }
+    @media (max-width: $breakpoint-tablet) {
+      display: none;
+    }
   }
   &-title {
     font-size: 30px;

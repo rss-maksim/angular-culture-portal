@@ -1,10 +1,19 @@
-<div class="author-of-day">
-  <p>author-of-day works!</p>
-  <div *ngIf="authorOfDay">
-    <h1>{{authorOfDay.name}}</h1>
-    <img src="{{authorOfDay.image}}" alt="{{authorOfDay.name}}">
-    <p>{{authorOfDay.years}}</p>
-    <p>{{authorOfDay.shortDescription}}</p>
-    <a [routerLink]="['/author',authorOfDay.id]">More</a>
+<div>
+  <p class="header">Architect of the day</p>
+  <div *ngIf="authorOfDay; else spinner" class="author-of-day">
+    <div class="col">
+      <h1>{{authorOfDay.name}}</h1>
+      <img src="{{authorOfDay.image}}" alt="{{authorOfDay.name}}">
+      <p>{{authorOfDay.years}}</p>
+    </div>
+    <div class="col">
+      <p>{{authorOfDay.shortDescription}}</p>
+      <a [routerLink]="['/author',authorOfDay.id]" class="button-more">More</a>
+    </div>
   </div>
+  <ng-template #spinner>
+    <div class="spinner-container">
+      <mat-spinner color="white"></mat-spinner>
+    </div>
+  </ng-template>
 </div>
