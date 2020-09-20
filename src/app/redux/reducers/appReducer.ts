@@ -13,6 +13,6 @@ const reducer = createReducer(
   on(changeLocale, (state, action) => ({ ...state, locale: action.locale }))
 );
 
-export function appReducer(state: IAppReducer, action: Action) {
+export function appReducer(state: IAppReducer, action: Action): IAppReducer {
   return reducer(state, action);
 }

@@ -4,7 +4,7 @@ export const SELF_EVALUATION: number[][] = [ // Total scope
   [ // 50, Min scope
     10, // Main page + page with a list of authors + author's page (only pages with content without widgets)
     10, // Page with team members + page with worklog
-    10, //Page with list of authors contains search widget
+    10, // Page with list of authors contains search widget
     20, // Portal has two languages
   ],
   [ // 14, Normal scope

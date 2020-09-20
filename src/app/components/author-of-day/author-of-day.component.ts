@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AuthorModel } from 'src/app/models/author.model';
 
 @Component({
@@ -6,11 +6,6 @@ import { AuthorModel } from 'src/app/models/author.model';
   templateUrl: './author-of-day.component.html',
   styleUrls: ['./author-of-day.component.scss']
 })
-export class AuthorOfDayComponent implements OnInit {
+export class AuthorOfDayComponent {
   @Input() authorOfDay: AuthorModel;
-
-  constructor() { }
-
-  ngOnInit(): void { }
-
 }

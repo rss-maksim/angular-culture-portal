@@ -4,7 +4,7 @@
     <span [class]="scoreClass">{{points}}</span>
   </h2>
   <div *ngFor="let subScope of scope.scopes">
-    <app-scope [scope]="subScope" (change)="onUpdate(subScope)"></app-scope>
+    <app-scope [scope]="subScope" (update)="onUpdate(subScope)"></app-scope>
   </div>
 </div>
 <ng-template #slider>

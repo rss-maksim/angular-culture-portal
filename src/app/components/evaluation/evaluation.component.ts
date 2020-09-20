@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSliderChange } from '@angular/material/slider';
 
 import { ScopeService } from 'src/app/services/scope.service';
 import { Scope } from 'src/app/constants/scope.model';
-import { MatSliderChange } from '@angular/material/slider';
 
 @Component({
   selector: 'app-evaluation',
@@ -18,9 +18,11 @@ export class EvaluationComponent implements OnInit {
     this.scope = this.scopeService.scope;
   }
 
-  onSliderChanged(event: MatSliderChange, slider: Scope) {
-    console.log('event', event);
+  onSliderChanged(event: MatSliderChange, slider: Scope): void {
     slider.currentPoints = event.value;
+  }
 
+  saveUpdates(): void {
+    this.scopeService.saveScope();
   }
 }

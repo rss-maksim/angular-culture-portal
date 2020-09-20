@@ -21,6 +21,11 @@ export class ScopeService {
     SCOPES.setAllCurrentPoints(evaluation);
   }
 
+  saveScope(): void {
+    const storedEvaluation = SCOPES.scopesToArray();
+    localStorage.setItem(STORAGE_EVALUATION_KEY, JSON.stringify(storedEvaluation));
+  }
+
   get scope(): Scope {
     return SCOPES;
   }
