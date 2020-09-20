@@ -41,7 +41,6 @@ export class ScopeComponent implements OnInit {
       score: true,
       'max-score': this.scope.currentPoints >= this.scope.max >>> 1,
       'min-score': this.scope.currentPoints < 0 || this.scope.currentPoints < this.scope.max >>> 1,
-      // 'max-score': this.scope.currentPoints === this.scope.max,
     };
   }
 }
