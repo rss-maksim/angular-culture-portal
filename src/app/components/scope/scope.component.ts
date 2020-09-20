@@ -12,11 +12,9 @@ export class ScopeComponent implements OnInit {
   points: number;
   @Input() isRoot: boolean;
   @Input() scope: Scope;
-  @Output() change: EventEmitter<number> = new EventEmitter<number>();
+  @Output() update: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor() { }
-
-  private updatePoints() {
+  private updatePoints(): void {
     this.points = this.isRoot ? Math.max(0, this.scope.currentPoints) : this.scope.currentPoints;
   }
 
@@ -27,20 +25,19 @@ export class ScopeComponent implements OnInit {
   onSliderChanged({ value }: MatSliderChange): void {
     this.scope.currentPoints = value;
     this.updatePoints();
-    this.change.emit(value);
+    this.update.emit(value);
   }
 
   onUpdate(): void {
     this.updatePoints();
-    this.change.emit(this.scope.currentPoints);
+    this.update.emit(this.scope.currentPoints);
   }
 
-  get scoreClass(): any {
-
+  get scoreClass(): { score: boolean, 'max-score': boolean, 'min-score': boolean } {
     return {
       score: true,
-      'max-score': this.scope.currentPoints >= this.scope.max >>> 1,
-      'min-score': this.scope.currentPoints < 0 || this.scope.currentPoints < this.scope.max >>> 1,
+      'max-score': this.scope.currentPoints >= this.scope.max / 2,
+      'min-score': this.scope.currentPoints < 0 || this.scope.currentPoints < this.scope.max / 2,
     };
   }
 }

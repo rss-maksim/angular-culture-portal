@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { AuthorModel } from 'src/app/models/author.model';
-import { AuthorsService } from '../../services/authors.service';
+import { AuthorsService } from 'src/app/services/authors.service';
 
 @Component({
   selector: 'app-main',
@@ -17,5 +17,4 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     this.authorOfDay$ = this.authorsService.getAuthorOfDay();
   }
-
 }
