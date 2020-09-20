@@ -13,7 +13,7 @@ export interface AuthorModel {
   image: string;
   biography: BiographyModel[];
   works?: WorksModel[];
-  worksImages?: WorksImagesModel[];
   video?: string;
+  worksImages?: WorksImagesModel[];
   activityPlace?: ActivityPlaceModel[];
 }
