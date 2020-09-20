@@ -1,3 +1,3 @@
 export const LOCALE_KEY = 'LOCALE';
 
-export const AUTHORS_JSON = 'assets/authors.en.json';
+export const AUTHORS_JSON = 'assets/architects/en.json';

@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -30,6 +32,7 @@ import { SearchWidgetComponent } from './components/search-widget/search-widget.
 import { AuthorOfDayComponent } from './components/author-of-day/author-of-day.component';
 import { EvaluationComponent } from './components/evaluation/evaluation.component';
 import { ScopeComponent } from './components/scope/scope.component';
+import { AuthorsCardsListComponent } from './components/authors-cards-list/authors-cards-list.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,8 @@ import { ScopeComponent } from './components/scope/scope.component';
     SearchWidgetComponent,
     AuthorOfDayComponent,
     EvaluationComponent,
-    ScopeComponent
+    ScopeComponent,
+    AuthorsCardsListComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +60,8 @@ import { ScopeComponent } from './components/scope/scope.component';
     MatMenuModule,
     MatProgressSpinnerModule,
     MatSliderModule,
+    MatButtonModule,
+    MatCardModule,
     HttpClientModule,
     StoreModule.forRoot({ appReducer }),
     EffectsModule.forRoot([]),
