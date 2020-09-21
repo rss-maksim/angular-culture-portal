@@ -2,9 +2,6 @@ import { NgModule } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSliderModule } from '@angular/material/slider';
@@ -12,6 +9,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -35,12 +37,13 @@ import { SearchWidgetComponent } from './components/search-widget/search-widget.
 import { AuthorOfDayComponent } from './components/author-of-day/author-of-day.component';
 import { EvaluationComponent } from './components/evaluation/evaluation.component';
 import { ScopeComponent } from './components/scope/scope.component';
+import { AuthorsCardsListComponent } from './components/authors-cards-list/authors-cards-list.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LOCALE_KEY } from './const';
 
 // AoT requires an exported function for factories
-export function HttpLoaderFactory(http: HttpClient) {
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
 }
 
@@ -63,7 +66,8 @@ const lang = localStorage.getItem(LOCALE_KEY);
     AuthorOfDayComponent,
     EvaluationComponent,
     ScopeComponent,
-    SidenavComponent
+    SidenavComponent,
+    AuthorsCardsListComponent
   ],
   imports: [
     BrowserModule,
@@ -76,6 +80,8 @@ const lang = localStorage.getItem(LOCALE_KEY);
     MatSidenavModule,
     MatListModule,
     MatButtonModule,
+    MatCardModule,
+    MatInputModule,
     HttpClientModule,
     StoreModule.forRoot({ appReducer }),
     EffectsModule.forRoot([]),

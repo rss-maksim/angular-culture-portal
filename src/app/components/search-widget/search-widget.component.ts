@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search-widget',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchWidgetComponent implements OnInit {
 
+  public isFilterShown = false;
+  public searchLineWidth = 0;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  public onSearchClick(): void {
+    this.searchLineWidth = this.isFilterShown ? 0 : 250;
+    this.isFilterShown = !this.isFilterShown;
   }
 
 }
