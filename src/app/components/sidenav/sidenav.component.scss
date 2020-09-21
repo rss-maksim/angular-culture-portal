@@ -1,0 +1,23 @@
+@import "../../../variables";
+
+.sidenav-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.4em;
+  margin-top: 30px;
+
+  .sidenav-title {
+    color: $color-white;
+  }
+
+  .mat-nav-list {
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .mat-list-item-text {
+    color: $color-white;
+    font-size: 1.3em !important;
+  }
+}

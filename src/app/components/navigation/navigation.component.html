@@ -2,40 +2,16 @@
   <a class="navigation-logo" routerLink="/">
     <span class="navigation-title">Culture Portal</span>
     <span class="navigation-topic">Architects of Belarus</span>
-    <!-- TODO: check fonts for ru and by languages
-           <span class="navigation-title">{{ 'CULTURE_PORTAL' | translate }}</span>
-    <span class="navigation-topic">{{ 'ARCHITECTS_OF_BELARUS' | translate }}</span> -->
   </a>
 
   <ul class="navigation-list">
-    <li class="navigation-item">
+    <li class="navigation-item" *ngFor="let item of navItems">
       <a
         class="navigation-link"
-        routerLink="/"
+        [routerLink]="item.path"
         routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >{{ 'HOME' | translate }}</a
-      >
-    </li>
-    <li class="navigation-item">
-      <a class="navigation-link" routerLink="/authors" routerLinkActive="active">{{
-        'ARCHITECTS' | translate
-      }}</a>
-    </li>
-    <li class="navigation-item">
-      <a class="navigation-link" routerLink="/team" routerLinkActive="active">{{
-        'TEAM' | translate
-      }}</a>
-    </li>
-    <li class="navigation-item">
-      <a class="navigation-link" routerLink="/worklog" routerLinkActive="active">{{
-        'WORKLOG' | translate
-      }}</a>
-    </li>
-    <li class="navigation-item">
-      <a class="navigation-link" routerLink="/styleguide" routerLinkActive="active">{{
-        'STYLEGUIDE' | translate
-      }}</a>
+        [routerLinkActiveOptions]="item.path === '/' ? { exact: true } : {}"
+        >{{ item.name | translate }}</a>
     </li>
   </ul>
 </div>
