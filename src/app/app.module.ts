@@ -41,6 +41,7 @@ import { AuthorsCardsListComponent } from './components/authors-cards-list/autho
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LOCALE_KEY } from './const';
+import { FilterPipe } from './pipes/filter.pipe';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -67,7 +68,8 @@ const lang = localStorage.getItem(LOCALE_KEY);
     EvaluationComponent,
     ScopeComponent,
     SidenavComponent,
-    AuthorsCardsListComponent
+    AuthorsCardsListComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

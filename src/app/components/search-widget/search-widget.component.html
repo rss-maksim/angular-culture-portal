@@ -1,7 +1,7 @@
 <div [ngClass]="{'background':isFilterShown}">
   <mat-form-field [ngStyle]="{'width.px': searchLineWidth}">
     <mat-label>Filter</mat-label>
-    <input matInput>
+    <input matInput id='filter-input'>
   </mat-form-field>
   <button mat-icon-button (click)="onSearchClick()"><mat-icon>search</mat-icon></button>
 </div>
