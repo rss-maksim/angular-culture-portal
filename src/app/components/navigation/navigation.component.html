@@ -9,27 +9,22 @@
 
   <ul class="navigation-list">
     <li class="navigation-item">
-      <a
-        class="navigation-link"
-        routerLink="/"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >{{ 'HOME' | translate }}</a
-      >
+      <a class="navigation-link" routerLink="/" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">{{ 'MAIN_PAGE.HOME' | translate }}</a>
     </li>
     <li class="navigation-item">
       <a class="navigation-link" routerLink="/authors" routerLinkActive="active">{{
-        'ARCHITECTS' | translate
+        'ARCHITECTS.MENU_ITEM' | translate
       }}</a>
     </li>
     <li class="navigation-item">
       <a class="navigation-link" routerLink="/team" routerLinkActive="active">{{
-        'TEAM' | translate
+        'TEAM.MENU_ITEM' | translate
       }}</a>
     </li>
     <li class="navigation-item">
       <a class="navigation-link" routerLink="/worklog" routerLinkActive="active">{{
-        'WORKLOG' | translate
+        'WORKLOG.MENU_ITEM' | translate
       }}</a>
     </li>
     <li class="navigation-item">

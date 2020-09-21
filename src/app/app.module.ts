@@ -35,7 +35,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LOCALE_KEY } from './const';
 
 // AoT requires an exported function for factories
-export function HttpLoaderFactory(http: HttpClient) {
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
 }
 
@@ -85,4 +85,4 @@ const lang = localStorage.getItem(LOCALE_KEY);
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
