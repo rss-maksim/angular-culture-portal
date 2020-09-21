@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { languages, ILanguage, Lang } from './const';
+import { languages } from '../../constants/language.const';
+import { ILanguage } from 'src/app/models/language.model';
 import { IAppStore } from '../../redux/state.model';
 import { selectLocale } from '../../redux/selectors/appReducer.selector';
 import { changeLocale } from '../../redux/actions';
@@ -18,7 +19,7 @@ export class LanguagesComponent implements OnInit {
   locales: ILanguage[];
   currentLocale$: Observable<string>;
 
-  constructor(private store: Store<IAppStore>, private translateService: TranslateService) {}
+  constructor(private store: Store<IAppStore>, private translateService: TranslateService) { }
 
   ngOnInit(): void {
     this.locales = languages;

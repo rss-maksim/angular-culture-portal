@@ -5,17 +5,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatSliderModule } from '@angular/material/slider';
-import { MatIconModule } from '@angular/material/icon';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { MatButtonModule } from '@angular/material/button';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AppMaterialModule } from './material.module';
 
 import { environment } from '../environments/environment';
+import { appReducer } from './redux/reducers/appReducer';
+import { Lang } from 'src/app/models/language.model';
+import { LOCALE_KEY } from './const';
 
 import { MainComponent } from './pages/main/main.component';
 import { AuthorsListComponent } from './pages/authors-list/authors-list.component';
@@ -30,14 +29,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { LanguagesComponent } from './components/languages/languages.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { appReducer } from './redux/reducers/appReducer';
 import { SearchWidgetComponent } from './components/search-widget/search-widget.component';
 import { AuthorOfDayComponent } from './components/author-of-day/author-of-day.component';
 import { EvaluationComponent } from './components/evaluation/evaluation.component';
 import { ScopeComponent } from './components/scope/scope.component';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { LOCALE_KEY } from './const';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -68,14 +63,8 @@ const lang = localStorage.getItem(LOCALE_KEY);
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AppMaterialModule,
     BrowserAnimationsModule,
-    MatMenuModule,
-    MatProgressSpinnerModule,
-    MatSliderModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatListModule,
-    MatButtonModule,
     HttpClientModule,
     StoreModule.forRoot({ appReducer }),
     EffectsModule.forRoot([]),
@@ -89,7 +78,7 @@ const lang = localStorage.getItem(LOCALE_KEY);
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
-      defaultLanguage: lang || 'en',
+      defaultLanguage: lang || Lang.en,
     }),
   ],
   providers: [],

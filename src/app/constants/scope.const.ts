@@ -1,4 +1,4 @@
-import { Scope } from './scope.model';
+import { Scope } from '../models/scope.model';
 
 export const SCOPES: Scope = new Scope('Total scope', 280, [
   new Scope('Min scope', 50, [
