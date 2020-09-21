@@ -5,20 +5,13 @@
   </a>
 
   <ul class="navigation-list">
-    <li class="navigation-item">
-      <a class="navigation-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-    </li>
-    <li class="navigation-item">
-      <a class="navigation-link" routerLink="/authors" routerLinkActive="active">Architects</a>
-    </li>
-    <li class="navigation-item">
-      <a class="navigation-link" routerLink="/team" routerLinkActive="active">Team</a>
-    </li>
-    <li class="navigation-item">
-      <a class="navigation-link" routerLink="/worklog" routerLinkActive="active">Worklog</a>
-    </li>
-    <li class="navigation-item">
-      <a class="navigation-link" routerLink="/styleguide" routerLinkActive="active">Styleguide</a>
+    <li class="navigation-item" *ngFor="let item of navItems">
+      <a
+        class="navigation-link"
+        [routerLink]="item.path"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="item.path === '/' ? { exact: true } : {}"
+        >{{ item.name | translate }}</a>
     </li>
   </ul>
 </div>

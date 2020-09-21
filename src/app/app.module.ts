@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatSliderModule } from '@angular/material/slider';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -27,12 +29,22 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { LanguagesComponent } from './components/languages/languages.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { appReducer } from './redux/reducers/appReducer';
 import { SearchWidgetComponent } from './components/search-widget/search-widget.component';
 import { AuthorOfDayComponent } from './components/author-of-day/author-of-day.component';
 import { EvaluationComponent } from './components/evaluation/evaluation.component';
 import { ScopeComponent } from './components/scope/scope.component';
-import { AuthorsCardsListComponent } from './components/authors-cards-list/authors-cards-list.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { LOCALE_KEY } from './const';
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
+const lang = localStorage.getItem(LOCALE_KEY);
 
 @NgModule({
   declarations: [
@@ -51,7 +63,7 @@ import { AuthorsCardsListComponent } from './components/authors-cards-list/autho
     AuthorOfDayComponent,
     EvaluationComponent,
     ScopeComponent,
-    AuthorsCardsListComponent
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -60,17 +72,27 @@ import { AuthorsCardsListComponent } from './components/authors-cards-list/autho
     MatMenuModule,
     MatProgressSpinnerModule,
     MatSliderModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
     MatButtonModule,
-    MatCardModule,
     HttpClientModule,
     StoreModule.forRoot({ appReducer }),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
-      logOnly: environment.production
-    })
+      logOnly: environment.production,
+    }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+      defaultLanguage: lang || 'en',
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

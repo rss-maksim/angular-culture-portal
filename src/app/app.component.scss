@@ -1,0 +1,14 @@
+@import "../variables";
+
+.mat-sidenav {
+  width: 75%;
+  background-color: $header-background-color;
+}
+
+.mat-sidenav-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}

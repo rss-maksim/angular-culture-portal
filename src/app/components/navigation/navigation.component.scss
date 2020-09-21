@@ -9,20 +9,12 @@
   align-items: center;
   justify-content: space-between;
 
-  @media (max-width: $breakpoint-tablet) {
-    justify-content: center;
-  }
-
   &-logo {
     display: flex;
     flex-direction: column;
     color: #ffffff;
     font-family: "Italianno", cursive;
     text-decoration: none;
-
-    @media (max-width: $breakpoint-tablet) {
-      display: none;
-    }
   }
   &-title {
     font-size: 30px;
@@ -35,23 +27,13 @@
     list-style: none;
     display: flex;
     @media (max-width: $breakpoint-tablet) {
-      flex-wrap: wrap;
-      font-size: 1.2em;
+      display: none;
     }
   }
 
   &-item {
     & + & {
       margin-left: 20px;
-
-      @media (max-width: $breakpoint-tablet) {
-        margin-left: 0;
-      }
-    }
-    @media (max-width: $breakpoint-tablet) {
-      width: 50%;
-      margin-top: 10px;
-      text-align: center;
     }
   }
 
