@@ -1,0 +1,26 @@
+@import "variables";
+
+@mixin divider {
+  background: $divider-background;
+  color: $divider-color;
+  padding: 20px;
+  text-align: center;
+  letter-spacing: 3px;
+  word-spacing: 10px;
+}
+
+@mixin button {
+  padding: 20px 50px;
+  border: 1px solid black;
+  background-color: $author-of-day-button-background-color;
+  color: $author-of-day-button-color;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px grey;
+  transition: all 0.5s;
+
+  &:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    background-color: $author-of-day-button-background-color;
+    transform: scale(1.2);
+  }
+}
