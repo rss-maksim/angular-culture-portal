@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -14,7 +15,7 @@ import { AppMaterialModule } from './material.module';
 import { environment } from '../environments/environment';
 import { appReducer } from './redux/reducers/appReducer';
 import { Lang } from 'src/app/models/language.model';
-import { LOCALE_KEY } from './const';
+import { AppLanguageStore } from './services/language-store.service';
 
 import { MainComponent } from './pages/main/main.component';
 import { AuthorsListComponent } from './pages/authors-list/authors-list.component';
@@ -39,7 +40,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
 }
 
-const lang = localStorage.getItem(LOCALE_KEY);
+const lang = AppLanguageStore.loadLocale();
 
 @NgModule({
   declarations: [
@@ -66,12 +67,16 @@ const lang = localStorage.getItem(LOCALE_KEY);
     AppMaterialModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    StoreModule.forRoot({ appReducer }),
+    StoreModule.forRoot({
+      appReducer,
+      router: routerReducer,
+    }),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
     }),
+    StoreRouterConnectingModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

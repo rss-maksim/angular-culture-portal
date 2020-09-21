@@ -2,17 +2,24 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
 
 import { AuthorModel } from '../models/author.model';
+import { IAppStore } from '../redux/state.model';
 import { AUTHORS_JSON } from '../const';
+import { selectLocale } from '../redux/selectors/appReducer.selector';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthorsService {
   private authors$: BehaviorSubject<AuthorModel[]> = new BehaviorSubject<AuthorModel[]>(null);
+  private locale$: Observable<string>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private store: Store<IAppStore>) {
+    this.locale$ = this.store.select(selectLocale);
+    this.locale$.subscribe(locale => console.log('locale => ', locale));
+  }
 
   getAuthors(filter?: string): Observable<AuthorModel[]> {
     const allAuthors = this.authors$.value

@@ -7,8 +7,8 @@ import { ILanguage } from 'src/app/models/language.model';
 import { IAppStore } from '../../redux/state.model';
 import { selectLocale } from '../../redux/selectors/appReducer.selector';
 import { changeLocale } from '../../redux/actions';
-import { LOCALE_KEY } from '../../const';
 import { TranslateService } from '@ngx-translate/core';
+import { AppLanguageStore } from 'src/app/services/language-store.service';
 
 @Component({
   selector: 'app-languages',
@@ -27,7 +27,7 @@ export class LanguagesComponent implements OnInit {
   }
 
   select(locale: string): void {
-    localStorage.setItem(LOCALE_KEY, locale);
+    AppLanguageStore.saveLocale(locale);
     this.store.dispatch(changeLocale({ locale }));
     this.translateService.use(locale);
   }

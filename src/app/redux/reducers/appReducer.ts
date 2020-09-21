@@ -2,10 +2,10 @@ import { Action, createReducer, on } from '@ngrx/store';
 
 import { changeLocale } from '../actions';
 import { IAppReducer } from '../state.model';
-import { LOCALE_KEY } from '../../const';
+import { AppLanguageStore } from 'src/app/services/language-store.service';
 
 export const initialState: IAppReducer = {
-  locale: localStorage.getItem(LOCALE_KEY) || 'en'
+  locale: AppLanguageStore.loadLocale() || 'en'
 };
 
 const reducer = createReducer(
