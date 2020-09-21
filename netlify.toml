@@ -1,0 +1,9 @@
+[build]
+  command = "ng build --prod"
+  publish = "/dist/angular-culture-portal"
+  base = "/"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
