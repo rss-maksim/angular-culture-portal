@@ -1,4 +1,4 @@
-<mat-card *ngFor="let author of authors$ | async" [class.mat-elevation-z]="true">
+<mat-card *ngFor="let author of authors$ | async; let i = index" [class.mat-elevation-z]="true">
   <mat-card-header>
     <img class="avatar" matCardAvatar src="{{author.image}}">
     <mat-card-title>
@@ -15,6 +15,6 @@
     {{author.shortDescription}}
   </div>
   <mat-card-actions>
-    <button mat-raised-button>More...</button>
+    <button class="more-button" mat-raised-button (click)="onMoreClick(i)">More...</button>
   </mat-card-actions>
 </mat-card>

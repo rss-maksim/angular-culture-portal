@@ -22,8 +22,6 @@ mat-card{
     width: 300px;
   }
   overflow: hidden;
-  border-bottom-style: solid;
-  border-bottom-width: 5px;
   border-radius: 10px;
   box-shadow: 0 0 5px 2px rgba(0,0,0,0.5);
 }
@@ -32,7 +30,11 @@ mat-card-header{
   margin-bottom: 10px;
 }
 
-button {
+mat-card-subtitle {
+  margin-bottom: 10px;
+}
+
+.more-button {
   position: absolute;
   bottom: 10px;
   left: 10px;
@@ -41,6 +43,7 @@ button {
 .avatar {
   width: 60px;
   height: 60px;
+  border-radius: 20%;;
 }
 
 .description {

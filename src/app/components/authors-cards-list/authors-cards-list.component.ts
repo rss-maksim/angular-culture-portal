@@ -1,19 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthorsService } from 'src/app/services/authors.service';
 import { AuthorModel } from '../../models/author.model';
-import {
-  MatCard,
-  MatCardHeader,
-  MatCardActions,
-  MatCardTitle,
-  MatCardSubtitle,
-  MatCardContent,
-  MatCardImage,
-  MatCardFooter,
-  MatCardAvatar
-} from '@angular/material/card';
-import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-authors-cards-list',
@@ -24,10 +13,14 @@ export class AuthorsCardsListComponent implements OnInit {
 
   public authors$: Observable<AuthorModel[]>;
 
-  constructor(public authorsService: AuthorsService) { }
+  constructor(public authorsService: AuthorsService, public router: Router) { }
 
   ngOnInit(): void {
     this.authors$ = this.authorsService.getAuthors();
+  }
+
+  public onMoreClick(index: number): void {
+    this.router.navigate(['author', index + 1]);
   }
 
 }
