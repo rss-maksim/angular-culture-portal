@@ -1,12 +1,18 @@
 @import "../../../variables";
 
-.header {
+header {
+  width: 100%;
   display: flex;
   align-items: center;
   min-height: 70px;
   padding: 0 20px;
   background-color: $header-background-color;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 10;
+}
+
+.header {
+  width: 100%;
+  min-height: 70px;
 }

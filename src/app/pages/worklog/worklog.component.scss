@@ -1,0 +1,31 @@
+@import "../../../mixins";
+
+h1 {
+  @include divider;
+}
+
+h3 {
+  text-align: center;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+table {
+  width: 80%;
+}
+
+td,
+th,
+table {
+  border: 1px solid black;
+}
+
+.name,
+.time {
+  text-align: center;
+}
