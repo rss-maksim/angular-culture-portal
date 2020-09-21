@@ -1,6 +1,6 @@
 <div *ngIf="scope.scopes; else slider" class="scope-container">
   <h2 class="scope-header">
-    {{scope.description}} is
+    {{scope.description}}
     <span [class]="scoreClass">{{points}}</span>
   </h2>
   <div *ngFor="let subScope of scope.scopes">

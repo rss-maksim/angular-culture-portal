@@ -1,9 +1,31 @@
 {
-  "CULTURE_PORTAL": "Культурный Портал",
-  "ARCHITECTS_OF_BELARUS": "Белорусские Архитекторы",
-  "HOME": "Главная",
-  "ARCHITECTS": "Архитекторы",
-  "TEAM": "Команда",
-  "WORKLOG": "Рабочий журнал",
+  "MAIN_PAGE": {
+    "HOME": "Главная",
+    "CULTURE_PORTAL": "Культурный Портал",
+    "ARCHITECTS_OF_BELARUS": "Белорусские Архитекторы"
+  },
+  "ARCHITECTS": {
+    "MENU_ITEM": "Архитекторы",
+    "REMOVE_ME": "author-full-view page!"
+  },
+  "TEAM": {
+    "MENU_ITEM": "Команда",
+    "REMOVE_ME": "team page!"
+  },
+  "WORKLOG": {
+    "MENU_ITEM": "Рабочий журнал",
+    "DIFFICULTIES": "Основные трудности в работе команды",
+    "COORDINATING": "Координация работы команды онлайн",
+    "STYLEGIUDE": "Создание страницы стилистики",
+    "ANIMATION": "Анимация",
+    "SELF_EVALUATION": "Самооценка"
+  },
+  "AUTHOR_PAGE": {
+    "REMOVE_ME": "author-full-view page!"
+  },
+  "404_PAGE": {
+    "NOT_FOUND": "Страница не найдена",
+    "BACK": "Вернуться на главную"
+  },
   "STYLEGUIDE": "Стилистика"
 }

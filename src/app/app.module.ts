@@ -101,4 +101,4 @@ const lang = localStorage.getItem(LOCALE_KEY);
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

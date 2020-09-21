@@ -1,9 +1,31 @@
 {
-  "CULTURE_PORTAL": "Culture Portal",
-  "ARCHITECTS_OF_BELARUS": "Architects of Belarus",
-  "HOME": "Home",
-  "ARCHITECTS": "Architects",
-  "TEAM": "Team",
-  "WORKLOG": "Worklog",
+  "MAIN_PAGE": {
+    "HOME": "Home",
+    "CULTURE_PORTAL": "Culture Portal",
+    "ARCHITECTS_OF_BELARUS": "Architects of Belarus"
+  },
+  "ARCHITECTS": {
+    "MENU_ITEM": "Architects",
+    "REMOVE_ME": "author-full-view page!"
+  },
+  "TEAM": {
+    "MENU_ITEM": "Team",
+    "REMOVE_ME": "team page!"
+  },
+  "WORKLOG": {
+    "MENU_ITEM": "Worklog",
+    "DIFFICULTIES": "Main difficulties for our team",
+    "COORDINATING": "Coordinating work online",
+    "STYLEGIUDE": "Creating a styleguide",
+    "ANIMATION": "Animations / special effects",
+    "SELF_EVALUATION": "Self-evaluation"
+  },
+  "AUTHOR_PAGE": {
+    "REMOVE_ME": "author-full-view page!"
+  },
+  "404_PAGE": {
+    "NOT_FOUND": "Page not found",
+    "BACK": "Back to home"
+  },
   "STYLEGUIDE": "Styleguide"
 }

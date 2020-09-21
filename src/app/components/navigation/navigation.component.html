@@ -6,12 +6,8 @@
 
   <ul class="navigation-list">
     <li class="navigation-item" *ngFor="let item of navItems">
-      <a
-        class="navigation-link"
-        [routerLink]="item.path"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="item.path === '/' ? { exact: true } : {}"
-        >{{ item.name | translate }}</a>
+      <a class="navigation-link" [routerLink]="item.path" routerLinkActive="active"
+        [routerLinkActiveOptions]="item.path === '/' ? { exact: true } : {}">{{ item.name | translate }}</a>
     </li>
   </ul>
 </div>
