@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { changeFilter } from '../../redux/actions';
+import { IAppReducer } from 'src/app/redux/state.model';
 
 @Component({
   selector: 'app-search-widget',
@@ -7,9 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchWidgetComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<IAppReducer>) { }
 
   ngOnInit(): void {
   }
 
+  changed(event: InputEvent): void {
+    const input: HTMLInputElement = event.target as HTMLInputElement;
+    const filter = input.value;
+    this.store.dispatch(changeFilter({ filter }));
+  }
 }
+
