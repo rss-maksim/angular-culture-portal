@@ -1,6 +1,6 @@
-<div id="host-div" *ngIf="(authors$ | async) as authors">
+<div id="host-div" *ngIf="(authors$ | async | filter : wordState) as authors">
   <div id="cards">
-    <mat-card *ngFor="let author of authors | filter : wordState : page : cardsPerPage" [class.mat-elevation-z]="true">
+    <mat-card *ngFor="let author of authors | paginator : page : cardsPerPage" [class.mat-elevation-z]="true">
       <mat-card-header>
         <img class="avatar" matCardAvatar src="{{author.image}}">
         <mat-card-title>

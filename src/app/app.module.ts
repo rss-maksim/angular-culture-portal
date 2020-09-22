@@ -43,6 +43,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LOCALE_KEY } from './const';
 import { FilterPipe } from './pipes/filter.pipe';
+import { PaginatorPipe } from './pipes/paginator.pipe';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -70,7 +71,8 @@ const lang = localStorage.getItem(LOCALE_KEY);
     ScopeComponent,
     SidenavComponent,
     AuthorsCardsListComponent,
-    FilterPipe
+    FilterPipe,
+    PaginatorPipe
   ],
   imports: [
     BrowserModule,
