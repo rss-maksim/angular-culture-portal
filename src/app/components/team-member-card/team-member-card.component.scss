@@ -1,0 +1,63 @@
+@import "../../../mixins";
+
+h1 {
+  @include divider;
+}
+
+.card{
+  width: 250px;
+  height: 300px;
+  background: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  margin: 10px 20px;
+  position: relative;
+  cursor: pointer;
+  transition: .5s;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  &:hover {
+    transform: translateY(10px);
+    &:before {
+      opacity: 1;
+    }
+    .info {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background: rgba(black, 0.6);
+    z-index: 2;
+    transition: 0.5s;
+    opacity: 0;
+  }
+  img {
+    width: 250px;
+    height: 200px;
+  }
+  .info {
+    position: relative;
+    top: -250px;
+    z-index: 3;
+    color: white;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.5s;
+  }
+  mat-card-header {
+    justify-content: center;
+  }
+  mat-card-subtitle {
+    margin-bottom: 3px;
+  }
+}

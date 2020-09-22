@@ -1,10 +1,14 @@
-<img mat-card-image src="assets/images/empty_avatar.png" width="auto" height="30%">
-<mat-card-header>
-  <mat-card-title>{{ member }}</mat-card-title>
-  <mat-card-subtitle>Role: Developer</mat-card-subtitle>
-</mat-card-header>
-<mat-card-actions>
-  <div>
-    <mat-icon>github</mat-icon>
-  </div>
-</mat-card-actions>
+<mat-card class="card">
+  <img mat-card-image src="assets/images/Avatar_user_color.png">
+  <mat-card-header>
+    <mat-card-title>{{ member }}</mat-card-title>
+    <mat-card-subtitle>Role: Developer</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions>
+    <div><mat-icon>github</mat-icon></div>
+  </mat-card-actions>
+  <mat-card-footer class="info">
+    <h1>Mountain</h1>
+    <p>Lorem Ipsum is simply dummy text from the printing and typeseting industry</p>
+  </mat-card-footer>
+</mat-card>
