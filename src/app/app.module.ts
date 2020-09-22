@@ -16,8 +16,8 @@ import { environment } from '../environments/environment';
 import { appReducer } from './redux/reducers/appReducer';
 import { Lang } from 'src/app/models/language.model';
 import { AppLanguageStore } from './services/language-store.service';
-import { FilterPipe } from './pipes/filter.pipe';
 import { PaginatorPipe } from './pipes/paginator.pipe';
+import { AppLoadAuthorsEffect } from 'src/app/redux/effects/load-authors.effect';
 
 import { MainComponent } from './pages/main/main.component';
 import { AuthorsListComponent } from './pages/authors-list/authors-list.component';
@@ -64,7 +64,6 @@ const lang = AppLanguageStore.loadLocale();
     ScopeComponent,
     SidenavComponent,
     AuthorsCardsListComponent,
-    FilterPipe,
     PaginatorPipe
   ],
   imports: [
@@ -77,7 +76,7 @@ const lang = AppLanguageStore.loadLocale();
       appReducer,
       router: routerReducer,
     }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([AppLoadAuthorsEffect]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

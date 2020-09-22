@@ -4,10 +4,10 @@ import { Observable, of } from 'rxjs';
 import { catchError, filter, switchMap, take, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
-import { IAppStore } from '../redux/state.model';
-import { selectAuthors } from '../redux/selectors/appReducer.selector';
-import { AuthorModel } from '../models/author.model';
-import { loadAuthors } from '../redux/actions';
+import { IAppStore } from 'src/app/redux/state.model';
+import { selectAuthors } from 'src/app/redux/selectors/appReducer.selector';
+import { loadAuthors } from 'src/app/redux/actions';
+import { AuthorModel } from 'src/app/models/author.model';
 
 @Injectable({
   providedIn: 'root',
@@ -26,10 +26,10 @@ export class AppAuthorGuard implements CanActivate {
     return this.store.select(selectAuthors).pipe(
       tap((authors: AuthorModel[]) => {
         if (!authors || !authors.length) {
-          this.store.dispatch(loadAuthors())
+          this.store.dispatch(loadAuthors());
         }
       }),
-      filter((authors: AuthorModel[]) => !authors || !authors.length),
+      filter((authors: AuthorModel[]) => !!authors && !!authors.length),
       take(1)
     );
   }

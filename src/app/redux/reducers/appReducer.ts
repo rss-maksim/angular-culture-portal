@@ -7,7 +7,7 @@ import { AppLanguageStore } from 'src/app/services/language-store.service';
 export const initialState: IAppReducer = {
   locale: AppLanguageStore.loadLocale() || 'en',
   filter: '',
-  authors: null,
+  authors: [],
 };
 
 const reducer = createReducer(
@@ -17,6 +17,4 @@ const reducer = createReducer(
   on(changeAuthors, (state, { authors }) => ({ ...state, authors })),
 );
 
-export function appReducer(state: IAppReducer, action: Action): IAppReducer {
-  return reducer(state, action);
-}
+export const appReducer = (state: IAppReducer, action: Action): IAppReducer => reducer(state, action);

@@ -1,25 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, concat } from 'rxjs';
-import { tap, map, switchMap } from 'rxjs/operators';
-import { Store } from '@ngrx/store';
+import { Observable, of } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { select, Store } from '@ngrx/store';
 
 import { AuthorModel } from '../models/author.model';
-import { IAppStore } from '../redux/state.model';
 import { AUTHORS_FILE, AUTHORS_EXTENSION } from '../const';
-import { selectLocale } from '../redux/selectors/appReducer.selector';
-import { languages } from 'src/app/constants/language.const';
-import { Lang } from '../models/language.model';
+import { IAppStore } from '../redux/state.model';
+import { selectAuthorById, selectAuthors, selectLocale, selectRandomAuthor } from '../redux/selectors/appReducer.selector';
+import { changeAuthors, loadAuthors } from '../redux/actions';
 
 interface AuthorsList {
-  [lang: string]: BehaviorSubject<AuthorModel[]>;
+  [lang: string]: AuthorModel[];
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthorsService {
-  private authors: AuthorsList = {}; // = new BehaviorSubject<AuthorModel[]>(null);
+  private authors: AuthorsList = {};
   private locale$: Observable<string>;
   private locale: string;
 
@@ -27,53 +26,35 @@ export class AuthorsService {
     this.locale$ = this.store.select(selectLocale);
     this.locale$.subscribe(locale => {
       this.locale = locale;
-      if (!this.authors[locale]) {
-        this.authors[locale] = new BehaviorSubject<AuthorModel[]>(null);
+      if (this.authors[this.locale]) {
+        this.store.dispatch(changeAuthors({ authors: this.authors[this.locale] }));
+      } else {
+        this.store.dispatch(loadAuthors());
       }
     });
   }
 
-  getAuthors(filter?: string): Observable<AuthorModel[]> {
+  loadAuthors(): Observable<AuthorModel[]> {
     const url = `${AUTHORS_FILE}${this.locale}${AUTHORS_EXTENSION}`;
-
-    return this.http
-      .get<AuthorModel[]>(url)
-      .pipe(
-        tap(authors => this.authors[this.locale] = new BehaviorSubject<AuthorModel[]>(authors))
-        // ,
-        // map(authors => this.authors[this.locale].asObservable())
-      );
-    // const allAuthors =
-    // return this.authors[this.locale]
-    //   ? this.authors[this.locale].asObservable()
-    //   : this.http
-    //     .get<AuthorModel[]>(url)
-    //     .pipe(
-    //       tap(authors => this.authors[this.locale] = new BehaviorSubject<AuthorModel[]>(authors)),
-    //       switchMap(() => this.authors[this.locale].asObservable())
-    //     );
-    // return allAuthors.pipe(
-    //   map(authors => filter
-    //     ? authors.filter(({ name, placeOfBirth }) =>
-    //       name.toLowerCase().includes(filter) || placeOfBirth.toLowerCase().includes(filter)
-    //     )
-    //     : authors
-    //   )
-    // );
+    const allAuthors = this.authors[this.locale]
+      ? of(this.authors[this.locale])
+      : this.http
+        .get<AuthorModel[]>(url)
+        .pipe(
+          tap(authors => this.authors[this.locale] = authors),
+        );
+    return allAuthors;
   }
 
-  // getAuthor(authorId: string): Observable<AuthorModel> {
-  //   return this.getAuthors().pipe(
-  //     map(authors => authors.find(({ id }) => id === authorId))
-  //   );
-  // }
+  getAuthors(): Observable<AuthorModel[]> {
+    return this.store.pipe(select(selectAuthors));
+  }
+
+  getAuthor(authorId: string): Observable<AuthorModel> {
+    return this.store.pipe(select(selectAuthorById, authorId));
+  }
 
   getAuthorOfDay(): Observable<AuthorModel> {
-    return this.getAuthors().pipe(
-      map(authors => {
-        const authorIndex = Math.floor(Math.random() * authors.length);
-        return authors[authorIndex];
-      })
-    );
+    return this.store.pipe(select(selectRandomAuthor));
   }
 }

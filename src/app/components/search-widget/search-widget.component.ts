@@ -1,12 +1,9 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-
-import { FilterStateService } from 'src/app/services/filter-state.service';
-
 import { Store } from '@ngrx/store';
 
-import { changeFilter } from '../../redux/actions';
+import { changeFilter } from 'src/app/redux/actions';
 import { IAppReducer } from 'src/app/redux/state.model';
 
 @Component({
@@ -19,7 +16,7 @@ export class SearchWidgetComponent implements AfterViewInit {
   public searchLineWidth = 0;
   public filterInputSub: Subscription;
 
-  constructor(private filterStateService: FilterStateService, private store: Store<IAppReducer>) { }
+  constructor(private store: Store<IAppReducer>) { }
 
   ngAfterViewInit(): void {
     this.filterInputSub = fromEvent(document.getElementById('filter-input'), 'input')
@@ -27,9 +24,7 @@ export class SearchWidgetComponent implements AfterViewInit {
         map((event: KeyboardEvent) => (event.target as HTMLInputElement).value),
         debounceTime(400),
         distinctUntilChanged())
-      .subscribe(inputValue => {
-        this.filterStateService.changeWordFilter(inputValue);
-      });
+      .subscribe(filter => this.store.dispatch(changeFilter({ filter })));
   }
 
   public onSearchClick(): void {
@@ -37,10 +32,10 @@ export class SearchWidgetComponent implements AfterViewInit {
     this.isFilterShown = !this.isFilterShown;
   }
 
-  changed(event: InputEvent): void {
-    const input: HTMLInputElement = event.target as HTMLInputElement;
-    const filter = input.value;
-    this.store.dispatch(changeFilter({ filter }));
-  }
+  // changed(event: InputEvent): void {
+  //   const input: HTMLInputElement = event.target as HTMLInputElement;
+  //   const filter = input.value;
+  //   this.store.dispatch(changeFilter({ filter }));
+  // }
 }
 

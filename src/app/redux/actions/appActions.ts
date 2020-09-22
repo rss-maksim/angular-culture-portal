@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
 import { AuthorModel } from 'src/app/models/author.model';
-import { LOAD_AUTHORS, LOAD_AUTHORS_SUCCESS } from '../const';
+import { LOAD_AUTHORS } from '../const';
 
 export const changeLocale = createAction('[Language] change', props<{ locale: string }>());
 

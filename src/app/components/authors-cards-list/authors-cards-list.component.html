@@ -1,8 +1,8 @@
-<div id="host-div" *ngIf="(authors$ | async | filter : wordState) as authors">
+<div id="host-div" *ngIf="(authors$ | async) as authors">
   <div id="cards">
     <mat-card *ngFor="let author of authors | paginator : page : cardsPerPage" [class.mat-elevation-z]="true">
       <mat-card-header>
-        <img class="avatar" matCardAvatar src="{{author.image}}">
+        <img class="avatar" matCardAvatar src="{{author.image}}" alt="Image">
         <mat-card-title>
           {{author.name}}
         </mat-card-title>
@@ -21,10 +21,7 @@
       </mat-card-actions>
     </mat-card>
   </div>
-  <mat-paginator [length]="authors.length"
-                 [pageSize]="cardsPerPage"
-                 [pageSizeOptions]="[5, 10]"
-                 (page)="onPaginatorClick($event)">
+  <mat-paginator [length]="authors.length" [pageSize]="cardsPerPage" [pageSizeOptions]="[5, 10]"
+    (page)="onPaginatorClick($event)">
   </mat-paginator>
 </div>
-
