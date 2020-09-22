@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { navItems } from 'src/app/const';
+import { navItems } from '../../const';
 
 @Component({
   selector: 'app-sidenav',
@@ -10,7 +10,10 @@ import { navItems } from 'src/app/const';
 export class SidenavComponent implements OnInit {
   navSections = [];
 
+  constructor() { }
+
   ngOnInit(): void {
     this.navSections = navItems;
   }
+
 }

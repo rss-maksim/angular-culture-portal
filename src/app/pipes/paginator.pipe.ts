@@ -1,6 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
-import { AuthorModel } from 'src/app/models/author.model';
+import { AuthorModel } from '../models/author.model';
 
 @Pipe({
   name: 'paginator'

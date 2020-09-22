@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatSliderChange } from '@angular/material/slider';
 
-import { Scope } from 'src/app/models/scope.model';
+import { Scope } from 'src/app/constants/scope.model';
 
 @Component({
   selector: 'app-scope',

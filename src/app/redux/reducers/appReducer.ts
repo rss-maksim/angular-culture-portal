@@ -1,20 +1,18 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { changeLocale, changeFilter, changeAuthors } from '../actions';
+import { changeLocale } from '../actions';
 import { IAppReducer } from '../state.model';
-import { AppLanguageStore } from 'src/app/services/language-store.service';
+import { LOCALE_KEY } from '../../const';
 
 export const initialState: IAppReducer = {
-  locale: AppLanguageStore.loadLocale() || 'en',
-  filter: '',
-  authors: [],
+  locale: localStorage.getItem(LOCALE_KEY) || 'en'
 };
 
 const reducer = createReducer(
   initialState,
-  on(changeLocale, (state, { locale }) => ({ ...state, locale })),
-  on(changeFilter, (state, { filter }) => ({ ...state, filter })),
-  on(changeAuthors, (state, { authors }) => ({ ...state, authors })),
+  on(changeLocale, (state, action) => ({ ...state, locale: action.locale })),
 );
 
-export const appReducer = (state: IAppReducer, action: Action): IAppReducer => reducer(state, action);
+export function appReducer(state: IAppReducer, action: Action): IAppReducer {
+  return reducer(state, action);
+}
