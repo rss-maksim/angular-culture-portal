@@ -3,5 +3,4 @@ export interface TeamMember {
   avatarUrl: string;
   githubUrl: string;
   role: string;
-  contribution: string[];
 }

@@ -9,7 +9,7 @@ h1 {
   height: 300px;
   background: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 10px;
+  border-radius: 0;
   margin: 10px 20px;
   position: relative;
   cursor: pointer;
@@ -17,59 +17,41 @@ h1 {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  animation: fadeIn ease 1s;
   &:hover {
     transform: translateY(10px);
-    &:before {
-      opacity: 1;
-    }
-    .info {
-      opacity: 1;
-      transform: translateY(0px);
-    }
-  }
-  &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-    background: rgba(black, 0.6);
-    z-index: 2;
-    transition: 0.5s;
-    opacity: 0;
   }
   img {
     width: 250px;
     height: 200px;
-  }
-  .info {
-    position: relative;
-    top: -340px;
-    z-index: 3;
-    color: white;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: 0.5s;
-    .info-content {
-      padding: 8px;
-      overflow-y: scroll;
-      height: 300px;
-    }
-    ::-webkit-scrollbar {
-      width: 3px;
-      background: transparent;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: white;
-    }
   }
   mat-card-header {
     justify-content: center;
   }
   mat-card-subtitle {
     margin-bottom: 3px;
+  }
+  mat-card-actions {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  }
+  .github-link {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: url("../../../assets/images/GitHub-Mark-120px-plus.png");
+    background-size: cover;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity:0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity:1;
   }
 }

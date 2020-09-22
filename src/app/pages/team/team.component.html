@@ -1,4 +1,4 @@
 <p>{{'TEAM.OUR_TEAM' | translate}}</p>
-<div class="main-wrap" [@cardAnimation]="team.length" @plusAnimation>
+<div class="main-wrap">
     <app-team-member-card *ngFor="let member of team" [member]="member"></app-team-member-card>
 </div>

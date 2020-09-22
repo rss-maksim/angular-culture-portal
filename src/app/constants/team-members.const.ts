@@ -2,81 +2,39 @@ import {TeamMember} from '../models/team-member.model';
 
 export const teamMembers: TeamMember[] = [
   {
-    name: 'User Name',
+    name: 'Maksim Kirylka',
     avatarUrl: 'assets/images/Avatar_user_color.png',
-    githubUrl: 'google.com',
-    role: 'Developer',
-    contribution: [
-      '1Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '2Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '3Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '4Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '5Lorem Ipsum is simply dummy text from the printing and typeseting industry'
-    ],
+    githubUrl: 'https://github.com/rss-maksim',
+    role: 'Team Lead'
   },
   {
-    name: 'User Name',
+    name: 'Aleksei Morozov',
     avatarUrl: 'assets/images/empty_avatar.png',
-    githubUrl: 'google.com',
-    role: 'Developer',
-    contribution: [
-      '1Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '2Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '3Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '4Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '5Lorem Ipsum is simply dummy text from the printing and typeseting industry'
-    ],
+    githubUrl: 'https://github.com/a1exymoroz',
+    role: 'Developer'
   },
   {
-    name: 'User Name',
+    name: 'Raman Haiduchyk',
     avatarUrl: 'assets/images/Avatar_user_color.png',
-    githubUrl: 'google.com',
-    role: 'Developer',
-    contribution: [
-      '1Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '2Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '3Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '4Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '5Lorem Ipsum is simply dummy text from the printing and typeseting industry'
-    ],
+    githubUrl: 'https://github.com/haidrom',
+    role: 'Developer'
   },
   {
-    name: 'User Name',
+    name: 'Petro Yuskiv',
     avatarUrl: 'assets/images/empty_avatar.png',
-    githubUrl: 'google.com',
-    role: 'Developer',
-    contribution: [
-      '1Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '2Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '3Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '4Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '5Lorem Ipsum is simply dummy text from the printing and typeseting industry'
-    ],
+    githubUrl: 'https://github.com/yuskivpm',
+    role: 'Developer'
   },
   {
-    name: 'User Name',
+    name: 'Hanna Slisenka',
     avatarUrl: 'assets/images/Avatar_user_color.png',
-    githubUrl: 'google.com',
-    role: 'Developer',
-    contribution: [
-      '1Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '2Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '3Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '4Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '5Lorem Ipsum is simply dummy text from the printing and typeseting industry'
-    ],
+    githubUrl: 'https://github.com/agentumbrella',
+    role: 'Developer'
   },
   {
-    name: 'User Name',
+    name: 'Andrey Knyshenko',
     avatarUrl: 'assets/images/empty_avatar.png',
-    githubUrl: 'google.com',
-    role: 'Developer',
-    contribution: [
-      '1Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '2Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '3Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '4Lorem Ipsum is simply dummy text from the printing and typeseting industry',
-      '5Lorem Ipsum is simply dummy text from the printing and typeseting industry'
-    ],
+    githubUrl: 'https://github.com/Just-ankn-repo/',
+    role: 'Developer'
   },
 ];
