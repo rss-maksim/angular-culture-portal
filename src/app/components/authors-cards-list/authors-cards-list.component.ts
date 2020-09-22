@@ -17,7 +17,7 @@ export class AuthorsCardsListComponent implements OnInit {
 
   public wordState: string = null;
 
-  public page = 1;
+  public page = 0;
   public cardsPerPage = 5;
 
   constructor(private authorsService: AuthorsService, private filterStateService: FilterStateService, private router: Router)
@@ -26,6 +26,7 @@ export class AuthorsCardsListComponent implements OnInit {
   ngOnInit(): void {
     this.filterStateService.onFilterChange.subscribe((word: string) => {
       this.wordState = word;
+      this.page = 0;
     });
     this.authors$ = this.authorsService.getAuthors();
   }
@@ -35,7 +36,7 @@ export class AuthorsCardsListComponent implements OnInit {
   }
 
   public onPaginatorClick($event: PageEvent): void{
-    this.page = $event.pageIndex + 1;
+    this.page = $event.pageIndex;
     this.cardsPerPage = $event.pageSize;
   }
 }

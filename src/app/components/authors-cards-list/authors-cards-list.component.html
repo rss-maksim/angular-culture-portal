@@ -23,6 +23,7 @@
   </div>
   <mat-paginator [length]="authors.length"
                  [pageSize]="cardsPerPage"
+                 [pageIndex]="page"
                  [pageSizeOptions]="[5, 10]"
                  (page)="onPaginatorClick($event)">
   </mat-paginator>
