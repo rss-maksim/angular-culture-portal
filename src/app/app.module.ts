@@ -16,6 +16,8 @@ import { environment } from '../environments/environment';
 import { appReducer } from './redux/reducers/appReducer';
 import { Lang } from 'src/app/models/language.model';
 import { AppLanguageStore } from './services/language-store.service';
+import { FilterPipe } from './pipes/filter.pipe';
+import { PaginatorPipe } from './pipes/paginator.pipe';
 
 import { MainComponent } from './pages/main/main.component';
 import { AuthorsListComponent } from './pages/authors-list/authors-list.component';
@@ -34,6 +36,7 @@ import { SearchWidgetComponent } from './components/search-widget/search-widget.
 import { AuthorOfDayComponent } from './components/author-of-day/author-of-day.component';
 import { EvaluationComponent } from './components/evaluation/evaluation.component';
 import { ScopeComponent } from './components/scope/scope.component';
+import { AuthorsCardsListComponent } from './components/authors-cards-list/authors-cards-list.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -59,7 +62,10 @@ const lang = AppLanguageStore.loadLocale();
     AuthorOfDayComponent,
     EvaluationComponent,
     ScopeComponent,
-    SidenavComponent
+    SidenavComponent,
+    AuthorsCardsListComponent,
+    FilterPipe,
+    PaginatorPipe
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSliderModule } from '@angular/material/slider';
@@ -7,8 +8,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
+
   imports: [
     MatMenuModule,
     MatProgressSpinnerModule,
@@ -18,6 +22,8 @@ import { MatInputModule } from '@angular/material/input';
     MatListModule,
     MatButtonModule,
     MatInputModule,
+    MatCardModule,
+    MatPaginatorModule,
   ],
   exports: [
     MatMenuModule,
@@ -28,6 +34,8 @@ import { MatInputModule } from '@angular/material/input';
     MatListModule,
     MatButtonModule,
     MatInputModule,
+    MatCardModule,
+    MatPaginatorModule,
   ],
 })
 export class AppMaterialModule { }

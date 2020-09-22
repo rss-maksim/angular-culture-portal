@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
+import { fromEvent, Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+
+import { FilterStateService } from 'src/app/services/filter-state.service';
+
 import { Store } from '@ngrx/store';
 
 import { changeFilter } from '../../redux/actions';
@@ -9,11 +14,27 @@ import { IAppReducer } from 'src/app/redux/state.model';
   templateUrl: './search-widget.component.html',
   styleUrls: ['./search-widget.component.scss']
 })
-export class SearchWidgetComponent implements OnInit {
+export class SearchWidgetComponent implements AfterViewInit {
+  public isFilterShown = false;
+  public searchLineWidth = 0;
+  public filterInputSub: Subscription;
 
-  constructor(private store: Store<IAppReducer>) { }
+  constructor(private filterStateService: FilterStateService, private store: Store<IAppReducer>) { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    this.filterInputSub = fromEvent(document.getElementById('filter-input'), 'input')
+      .pipe(
+        map((event: KeyboardEvent) => (event.target as HTMLInputElement).value),
+        debounceTime(400),
+        distinctUntilChanged())
+      .subscribe(inputValue => {
+        this.filterStateService.changeWordFilter(inputValue);
+      });
+  }
+
+  public onSearchClick(): void {
+    this.searchLineWidth = this.isFilterShown ? 0 : 250;
+    this.isFilterShown = !this.isFilterShown;
   }
 
   changed(event: InputEvent): void {

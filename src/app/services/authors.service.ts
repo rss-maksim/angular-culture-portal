@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, concat } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
+import { tap, map, switchMap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
 import { AuthorModel } from '../models/author.model';
@@ -36,32 +36,30 @@ export class AuthorsService {
   getAuthors(filter?: string): Observable<AuthorModel[]> {
     const url = `${AUTHORS_FILE}${this.locale}${AUTHORS_EXTENSION}`;
 
-    const allAuthors = this.authors[this.locale]
-      ? this.authors[this.locale].asObservable()
-      : this.http
-          .get<AuthorModel[]>(url)
-          .pipe(
-            tap(authors => this.authors[this.locale] = new BehaviorSubject<AuthorModel[]>(authors))
-          )
-
-  //   const allAuthors = this.authors$.value
-  //     ? this.authors$.asObservable()
-  //     : merge(
-  //         urls.map(url => this.http.get<AuthorModel[]>(url))
-  //         // this.http
-  //         // .get<AuthorModel[]>(AUTHORS_FILE+)
-  //         // .pipe(
-  //         //   tap(authors => this.authors$.next(authors))
-  //         // )
-  //       );
-  //   return allAuthors.pipe(
-  //     map(authors => filter
-  //       ? authors.filter(({ name, placeOfBirth }) =>
-  //         name.toLowerCase().includes(filter) || placeOfBirth.toLowerCase().includes(filter)
-  //       )
-  //       : authors
-  //     )
-  //   );
+    return this.http
+      .get<AuthorModel[]>(url)
+      .pipe(
+        tap(authors => this.authors[this.locale] = new BehaviorSubject<AuthorModel[]>(authors))
+        // ,
+        // map(authors => this.authors[this.locale].asObservable())
+      );
+    // const allAuthors =
+    // return this.authors[this.locale]
+    //   ? this.authors[this.locale].asObservable()
+    //   : this.http
+    //     .get<AuthorModel[]>(url)
+    //     .pipe(
+    //       tap(authors => this.authors[this.locale] = new BehaviorSubject<AuthorModel[]>(authors)),
+    //       switchMap(() => this.authors[this.locale].asObservable())
+    //     );
+    // return allAuthors.pipe(
+    //   map(authors => filter
+    //     ? authors.filter(({ name, placeOfBirth }) =>
+    //       name.toLowerCase().includes(filter) || placeOfBirth.toLowerCase().includes(filter)
+    //     )
+    //     : authors
+    //   )
+    // );
   }
 
   // getAuthor(authorId: string): Observable<AuthorModel> {
@@ -70,12 +68,12 @@ export class AuthorsService {
   //   );
   // }
 
-  // getAuthorOfDay(): Observable<AuthorModel> {
-  //   return this.getAuthors().pipe(
-  //     map(authors => {
-  //       const authorIndex = Math.floor(Math.random() * authors.length);
-  //       return authors[authorIndex];
-  //     })
-  //   );
-  // }
+  getAuthorOfDay(): Observable<AuthorModel> {
+    return this.getAuthors().pipe(
+      map(authors => {
+        const authorIndex = Math.floor(Math.random() * authors.length);
+        return authors[authorIndex];
+      })
+    );
+  }
 }
