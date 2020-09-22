@@ -11,6 +11,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -38,6 +39,7 @@ import { ScopeComponent } from './components/scope/scope.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LOCALE_KEY } from './const';
+import { TeamMemberCardComponent } from './components/team-member-card/team-member-card.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -63,7 +65,8 @@ const lang = localStorage.getItem(LOCALE_KEY);
     AuthorOfDayComponent,
     EvaluationComponent,
     ScopeComponent,
-    SidenavComponent
+    SidenavComponent,
+    TeamMemberCardComponent
   ],
   imports: [
     BrowserModule,
@@ -76,6 +79,7 @@ const lang = localStorage.getItem(LOCALE_KEY);
     MatSidenavModule,
     MatListModule,
     MatButtonModule,
+    MatCardModule,
     HttpClientModule,
     StoreModule.forRoot({ appReducer }),
     EffectsModule.forRoot([]),
