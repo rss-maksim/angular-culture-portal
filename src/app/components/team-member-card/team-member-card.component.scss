@@ -47,12 +47,24 @@ h1 {
   }
   .info {
     position: relative;
-    top: -250px;
+    top: -340px;
     z-index: 3;
     color: white;
     opacity: 0;
     transform: translateY(30px);
     transition: 0.5s;
+    .info-content {
+      padding: 8px;
+      overflow-y: scroll;
+      height: 300px;
+    }
+    ::-webkit-scrollbar {
+      width: 3px;
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: white;
+    }
   }
   mat-card-header {
     justify-content: center;

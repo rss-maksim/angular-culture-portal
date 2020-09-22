@@ -1,14 +1,15 @@
 <mat-card class="card">
-  <img mat-card-image src="assets/images/Avatar_user_color.png">
+  <img mat-card-image src="{{ member.avatarUrl}}">
   <mat-card-header>
-    <mat-card-title>{{ member }}</mat-card-title>
-    <mat-card-subtitle>Role: Developer</mat-card-subtitle>
+    <mat-card-title>{{ member.name }}</mat-card-title>
+    <mat-card-subtitle>Role: {{ member.role}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-actions>
-    <div><mat-icon>github</mat-icon></div>
+    <a href="{{ member.githubUrl }}" >github</a>
   </mat-card-actions>
   <mat-card-footer class="info">
-    <h1>Mountain</h1>
-    <p>Lorem Ipsum is simply dummy text from the printing and typeseting industry</p>
+    <div class="info-content">
+      <p *ngFor="let contribution of member.contribution">{{ contribution }}</p>
+    </div>
   </mat-card-footer>
 </mat-card>

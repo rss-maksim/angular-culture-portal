@@ -1,7 +1,7 @@
 export interface TeamMember {
   name: string;
   avatarUrl: string;
-  links: string[];
+  githubUrl: string;
   role: string;
   contribution: string[];
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamMember } from '../../models/team-member.model';
 import { trigger, style, transition, animate, keyframes, query, stagger } from '@angular/animations';
+import { teamMembers } from '../../constants/team-members.const';
 
 
 @Component({
@@ -49,15 +50,12 @@ import { trigger, style, transition, animate, keyframes, query, stagger } from '
 })
 
 export class TeamComponent implements OnInit {
-  public team: string[];
+  public team: TeamMember[];
 
-  index = 2;
   constructor() {
-    this.team = ['User Name', 'User Name', 'User Name', 'User Name', 'User Name', 'User Name'];
+    this.team = teamMembers;
   }
 
   ngOnInit(): void {
   }
-
-
 }
