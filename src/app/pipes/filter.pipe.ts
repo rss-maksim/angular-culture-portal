@@ -7,12 +7,13 @@ import { AuthorModel } from '../models/author.model';
 export class FilterPipe implements PipeTransform {
 
   transform(authors: AuthorModel[], wordFilter: string): AuthorModel[] {
-    if (wordFilter !== null && wordFilter.trim() !== '') {
+    const trimmed = wordFilter ? wordFilter.trim().toLowerCase() : '';
+    if (trimmed !== '') {
       return authors
       ? authors
       .filter(({ name, placeOfBirth }) =>
-        name.toLowerCase().includes(wordFilter.trim().toLowerCase()) ||
-        placeOfBirth.toLowerCase().includes(wordFilter.trim().toLowerCase())
+        name.toLowerCase().includes(trimmed) ||
+        placeOfBirth.toLowerCase().includes(trimmed)
       )
       : authors;
     }
