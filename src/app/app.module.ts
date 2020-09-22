@@ -11,6 +11,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -84,6 +85,7 @@ const lang = localStorage.getItem(LOCALE_KEY);
     MatButtonModule,
     MatCardModule,
     MatInputModule,
+    MatPaginatorModule,
     HttpClientModule,
     StoreModule.forRoot({ appReducer }),
     EffectsModule.forRoot([]),

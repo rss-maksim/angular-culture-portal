@@ -1,4 +1,3 @@
-import { stringify } from '@angular/compiler/src/util';
 import { Pipe, PipeTransform } from '@angular/core';
 import { AuthorModel } from '../models/author.model';
 
@@ -7,13 +6,20 @@ import { AuthorModel } from '../models/author.model';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(authors: AuthorModel[], wordFilter: string): AuthorModel[] {
+  transform(authors: AuthorModel[], wordFilter: string, page: number, cardPerPage: number): AuthorModel[] {
     if (wordFilter !== null && wordFilter.trim() !== '') {
-      return authors.filter(({ name, placeOfBirth }) =>
-        name.toLowerCase().includes(wordFilter.trim()) || placeOfBirth.toLowerCase().includes(wordFilter.trim())
-      );
+      return authors
+      ? authors
+      .slice((page - 1) * cardPerPage, page * cardPerPage)
+      .filter(({ name, placeOfBirth }) =>
+        name.toLowerCase().includes(wordFilter.trim().toLowerCase()) ||
+        placeOfBirth.toLowerCase().includes(wordFilter.trim().toLowerCase())
+      )
+      : authors;
     }
-    return authors;
+    return authors
+    ? authors.slice((page - 1) * cardPerPage, page * cardPerPage)
+    : authors;
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { from, Observable } from 'rxjs';
 import { AuthorsService } from 'src/app/services/authors.service';
@@ -16,6 +17,9 @@ export class AuthorsCardsListComponent implements OnInit {
 
   public wordState: string = null;
 
+  public page = 1;
+  public cardsPerPage = 5;
+
   constructor(private authorsService: AuthorsService, private filterStateService: FilterStateService, private router: Router)
   { }
 
@@ -30,4 +34,8 @@ export class AuthorsCardsListComponent implements OnInit {
     this.router.navigate(['author', id]);
   }
 
+  public onPaginatorClick($event: PageEvent): void{
+    this.page = $event.pageIndex + 1;
+    this.cardsPerPage = $event.pageSize;
+  }
 }

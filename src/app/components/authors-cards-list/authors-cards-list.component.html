@@ -1,20 +1,30 @@
-<mat-card *ngFor="let author of authors$ | async | filter : wordState" [class.mat-elevation-z]="true">
-  <mat-card-header>
-    <img class="avatar" matCardAvatar src="{{author.image}}">
-    <mat-card-title>
-      {{author.name}}
-    </mat-card-title>
-  </mat-card-header>
-  <div class="description">
-    <mat-card-subtitle>
-      {{author.years}}
-    </mat-card-subtitle>
-    <mat-card-subtitle>
-      {{author.placeOfBirth}}
-    </mat-card-subtitle>
-    {{author.shortDescription}}
+<div id="host-div" *ngIf="(authors$ | async) as authors">
+  <div id="cards">
+    <mat-card *ngFor="let author of authors | filter : wordState : page : cardsPerPage" [class.mat-elevation-z]="true">
+      <mat-card-header>
+        <img class="avatar" matCardAvatar src="{{author.image}}">
+        <mat-card-title>
+          {{author.name}}
+        </mat-card-title>
+      </mat-card-header>
+      <div class="description">
+        <mat-card-subtitle>
+          {{author.years}}
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+          {{author.placeOfBirth}}
+        </mat-card-subtitle>
+        {{author.shortDescription}}
+      </div>
+      <mat-card-actions>
+        <button class="more-button" mat-raised-button (click)="onMoreClick(author.id)">More...</button>
+      </mat-card-actions>
+    </mat-card>
   </div>
-  <mat-card-actions>
-    <button class="more-button" mat-raised-button (click)="onMoreClick(author.id)">More...</button>
-  </mat-card-actions>
-</mat-card>
+  <mat-paginator [length]="authors.length"
+                 [pageSize]="cardsPerPage"
+                 [pageSizeOptions]="[5, 10]"
+                 (page)="onPaginatorClick($event)">
+  </mat-paginator>
+</div>
+

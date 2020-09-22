@@ -1,14 +1,19 @@
-:host {
+#host-div {
+  display: flex;
+  flex-direction: column;
+}
+
+#cards {
   display: grid;
   justify-items: center;
   grid-template-columns: 1fr;
   gap: 25px;
-  margin-top: 140px;
+  margin-top: 70px;
   @media screen and (min-width: 270px) {
-    margin-top: 90px;
+    margin-top: 20px
   }
   @media screen and (min-width: 650px) {
-    margin: 90px 20px 0 20px;
+    margin: 20px 20px 0 20px;
     grid-template-columns:repeat(2, 1fr);
   }
   @media screen and (min-width: 1000px) {
