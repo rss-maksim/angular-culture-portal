@@ -1,8 +1,6 @@
 export const LOCALE_KEY = 'LOCALE';
 
-export const AUTHORS_FILE = 'https://raw.githubusercontent.com/rss-maksim/angular-culture-portal' +
-  '/develop/src/app/data/architects/';
-export const AUTHORS_EXTENSION = '.json';
+export const AUTHORS_JSON = 'assets/architects/en.json';
 
 export const navItems = [
   { name: 'MAIN_PAGE.HOME', path: '/' },

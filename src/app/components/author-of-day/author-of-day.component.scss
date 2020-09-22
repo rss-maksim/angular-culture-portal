@@ -1,5 +1,5 @@
-@import '../../../variables';
-@import '../../../mixins';
+@import "../../../variables";
+@import "../../../mixins";
 
 .header {
   @include divider;
@@ -33,7 +33,7 @@
 }
 
 img {
-  height: 400px;
+  height: 80%;
   border-radius: 10px;
   transition: 0.5s;
 
