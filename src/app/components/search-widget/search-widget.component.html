@@ -1,8 +1,9 @@
 <div [ngClass]="{'background':isFilterShown}">
   <mat-form-field [ngStyle]="{'width.px': searchLineWidth}">
-    <mat-label>Filter</mat-label>
+    <mat-label>{{ 'ARCHITECTS.FILTER' | translate}}</mat-label>
     <input matInput id='filter-input'>
   </mat-form-field>
-  <button mat-icon-button (click)="onSearchClick()"><mat-icon>search</mat-icon></button>
+  <button mat-icon-button (click)="onSearchClick()">
+    <mat-icon>search</mat-icon>
+  </button>
 </div>
-

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+
 import { AuthorModel } from 'src/app/models/author.model';
 
 @Component({
