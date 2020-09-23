@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { navItems as navSections } from '../../const';
+import { navItems as navSections } from 'src/app/const';
 
 @Component({
   selector: 'app-navigation',

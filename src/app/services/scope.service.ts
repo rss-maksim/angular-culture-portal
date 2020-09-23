@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { SCOPES } from '../constants/scope.const';
 import { SELF_EVALUATION, STORAGE_EVALUATION_KEY } from '../constants/scope-self-evaluation.const';
-import { Scope } from '../constants/scope.model';
+import { Scope } from '../models/scope.model';
 
 @Injectable({
   providedIn: 'root'

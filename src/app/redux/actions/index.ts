@@ -1,1 +1,1 @@
-export { changeLocale } from './appActions';
+export { changeLocale, changeFilter, changeAuthors, loadAuthors } from './appActions';

@@ -8,10 +8,12 @@ import { TeamComponent } from './pages/team/team.component';
 import { WorklogComponent } from './pages/worklog/worklog.component';
 import { Page404Component } from './pages/page404/page404.component';
 
+import { AppAuthorGuard } from 'src/app/guards/author.guard';
+
 const routes: Routes = [
-  { path: '', component: MainComponent },
-  { path: 'authors', component: AuthorsListComponent },
-  { path: 'author/:id', component: AuthorFullViewComponent },
+  { path: '', component: MainComponent, canActivate: [AppAuthorGuard] },
+  { path: 'authors', component: AuthorsListComponent, canActivate: [AppAuthorGuard] },
+  { path: 'author/:id', component: AuthorFullViewComponent, canActivate: [AppAuthorGuard] },
   { path: 'team', component: TeamComponent },
   { path: 'worklog', component: WorklogComponent },
   { path: '**', component: Page404Component },
