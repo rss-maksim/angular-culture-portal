@@ -1,13 +1,4 @@
-export enum Lang {
-  en = 'en',
-  ru = 'ru',
-  by = 'by'
-}
-
-export interface ILanguage {
-  name: Lang;
-  label: string;
-}
+import { ILanguage, Lang } from 'src/app/models/language.model';
 
 export const languages: ILanguage[] = [
   {
