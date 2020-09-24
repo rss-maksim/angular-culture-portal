@@ -1,0 +1,12 @@
+@import "../../../mixins";
+
+h1 {
+  @include divider;
+}
+
+.main-wrap{
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  justify-content: center;
+}

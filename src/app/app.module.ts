@@ -37,6 +37,7 @@ import { AuthorOfDayComponent } from './components/author-of-day/author-of-day.c
 import { EvaluationComponent } from './components/evaluation/evaluation.component';
 import { ScopeComponent } from './components/scope/scope.component';
 import { AuthorsCardsListComponent } from './components/authors-cards-list/authors-cards-list.component';
+import { TeamMemberCardComponent } from './components/team-member-card/team-member-card.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -63,6 +64,7 @@ const lang = AppLanguageStore.loadLocale();
     EvaluationComponent,
     ScopeComponent,
     SidenavComponent,
+    TeamMemberCardComponent,
     AuthorsCardsListComponent,
     PaginatorPipe
   ],

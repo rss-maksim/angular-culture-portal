@@ -1,1 +1,4 @@
-<p>{{'TEAM.REMOVE_ME' | translate}}</p>
+<h1>{{'TEAM.OUR_TEAM' | translate}}</h1>
+<div class="main-wrap">
+    <app-team-member-card *ngFor="let member of team" [member]="member"></app-team-member-card>
+</div>
