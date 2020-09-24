@@ -13,15 +13,22 @@ import { AuthorModel } from 'src/app/models/author.model';
 })
 export class AuthorsCardsListComponent implements OnInit {
 
-  public authors$: Observable<AuthorModel[]>;
+ // public authors$: Observable<AuthorModel[]>;
+  public authors: AuthorModel[];
 
-  public page = 1;
+  public page = 0;
   public cardsPerPage = 5;
 
   constructor(private authorsService: AuthorsService, private router: Router) { }
 
   ngOnInit(): void {
-    this.authors$ = this.authorsService.getAuthors();
+  //  this.authors$ = this.authorsService.getAuthors();
+    this.authorsService
+    .getAuthors()
+    .subscribe((authors: AuthorModel[]) => {
+      this.authors = authors;
+      this.page = 0;
+    });
   }
 
   public onMoreClick(id: string): void {
@@ -29,7 +36,7 @@ export class AuthorsCardsListComponent implements OnInit {
   }
 
   public onPaginatorClick($event: PageEvent): void {
-    this.page = $event.pageIndex + 1;
+    this.page = $event.pageIndex;
     this.cardsPerPage = $event.pageSize;
   }
 }
