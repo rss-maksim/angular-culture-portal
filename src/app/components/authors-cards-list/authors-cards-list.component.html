@@ -1,4 +1,4 @@
-<div id="host-div" *ngIf="(authors) as authors">
+<div id="host-div" *ngIf="(authors)">
   <div id="cards">
     <mat-card *ngFor="let author of authors | paginator : page : cardsPerPage" [class.mat-elevation-z]="true">
       <mat-card-header>
