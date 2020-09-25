@@ -21,8 +21,11 @@ export const selectAuthors = createSelector(
   selectFilter,
   ({ authors }: IAppReducer, filter: string) => filter
     ? authors.filter(
-      ({ name, placeOfBirth }) => name.toLowerCase().includes(filter) || placeOfBirth.toLowerCase().includes(filter)
-    )
+      ({ name, placeOfBirth }) => {
+      const trimmed = filter.trim().toLowerCase();
+      return name.toLowerCase().includes(trimmed) ||
+      placeOfBirth.toLowerCase().includes(trimmed);
+    })
     : authors
 );
 

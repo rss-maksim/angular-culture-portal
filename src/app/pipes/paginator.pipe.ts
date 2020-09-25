@@ -9,7 +9,7 @@ export class PaginatorPipe implements PipeTransform {
 
   transform(authors: AuthorModel[], page: number, cardPerPage: number): AuthorModel[] {
     return authors
-      ? authors.slice((page - 1) * cardPerPage, page * cardPerPage)
+      ? authors.slice((page) * cardPerPage, (page + 1) * cardPerPage)
       : authors;
   }
 }

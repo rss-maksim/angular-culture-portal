@@ -1,4 +1,4 @@
-<div id="host-div" *ngIf="(authors$ | async) as authors">
+<div id="host-div" *ngIf="(authors)">
   <div id="cards">
     <mat-card *ngFor="let author of authors | paginator : page : cardsPerPage" [class.mat-elevation-z]="true">
       <mat-card-header>
@@ -21,7 +21,11 @@
       </mat-card-actions>
     </mat-card>
   </div>
-  <mat-paginator [length]="authors.length" [pageSize]="cardsPerPage" [pageSizeOptions]="[5, 10]"
+  <mat-paginator
+    [length]="authors.length"
+    [pageSize]="cardsPerPage"
+    [pageSizeOptions]="[5, 10]"
+    [pageIndex]="page"
     (page)="onPaginatorClick($event)">
   </mat-paginator>
 </div>
