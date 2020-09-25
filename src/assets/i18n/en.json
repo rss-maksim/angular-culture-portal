@@ -2,11 +2,13 @@
   "MAIN_PAGE": {
     "HOME": "Home",
     "CULTURE_PORTAL": "Culture Portal",
-    "ARCHITECTS_OF_BELARUS": "Architects of Belarus"
+    "ARCHITECTS_OF_BELARUS": "Architects of Belarus",
+    "ARCHITECT_OF_THE_DAY": "Architect of the day"
   },
   "ARCHITECTS": {
     "MENU_ITEM": "Architects",
-    "FILTER": "Filter"
+    "FILTER": "Filter",
+    "MORE": "More"
   },
   "ARCHITECT": {
     "BIOGRAPHY": "Biography"

@@ -2,18 +2,20 @@
   "MAIN_PAGE": {
     "HOME": "Главная",
     "CULTURE_PORTAL": "Культурный Портал",
-    "ARCHITECTS_OF_BELARUS": "Белорусские Архитекторы"
+    "ARCHITECTS_OF_BELARUS": "Белорусские Архитекторы",
+    "ARCHITECT_OF_THE_DAY": "Архитектор дня"
   },
   "ARCHITECTS": {
     "MENU_ITEM": "Архитекторы",
-    "FILTER": "Поиск"
+    "FILTER": "Поиск",
+    "MORE": "Подробнее"
   },
   "ARCHITECT": {
     "BIOGRAPHY": "Биография"
   },
   "TEAM": {
     "MENU_ITEM": "Команда",
-    "REMOVE_ME": "team page!"
+    "OUR_TEAM": "Наша Команда"
   },
   "WORKLOG": {
     "MENU_ITEM": "Рабочий журнал",

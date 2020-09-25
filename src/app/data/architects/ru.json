@@ -96,15 +96,15 @@
         "description": "Жилой комплекс посольства Российской федерации в Беларуси",
         "date": "2007",
         "img": "https://upload.wikimedia.org/wikipedia/commons/4/40/Russian_Embassy_1.jpg",
-        "lat": 27.531195,
-        "lng": 53.930483
+        "lat": 53.930483,
+        "lng": 27.531195
       },
       {
         "description": "Торговый центр с центром банковских услуг в Могилёве",
         "date": "",
         "img": "",
-        "lat": 30.348159,
-        "lng": 53.868947
+        "lat": 53.868947,
+        "lng": 30.348159
       }
     ],
     "video": "UKWEsW7p8cs"
