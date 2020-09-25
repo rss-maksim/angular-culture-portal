@@ -1,0 +1,19 @@
+<mgl-timeline [toggle]="false" [alternate]="true" [side]="'left'" mobileWidthThreshold="768">
+  <mgl-timeline-entry [class.odd]="i%2===1" *ngFor="let entry of biography; let i = index;" (expand)="onExpandEntry($event, i)">
+    <mgl-timeline-entry-header (click)="onHeaderClick($event)">
+      <div>{{entry.date}}</div>
+    </mgl-timeline-entry-header>
+    <mgl-timeline-entry-content [expandAnimationTiming]="'200ms ease'" [collapseAnimationTiming]="'100ms ease'">
+      <div>
+        <div>{{entry.description}}</div>
+      </div>
+    </mgl-timeline-entry-content>
+    <mgl-timeline-entry-dot [class]="'primary'"
+                            [size]="40"
+                            (click)="onDotClick($event)"
+                            [expandAnimationTiming]="'200ms ease'"
+                            [collapseAnimationTiming]="'100ms ease'"
+    ></mgl-timeline-entry-dot>
+    <mgl-timeline-entry-side></mgl-timeline-entry-side>
+  </mgl-timeline-entry>
+</mgl-timeline>

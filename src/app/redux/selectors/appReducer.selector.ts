@@ -44,3 +44,9 @@ export const selectRandomAuthor = createSelector(
     return state.authors[getRandomAuthorIndex(state)];
   }
 );
+
+export const selectArchitect = createSelector(
+  selectFeature,
+  (state: IAppReducer, props: { id: string }) =>
+    state.authors.find(({ id }) => id === props.id)
+);

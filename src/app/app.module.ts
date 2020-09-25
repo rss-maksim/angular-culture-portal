@@ -8,6 +8,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './material.module';
@@ -18,6 +19,7 @@ import { Lang } from 'src/app/models/language.model';
 import { AppLanguageStore } from './services/language-store.service';
 import { PaginatorPipe } from './pipes/paginator.pipe';
 import { AppLoadAuthorsEffect } from 'src/app/redux/effects/load-authors.effect';
+import { MglTimelineModule } from 'angular-mgl-timeline';
 
 import { MainComponent } from './pages/main/main.component';
 import { AuthorsListComponent } from './pages/authors-list/authors-list.component';
@@ -37,6 +39,9 @@ import { AuthorOfDayComponent } from './components/author-of-day/author-of-day.c
 import { EvaluationComponent } from './components/evaluation/evaluation.component';
 import { ScopeComponent } from './components/scope/scope.component';
 import { AuthorsCardsListComponent } from './components/authors-cards-list/authors-cards-list.component';
+import { TeamMemberCardComponent } from './components/team-member-card/team-member-card.component';
+import { TimelineComponent } from './components/timeline/timeline.component';
+import { MapComponent } from './components/map/map.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -63,8 +68,11 @@ const lang = AppLanguageStore.loadLocale();
     EvaluationComponent,
     ScopeComponent,
     SidenavComponent,
+    TeamMemberCardComponent,
     AuthorsCardsListComponent,
-    PaginatorPipe
+    PaginatorPipe,
+    TimelineComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +80,9 @@ const lang = AppLanguageStore.loadLocale();
     AppMaterialModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyD8DV7uG6-x5qIwtpFvYqHoD3ZGKxbijP0'
+    }),
     StoreModule.forRoot({
       appReducer,
       router: routerReducer,
@@ -90,6 +101,7 @@ const lang = AppLanguageStore.loadLocale();
       },
       defaultLanguage: lang || Lang.en,
     }),
+    MglTimelineModule
   ],
   providers: [],
   bootstrap: [AppComponent],

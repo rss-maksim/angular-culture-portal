@@ -8,6 +8,9 @@
     "MENU_ITEM": "Архитекторы",
     "FILTER": "Поиск"
   },
+  "ARCHITECT": {
+    "BIOGRAPHY": "Біяграфія"
+  },
   "TEAM": {
     "MENU_ITEM": "Команда",
     "REMOVE_ME": "team page!"

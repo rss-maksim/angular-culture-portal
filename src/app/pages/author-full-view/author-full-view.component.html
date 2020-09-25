@@ -1,1 +1,19 @@
-<p>{{'AUTHOR_PAGE.REMOVE_ME' | translate}}</p>
+<div class="architect">
+  <div class="architect-main-info">
+    <div class="architect-container-left">
+      <h4 class="architect-name">{{architect.name}}</h4>
+      <div class="architect-years">{{architect.years}}</div>
+      <div class="architect-desc">{{architect.fullDescription}}</div>
+    </div>
+    <div class="architect-container-right">
+      <div class="architect-image">
+        <img [src]="architect.image" alt="" />
+      </div>
+    </div>
+  </div>
+  <div class="architect-biography">
+    <h4 class="architect-biography-title">{{'ARCHITECT.BIOGRAPHY' | translate}}</h4>
+    <app-timeline [biography]="architect.biography"></app-timeline>
+    <app-map [sights]='architect.works'></app-map>
+  </div>
+</div>

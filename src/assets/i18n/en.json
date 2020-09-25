@@ -8,9 +8,12 @@
     "MENU_ITEM": "Architects",
     "FILTER": "Filter"
   },
+  "ARCHITECT": {
+    "BIOGRAPHY": "Biography"
+  },
   "TEAM": {
     "MENU_ITEM": "Team",
-    "REMOVE_ME": "team page!"
+    "OUR_TEAM": "Our Team"
   },
   "WORKLOG": {
     "MENU_ITEM": "Worklog",
