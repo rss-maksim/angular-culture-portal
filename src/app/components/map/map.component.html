@@ -1,5 +1,21 @@
 <div id="map" *ngIf="isMapShown">
-  <agm-map [latitude]="sights[0].lat" [longitude]="sights[0].lng">
-    <agm-marker *ngFor="let sight of sightsOnMap" [latitude]="sight.lat" [longitude]="sight.lng"></agm-marker>
+  <agm-map
+    id="agm"
+    [latitude]="latitude"
+    [longitude]="longitude"
+    [zoom]="4"
+    (mapReady)="onMapReady($event)"
+  >
+    <agm-marker
+      *ngFor="let sight of sightsOnMap"
+      [latitude]="sight.lat"
+      [longitude]="sight.lng"
+      (markerClick)="onMarkerClick($event)">
+
+      <agm-info-window>
+        <strong>{{sight.description}}</strong>
+      </agm-info-window>
+
+    </agm-marker>
   </agm-map>
 </div>
