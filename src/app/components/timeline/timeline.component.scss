@@ -1,0 +1,35 @@
+@import "../../../variables";
+
+:host {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+mgl-timeline {
+  @media screen and (min-width: $breakpoint-tablet) {
+    max-width: 80%;
+  }
+}
+
+mgl-timeline-entry.odd {
+  @media screen and (min-width: $breakpoint-tablet) {
+    margin-left: calc(50% + 5px);
+  }
+}
+
+mgl-timeline-entry-dot {
+  background-color: #91a3ae;
+
+  @media screen and (min-width: $breakpoint-tablet) {
+    .odd & {
+      left: -4px!important;
+    }
+  }
+}
+
+.ng-star-inserted.expanded {
+  mgl-timeline-entry-header {
+    color: #ffffff;
+  }
+}

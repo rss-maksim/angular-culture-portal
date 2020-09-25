@@ -18,6 +18,7 @@ import { Lang } from 'src/app/models/language.model';
 import { AppLanguageStore } from './services/language-store.service';
 import { PaginatorPipe } from './pipes/paginator.pipe';
 import { AppLoadAuthorsEffect } from 'src/app/redux/effects/load-authors.effect';
+import { MglTimelineModule } from 'angular-mgl-timeline';
 
 import { MainComponent } from './pages/main/main.component';
 import { AuthorsListComponent } from './pages/authors-list/authors-list.component';
@@ -38,6 +39,7 @@ import { EvaluationComponent } from './components/evaluation/evaluation.componen
 import { ScopeComponent } from './components/scope/scope.component';
 import { AuthorsCardsListComponent } from './components/authors-cards-list/authors-cards-list.component';
 import { TeamMemberCardComponent } from './components/team-member-card/team-member-card.component';
+import { TimelineComponent } from './components/timeline/timeline.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -66,7 +68,8 @@ const lang = AppLanguageStore.loadLocale();
     SidenavComponent,
     TeamMemberCardComponent,
     AuthorsCardsListComponent,
-    PaginatorPipe
+    PaginatorPipe,
+    TimelineComponent
   ],
   imports: [
     BrowserModule,
@@ -92,6 +95,7 @@ const lang = AppLanguageStore.loadLocale();
       },
       defaultLanguage: lang || Lang.en,
     }),
+    MglTimelineModule
   ],
   providers: [],
   bootstrap: [AppComponent],
