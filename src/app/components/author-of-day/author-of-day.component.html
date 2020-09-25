@@ -1,5 +1,5 @@
 <div>
-  <p class="header">Architect of the day</p>
+  <p class="header">{{'MAIN_PAGE.ARCHITECT_OF_THE_DAY' | translate}}</p>
   <div *ngIf="authorOfDay; else spinner" class="author-of-day">
     <div class="col">
       <h1>{{authorOfDay.name}}</h1>
@@ -10,7 +10,7 @@
     </div>
     <div class="col">
       <p>{{authorOfDay.shortDescription}}</p>
-      <a [routerLink]="['/author',authorOfDay.id]" class="button-more">More</a>
+      <a [routerLink]="['/author',authorOfDay.id]" class="button-more">{{'ARCHITECTS.MORE' | translate}}</a>
     </div>
   </div>
   <ng-template #spinner>

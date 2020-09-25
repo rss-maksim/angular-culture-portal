@@ -81,7 +81,8 @@ const lang = AppLanguageStore.loadLocale();
     BrowserAnimationsModule,
     HttpClientModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyD8DV7uG6-x5qIwtpFvYqHoD3ZGKxbijP0'
+      apiKey: 'AIzaSyD8DV7uG6-x5qIwtpFvYqHoD3ZGKxbijP0',
+      language: lang || Lang.en
     }),
     StoreModule.forRoot({
       appReducer,
