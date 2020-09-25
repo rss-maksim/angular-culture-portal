@@ -10,6 +10,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
 
@@ -24,6 +27,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatInputModule,
     MatCardModule,
     MatPaginatorModule,
+    MatToolbarModule,
+    MatTabsModule,
+    MatRadioModule,
   ],
   exports: [
     MatMenuModule,
@@ -36,6 +42,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatInputModule,
     MatCardModule,
     MatPaginatorModule,
+    MatToolbarModule,
+    MatTabsModule,
+    MatRadioModule,
   ],
 })
 export class AppMaterialModule { }
