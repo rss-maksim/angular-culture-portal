@@ -77,7 +77,7 @@ export const WORKLOG: AllWorklogModel = {
     { time: '5', description: 'Пераклад' },
     { time: '6', description: 'Дызайн & стылі' },
     { time: '6', description: 'Рэвью кода' },
-    { description: 'Роман Хайдучик' },
+    { description: 'Раман Гайдучык' },
     { time: '6', description: 'Старонка аўтараў' },
     { time: '4', description: 'Пошукавы віджэт' },
     { time: '5', description: 'Старонка аўтара' },
