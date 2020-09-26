@@ -1,4 +1,5 @@
-@import "../../../mixins";
+@import '../../../variables';
+@import '../../../mixins';
 
 h1 {
   @include divider;
@@ -13,6 +14,7 @@ section {
   flex-direction: column;
   align-items: center;
   margin: 20px 0;
+  color: $color-white;
 }
 
 table {
@@ -22,10 +24,16 @@ table {
 td,
 th,
 table {
+  box-shadow: 0px 0px 10px grey;
   border: 1px solid black;
 }
 
 .name,
 .time {
   text-align: center;
+  background: $divider-background;
+}
+
+td {
+  padding: 10px 20px;
 }
