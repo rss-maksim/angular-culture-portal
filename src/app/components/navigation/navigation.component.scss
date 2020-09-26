@@ -35,7 +35,7 @@
   &-list {
     list-style: none;
     display: flex;
-    @media (max-width: $breakpoint-tablet) {
+    @media screen and (min-width: $breakpoint-mobile) and (max-width: calc(#{$breakpoint-tablet} - 1px)) {
       display: none;
     }
   }
