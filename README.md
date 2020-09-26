@@ -1,5 +1,8 @@
 ### DEMO page: https://admiring-euclid-cb4652.netlify.app
 
+### Evaluation
+220
+
 #### Worklog
 
 *rss-maksim*
