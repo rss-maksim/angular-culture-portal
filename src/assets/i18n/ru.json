@@ -11,7 +11,12 @@
     "MORE": "Подробнее"
   },
   "ARCHITECT": {
-    "BIOGRAPHY": "Биография"
+    "BIOGRAPHY": "Биография",
+    "MASTERPIECES": "Шедевры",
+    "WORK": "Произведение",
+    "DATE": "Дата",
+    "VIDEO": "Видео",
+    "WATCH_VIDEO": "Смотреть видео"
   },
   "TEAM": {
     "MENU_ITEM": "Команда",

@@ -42,6 +42,8 @@ import { AuthorsCardsListComponent } from './components/authors-cards-list/autho
 import { TeamMemberCardComponent } from './components/team-member-card/team-member-card.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { MapComponent } from './components/map/map.component';
+import { MasterpieceComponent } from './components/masterpiece/masterpiece.component';
+import { VideoComponent } from './components/video/video.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -72,6 +74,8 @@ const lang = AppLanguageStore.loadLocale();
     AuthorsCardsListComponent,
     PaginatorPipe,
     TimelineComponent,
+    MasterpieceComponent,
+    VideoComponent,
     MapComponent
   ],
   imports: [

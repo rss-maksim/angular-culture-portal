@@ -1,6 +1,6 @@
 <mgl-timeline [toggle]="false" [alternate]="true" [side]="'left'" mobileWidthThreshold="768">
   <mgl-timeline-entry [class.odd]="i%2===1" *ngFor="let entry of biography; let i = index;" (expand)="onExpandEntry($event, i)">
-    <mgl-timeline-entry-header (click)="onHeaderClick($event)">
+    <mgl-timeline-entry-header (click)="onHeaderClick()">
       <div>{{entry.date}}</div>
     </mgl-timeline-entry-header>
     <mgl-timeline-entry-content [expandAnimationTiming]="'200ms ease'" [collapseAnimationTiming]="'100ms ease'">

@@ -4,6 +4,18 @@
   padding: 16px;
   color: #455a64;
 
+  .centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+  }
+
+  &-section-title {
+    font-size: 22px;
+  }
+
   &-main-info {
     display: flex;
 

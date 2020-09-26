@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { BiographyModel } from '../../models/biography.model';
 
@@ -7,23 +7,12 @@ import { BiographyModel } from '../../models/biography.model';
   templateUrl: './timeline.component.html',
   styleUrls: ['./timeline.component.scss']
 })
-export class TimelineComponent implements OnInit {
+export class TimelineComponent {
   @Input() biography: BiographyModel[];
 
-  constructor() { }
+  onDotClick(event: Event): void {}
 
-  ngOnInit(): void {
-  }
+  onExpandEntry(expanded, index): void {}
 
-  onDotClick(event: Event): void {
-
-  }
-
-  onExpandEntry(expanded, index): void {
-    console.log(`Expand status of entry #${index} changed to ${expanded}`);
-  }
-
-  onHeaderClick(event): void {
-
-  }
+  onHeaderClick(): void {}
 }
