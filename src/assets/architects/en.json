@@ -6,7 +6,7 @@
     "fullDescription": "An architect and engineer of Polish origin, who is at the beginning of the 20th century. worked in the Russian Empire, and then in Poland. He worked in the neoclassical style. Author of projects for many buildings in Warsaw, Minsk, Kiev and other places in the Russian Empire. During the interwar period, he was a provincial architect in Pinsk. Born January 10, 1875 in Warsaw, in the Kingdom of Poland, the son of Heinrich and Joanna (Müller). Descended from the Polish gentry. His grandfather, Jakub Gai, was an architect who designed, among others, the building of the Polish Bank in Warsaw. Heinrich Gai graduated from the Gymnasium of Wojciech Gursky, studied architecture at the Institute of Civil Engineers of Emperor Nicholas I in St. Petersburg, and in 1898 received an engineering degree [3] [4]. Later he continued his education in Paris, Vienna and Munich; for some time he lived in Italy, Algeria, Tunisia, etc. After returning from abroad, he began working in Warsaw. On the advice of senior colleagues, in 1906 he moved to Minsk, where, meanwhile, there was a lack of professional architects and it was easier to make a career as an independent author. In 1906-1910 he supervised construction and installation work on the building of the Church of Saints Simon and Helena in Minsk. Since 1909 he has been a member of the Circle of Architects in Warsaw [6]. In early December 1908, as part of the Circle's delegation, he took part in the First Congress of Delegates of the Polish Architectural Circles in Krakow. Before the First World War he took part in the work of two architectural workshops. One of them was located in Warsaw and at first was jointly owned (together with Dzerzhanovsky and Voitsekhovsky), and later in the possession of Guy, on ul. Okulenik. The second, 'Guy, Sventitsky & Co', was located in Minsk, in Yukhnovich's house at the corner of modern Karl Marx and Engels streets. For some time he worked in Minsk and its environs, erected many works of sacred and civil architecture. Participated in architectural competitions, where he received numerous distinctions and awards, including the first prize in the competition for the design of the Bessarabian market in Kiev [4]; before that Guy had experience in building a covered market in Warsaw. In 1914 he moved into the interior of Russia, the beginning of the First World War he met in Vladivostok. He organized a Polish colony there and acted as consul. In 1918 he left Russia. In 1919 he came to Minsk, but in the same year he left it and returned to Warsaw. During the Polish-Soviet War, he was a member of the Polish Civil Guard. Lectured at the Railway School. During the interwar period, he worked as a voivodship architect in Pinsk.",
     "placeOfBirth": "Warsaw, Republic of Poland",
     "years": "January 10, 1875 - October 3, 1936",
-    "image": "",
+    "image": "https://www.hata.by/images/uploaded/architecture/architecture4685-40106-7b73a489c85741064d477d95feebf4bb.jpg",
     "biography": [
       {
         "description": "Born January 10, 1875 in Warsaw, in the Kingdom of Poland, the son of Heinrich and Joanna (nee Müller). Came from the Polish gentry. His grandfather, Jakub Gai, was an architect who designed, among others, the building of the Bank of Poland in Warsaw.",
@@ -48,7 +48,7 @@
       {
         "description": "Parish House of the Evangelical Augsburg Parish, Malakhovsky Square, Warsaw",
         "date": "1911—1912",
-        "img": ""
+        "img": "https://enc.rusdeutsch.ru/upload/images/auto-upload/697_big.jpg"
       },
       {
         "description": "Bessarabian market in Kiev",
@@ -102,7 +102,7 @@
       {
         "description": "A shopping center with a banking services center in Mogilev",
         "date": "",
-        "img": "",
+        "img": "http://www.pniva.by/wp-content/uploads/2019/04/%D0%A4%D0%B0%D0%B9%D0%BB_001.png",
         "lat": 53.868947,
         "lng": 30.348159
       }
@@ -155,7 +155,7 @@
       {
         "description": "Residential building for workers of the 'Red Triangle' plant on Gaza Avenue in Leningrad",
         "date": "1927",
-        "img": ""
+        "img": "http://opeterburge.ru/images/photo_gallery/Nazvanija_ulic/G/gaza-prospekt/1200px-Staro-Petergofsky_Avenue_SPB.jpg"
       },
       {
         "description": "The main building of the Academy of Sciences of the Byelorussian SSR in Minsk",
@@ -165,10 +165,10 @@
       {
         "description": "House of the Red Army in Minsk",
         "date": "1934-1939",
-        "img": ""
+        "img": "http://www.minsk-old-new.com/Image/old_images/022-Odo.jpg"
       }
     ],
-    "video": "dlQIlW3V"
+    "video": "dlQIlW3V-iU"
   },
   {
     "id": 4,
@@ -212,10 +212,12 @@
       {
         "description": "The building of the Metropolitan cinema in Lithuania",
         "date": "1927",
-        "img": ""
+        "img": "https://zodast.ru/wp-content/uploads/2019/08/rynok-hale--e1565334560507-300x224.jpg",
+        "lat": 54.6891600,
+        "lng": 25.2798000
       }
     ],
-    "video": ""
+    "video": "X6TAG8HTLmk"
   },
   {
     "id": 5,
@@ -263,17 +265,23 @@
       {
         "description": "Memorial ensemble 'Khatyn'",
         "date": "1969",
-        "img": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Khatyn_-_Villages.jpg"
+        "img": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Khatyn_-_Villages.jpg",
+        "lat": 54.334444444,
+        "lng": 27.944166667
       },
       {
         "description": "Memorial complex 'Yama' (territory of the former Minsk ghetto)",
         "date": "",
-        "img": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Belarus-Minsk-Memorial_Pit-2.jpg"
+        "img": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Belarus-Minsk-Memorial_Pit-2.jpg",
+        "lat": 53.9036,
+        "lng": 27.5427
       },
       {
         "description": "Monument to Yanka Kupala",
         "date": "1972",
-        "img": "https://upload.wikimedia.org/wikipedia/ru/f/ff/Yanka-kupala-minsk.jpg"
+        "img": "https://upload.wikimedia.org/wikipedia/ru/f/ff/Yanka-kupala-minsk.jpg",
+        "lat": 53.9057717,
+        "lng": 27.5643939
       },
       {
         "description": "City Committee of the Communist Party of Belarus, MFA",
@@ -340,10 +348,12 @@
       {
         "description": "Sports complex Dynamo",
         "date": "1946-1954",
-        "img": ""
+        "img": "https://cdn.gosport.by/Catalog/SC%20Dinamo/_sized/SKDinamo_665x500.jpg",
+        "lat": 53.9192131,
+        "lng": 27.5463009
       }
     ],
-    "video": ""
+    "video": "rHQXty5Yqjw"
   },
   {
     "id": 7,
@@ -352,7 +362,7 @@
     "fullDescription": "Byelorussian Soviet architect. Honored Architect of the Byelorussian SSR (1969).",
     "placeOfBirth": "Ivanovka village",
     "years": "January 30, 1914 - January 23, 1990",
-    "image": "https://upload.wikimedia.org/wikipedia/ru/6/6d/%D0%9C%D0%B8%D1%85%D0%B0%D0%B8%D0%BB_%D0% 98% D0% B2% D0% B0% D0% BD% D0% BE% D0% B2% D0% B8% D1% 87_% D0% 91% D0% B0% D0% BA% D0% BB% D0% B0% D0% BD% D0% BE% D0% B2.jpg ",
+    "image": "https://upload.wikimedia.org/wikipedia/be/2/2e/Mikhail_Baklanau.jpg",
     "biography": [
       {
         "description": "Born in the village of Ivanovka (now Volnovakhsky district, Donetsk region, Ukraine)",
@@ -394,7 +404,9 @@
       {
         "description": "Cinema 'Pobeda' on the International street",
         "date": "",
-        "img": ""
+        "img": "https://www.tuda-suda.by/images/countries/europe/belarus/minsk/kinoteatr-pobeda/kinoteatr-pobeda.jpg",
+        "lat": 53.9013261,
+        "lng": 27.5518412
       }
     ],
     "video": "7CsnFSbpUqE"
