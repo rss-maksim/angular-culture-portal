@@ -7,8 +7,8 @@ export const SELF_EVALUATION: number[][] = [ // Total scope
     10, // Page with list of authors contains search widget
     20, // Portal has two languages
   ],
-  [ // 14, Normal scope
-    20, // Portal has page with styleguide
+  [ // 140, Normal scope
+    0, // 20, // Portal has page with styleguide
     10, // Mobile version is okey
     10, // Ipad/tablet version is okey
     10, // Author's page contains timeline
@@ -21,11 +21,11 @@ export const SELF_EVALUATION: number[][] = [ // Total scope
   ],
   [ // 90, Extra scope
     10, // Confidence of the project presentation
-    10, // Project is made using scully
-    10, // Contentful / netlify cms / other cms is used for content management
+    0, // 10, // Project is made using scully
+    0, // 10, // Contentful / netlify cms / other cms is used for content management
     20, // Animations / special effects like paralax
     20, // Outstanding design
-    20, // Storybook/angularplayground/compodoc/other angular documentation tool usage for the page with styles
+    0, // 20, // Storybook/angularplayground/compodoc/other angular documentation tool usage for the page with styles
   ],
   [ // Fines
     0, // There are less than 3 commits from each active team member. Everyone should merge their own PRs

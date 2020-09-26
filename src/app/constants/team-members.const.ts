@@ -1,4 +1,4 @@
-import {TeamMember} from '../models/team-member.model';
+import { TeamMember } from '../models/team-member.model';
 
 export const teamMembers: TeamMember[] = [
   {
@@ -25,12 +25,12 @@ export const teamMembers: TeamMember[] = [
     githubUrl: 'https://github.com/yuskivpm',
     role: 'Developer'
   },
-  {
-    name: 'Hanna Slisenka',
-    avatarUrl: 'assets/images/avatars/agentumbrella_avatar.jpg',
-    githubUrl: 'https://github.com/agentumbrella',
-    role: 'Developer'
-  },
+  // {
+  //   name: 'Hanna Slisenka',
+  //   avatarUrl: 'assets/images/avatars/agentumbrella_avatar.jpg',
+  //   githubUrl: 'https://github.com/agentumbrella',
+  //   role: 'Developer'
+  // },
   {
     name: 'Andrey Knyshenko',
     avatarUrl: 'assets/images/avatars/just-ankn-repo_avatar.jpg',
