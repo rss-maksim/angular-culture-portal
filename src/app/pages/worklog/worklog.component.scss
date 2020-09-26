@@ -1,0 +1,39 @@
+@import '../../../variables';
+@import '../../../mixins';
+
+h1 {
+  @include divider;
+}
+
+h3 {
+  text-align: center;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+  color: $color-white;
+}
+
+table {
+  width: 80%;
+}
+
+td,
+th,
+table {
+  box-shadow: 0px 0px 10px grey;
+  border: 1px solid black;
+}
+
+.name,
+.time {
+  text-align: center;
+  background: $divider-background;
+}
+
+td {
+  padding: 10px 20px;
+}

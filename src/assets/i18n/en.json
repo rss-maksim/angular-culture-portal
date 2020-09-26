@@ -1,0 +1,43 @@
+{
+  "MAIN_PAGE": {
+    "HOME": "Home",
+    "CULTURE_PORTAL": "Culture Portal",
+    "ARCHITECTS_OF_BELARUS": "Architects of Belarus",
+    "ARCHITECT_OF_THE_DAY": "Architect of the day"
+  },
+  "ARCHITECTS": {
+    "MENU_ITEM": "Architects",
+    "FILTER": "Filter",
+    "MORE": "More"
+  },
+  "ARCHITECT": {
+    "BIOGRAPHY": "Biography",
+    "MASTERPIECES": "Masterpieces",
+    "WORK": "Work",
+    "DATE": "Date",
+    "VIDEO": "Video",
+    "WATCH_VIDEO": "Watch video",
+    "GALLERY": "Gallery"
+  },
+  "TEAM": {
+    "MENU_ITEM": "Team",
+    "OUR_TEAM": "Our Team",
+    "ROLE": "Role: {{value}}"
+  },
+  "WORKLOG": {
+    "MENU_ITEM": "Worklog",
+    "DIFFICULTIES": "Main difficulties for our team",
+    "COORDINATING": "Coordinating work online",
+    "STYLEGIUDE": "Creating a styleguide",
+    "ANIMATION": "Animations / special effects",
+    "SELF_EVALUATION": "Self-evaluation"
+  },
+  "AUTHOR_PAGE": {
+    "REMOVE_ME": "author-full-view page!"
+  },
+  "404_PAGE": {
+    "NOT_FOUND": "Page not found",
+    "BACK": "Back to home"
+  },
+  "STYLEGUIDE": "Styleguide"
+}

@@ -1,0 +1,13 @@
+@import '../../../variables';
+
+.main-wrap{
+  position: absolute;
+  z-index: 3;
+  width: 100vw;
+  height: calc(100vh - 140px);
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+}

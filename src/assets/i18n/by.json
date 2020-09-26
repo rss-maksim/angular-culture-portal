@@ -1,0 +1,43 @@
+{
+  "MAIN_PAGE": {
+    "HOME": "Галоўная",
+    "CULTURE_PORTAL": "Культурны Партал",
+    "ARCHITECTS_OF_BELARUS": "Беларускія Архітэктары",
+    "ARCHITECT_OF_THE_DAY": "Архітэктар дня"
+  },
+  "ARCHITECTS": {
+    "MENU_ITEM": "Архітэктары",
+    "FILTER": "Пошук",
+    "MORE": "Падрабязна"
+  },
+  "ARCHITECT": {
+    "BIOGRAPHY": "Біяграфія",
+    "MASTERPIECES": "Шэдэўры",
+    "WORK": "Твор",
+    "DATE": "Дата",
+    "VIDEO": "Відэа",
+    "WATCH_VIDEO": "Глядзець відэа",
+    "GALLERY": "Галерэя"
+  },
+  "TEAM": {
+    "MENU_ITEM": "Каманда",
+    "OUR_TEAM": "Наша Каманда",
+    "ROLE": "Роля: {{value}}"
+  },
+  "WORKLOG": {
+    "MENU_ITEM": "Працоўны журнал",
+    "DIFFICULTIES": "Асноўныя цяжкасці ў працы каманды",
+    "COORDINATING": "Каардынацыя працы каманды онлайн",
+    "STYLEGIUDE": "Стварэнне старонкі стылістыкі",
+    "ANIMATION": "Анимацыя",
+    "SELF_EVALUATION": "Самаацэнка"
+  },
+  "AUTHOR_PAGE": {
+    "REMOVE_ME": "author-full-view page!"
+  },
+  "404_PAGE": {
+    "NOT_FOUND": "Старонка не знойдзена",
+    "BACK": "Вярнуцца на галоўную"
+  },
+  "STYLEGUIDE": "Стылістыка"
+}

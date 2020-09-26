@@ -1,0 +1,41 @@
+@import '../../../variables';
+
+.main__wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  position: absolute;
+  z-index: 3;
+  padding: 40px;
+  width: 100vw;
+  height: calc(100vh - 140px);
+
+  .main__architect-of-day {
+    flex: 2;
+    min-width: 315px;
+    display: flex;
+    justify-content: center;
+  }
+  .main__about-culture-portal {
+    align-self: flex-start;
+    position: relative;
+    min-width: 200px;
+    max-height: calc(100vh - 252px);
+    flex: 3;
+    height: auto;
+    margin: 0px 20px;
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    mat-card-title {
+      font-size: 30px;
+      font-family: $primary-bold-font-family;
+      color: $contrast-text-color;
+    }
+    mat-card-subtitle {
+      font-size: 18px;
+      font-family: $primary-font-family;
+      color: $contrast-text-color;
+      text-indent: 1.5em;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+<div id="host-div" *ngIf="(authors)">
+  <div id="cards">
+    <mat-card *ngFor="let author of authors | paginator : page : cardsPerPage" [class.mat-elevation-z]="true">
+      <mat-card-header>
+        <img class="avatar" matCardAvatar src="{{author.image}}" alt="Image">
+        <mat-card-title>
+          {{author.name}}
+        </mat-card-title>
+      </mat-card-header>
+      <div class="description">
+        <mat-card-subtitle>
+          {{author.years}}
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+          {{author.placeOfBirth}}
+        </mat-card-subtitle>
+        {{author.shortDescription}}
+      </div>
+      <mat-card-actions>
+        <button class="more-button" mat-raised-button (click)="onMoreClick(author.id)">{{'ARCHITECTS.MORE' | translate}}</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <mat-paginator
+    [length]="authors.length"
+    [pageSize]="cardsPerPage"
+    [pageSizeOptions]="[5, 10]"
+    [pageIndex]="page"
+                 (page)="onPaginatorClick($event)">
+  </mat-paginator>
+</div>
+

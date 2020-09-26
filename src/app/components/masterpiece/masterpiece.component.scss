@@ -1,0 +1,45 @@
+@import "../../../variables";
+
+:host {
+  width: 100%;
+  margin-top: 20px;
+  @media screen and (min-width: $breakpoint-tablet) {
+    padding: 20px 70px;
+    margin-top: 0;
+  }
+}
+
+.works {
+  width: 100%;
+
+  &-header {
+    font-weight: bold;
+    background-color: $grey-color;
+    color: $header-background-color;
+  }
+}
+
+.work {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+
+  &.odd {
+    background-color: rgba($grey-color, 0.3);
+  }
+
+  &:not(.works-header):hover {
+    background-color: rgba($grey-color, 0.75);
+  }
+
+  &-description {
+    width: 80%;
+    .works-header & {
+      text-align: center;
+    }
+  }
+  &-date {
+    width: 20%;
+  }
+}

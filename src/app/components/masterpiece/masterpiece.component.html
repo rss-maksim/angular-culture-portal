@@ -1,0 +1,10 @@
+<div class="works">
+  <div class="work works-header">
+    <div class="work-description">{{'ARCHITECT.WORK' | translate}}</div>
+    <div class="work-date">{{'ARCHITECT.DATE' | translate}}</div>
+  </div>
+  <div class="work" [class.odd]="index%2===1" *ngFor="let work of works; let index=index;">
+    <div class="work-description">{{work.description}}</div>
+    <div class="work-date">{{work.date}}</div>
+  </div>
+</div>

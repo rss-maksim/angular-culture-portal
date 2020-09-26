@@ -1,0 +1,31 @@
+<div class="architect">
+  <div class="architect-main-info">
+    <div class="architect-container-left">
+      <h4 class="architect-name">{{architect.name}}</h4>
+      <div class="architect-years">{{architect.years}}</div>
+      <div class="architect-desc">{{architect.fullDescription}}</div>
+    </div>
+    <div class="architect-container-right">
+      <div class="architect-image">
+        <img [src]="architect.image" alt="" />
+      </div>
+    </div>
+  </div>
+  <div class="architect-biography">
+    <h4 class="architect-section-title">{{'ARCHITECT.BIOGRAPHY' | translate}}</h4>
+    <app-timeline [biography]="architect.biography"></app-timeline>
+    <app-map [sights]='architect.works'></app-map>
+  </div>
+  <div class="architect-masterpiece centered">
+    <h4 class="architect-section-title">{{'ARCHITECT.MASTERPIECES' | translate}}</h4>
+    <app-masterpiece [works]="architect.works"></app-masterpiece>
+  </div>
+  <div class="architect-video centered">
+    <h4 class="architect-section-title">{{'ARCHITECT.VIDEO' | translate}}</h4>
+    <app-video [video]="architect.video"></app-video>
+  </div>
+  <div class="architect-carousel centered">
+    <h4 class="architect-section-title">{{'ARCHITECT.GALLERY' | translate}}</h4>
+    <app-carousel [photos]="getPhotos(architect.works)"></app-carousel>
+  </div>
+</div>

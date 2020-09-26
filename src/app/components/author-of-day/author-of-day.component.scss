@@ -1,0 +1,73 @@
+@import '../../../variables';
+
+.card{
+  max-height: calc(100vh - 252px);
+  min-width: 315px;
+  border-radius: 0;
+  margin: 0px 20px;
+  position: relative;
+  transition: .5s;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn ease 1s;
+  background: rgba(0, 0, 0, 0.2);
+  .card__header {
+    font-size: 30px;
+    font-family: $primary-bold-font-family;
+    color: $contrast-text-color;
+    text-align: center;
+  }
+  img {
+    min-width: 250px;
+    max-width: 370px;
+    height: auto;
+  }
+  mat-card-header {
+    justify-content: center;
+    mat-card-title {
+      font-size: 21px;
+      font-family: $primary-font-family;
+      color: $contrast-text-color;
+    }
+    mat-card-subtitle {
+      font-size: 14px;
+      font-family: $primary-font-family;
+      color: $contrast-text-color;
+      opacity: 0.8;
+    }
+  }
+  mat-card-content {
+    font-size: 18px;
+    font-family: $primary-font-family;
+    color: $contrast-text-color;
+    text-indent: 1em;
+  }
+  mat-card-actions {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    .button-more {
+      &:hover {
+        transform: translateY(5px);
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity:0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}

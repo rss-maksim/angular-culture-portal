@@ -1,0 +1,11 @@
+<div class="video">
+  <button class="video-watch-btn" mat-raised-button color="primary" (click)="watchVideo()">{{'ARCHITECT.WATCH_VIDEO' | translate}}</button>
+
+  <div *ngIf="isOpen" class="video-overlay" [class.hidden]="!isOpen" (click)="closeOverlay()">
+    <div class="video-element">
+      <iframe width="100%" height="100%" [src]="src" frameborder="0"
+              webkitallowfullscreen mozallowfullscreen allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</div>

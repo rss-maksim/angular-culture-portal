@@ -1,0 +1,10 @@
+<div class="sidenav-container">
+  <mat-nav-list>
+    <div *ngFor="let item of navSections">
+      <a mat-list-item
+         [routerLink]="item.path"
+         [routerLinkActiveOptions]="item.path === '/' ? { exact: true } : {}"
+         routerLinkActive="active">{{ item.name | translate }}</a>
+    </div>
+ </mat-nav-list>
+</div>

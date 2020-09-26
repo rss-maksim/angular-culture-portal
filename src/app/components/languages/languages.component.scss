@@ -1,0 +1,12 @@
+:host {
+  margin-left: auto;
+}
+
+.languages {
+  &-btn-menu {
+    text-transform: uppercase;
+    background-color: #90a4ae;
+    color: #ffffff;
+    cursor: pointer;
+  }
+}
