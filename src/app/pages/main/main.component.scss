@@ -8,24 +8,32 @@
   padding: 40px;
   width: 100vw;
   height: calc(100vh - 140px);
-
+  overflow-y: auto;
+  @media screen and (min-width: $breakpoint-mobile) and (max-width: calc(#{$breakpoint-tablet} - 1px)) {
+    padding: 10px 0px;
+  }
   .main__architect-of-day {
     flex: 2;
     min-width: 315px;
     display: flex;
     justify-content: center;
+    @media screen and (min-width: $breakpoint-mobile) and (max-width: 559px) {
+      order: 2;
+    }
   }
   .main__about-culture-portal {
     align-self: flex-start;
     position: relative;
     min-width: 200px;
-    max-height: calc(100vh - 252px);
     flex: 3;
     height: auto;
     margin: 0px 20px;
     border-radius: 0;
     background: rgba(0, 0, 0, 0.2);
-    overflow: hidden;
+    @media screen and (min-width: $breakpoint-mobile) and (max-width: 559px) {
+     margin-bottom: 50px;
+     order: 1;
+    }
     mat-card-title {
       font-size: 30px;
       font-family: $primary-bold-font-family;
@@ -38,4 +46,17 @@
       text-indent: 1.5em;
     }
   }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 5px grey;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
 }
