@@ -9,5 +9,5 @@ export const navItems = [
   { name: 'ARCHITECTS.MENU_ITEM', path: '/authors' },
   { name: 'TEAM.MENU_ITEM', path: '/team' },
   { name: 'WORKLOG.MENU_ITEM', path: '/worklog' },
-  { name: 'STYLEGUIDE', path: '/styleguide' },
+  // { name: 'STYLEGUIDE', path: '/styleguide' },
 ];
