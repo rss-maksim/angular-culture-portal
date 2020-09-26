@@ -1,5 +1,5 @@
 <mat-sidenav-container>
-  <mat-sidenav class="mat-sidenav" #sidenav role="navigation">
+  <mat-sidenav (click)="sidenav.toggle()" class="mat-sidenav" #sidenav role="navigation">
     <app-sidenav></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>

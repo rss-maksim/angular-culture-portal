@@ -1,11 +1,10 @@
 <div class="sidenav-container">
-  <a class="sidenav-home-link" routerLink="/">
-    <span class="sidenav-title">Culture Portal</span>
-  </a>
-
   <mat-nav-list>
-    <a mat-list-item [href]="item.path" *ngFor="let item of navSections">
-      <span class="mat-list-item-text">{{ item.name | translate }}</span>
-    </a>
+    <div *ngFor="let item of navSections">
+      <a mat-list-item
+         [routerLink]="item.path"
+         [routerLinkActiveOptions]="item.path === '/' ? { exact: true } : {}"
+         routerLinkActive="active">{{ item.name | translate }}</a>
+    </div>
  </mat-nav-list>
 </div>
