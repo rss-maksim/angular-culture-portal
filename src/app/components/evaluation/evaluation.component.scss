@@ -1,5 +1,10 @@
-@import "../../../mixins";
+@import '../../../variables';
+@import '../../../mixins';
 
 h1 {
   @include divider;
+}
+
+.evaluation {
+  color: $color-white;
 }
