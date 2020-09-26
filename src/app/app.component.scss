@@ -1,15 +1,15 @@
 @import "../variables";
 
-.mat-sidenav {
-  width: 75%;
-}
-
-.mat-sidenav-container {
+mat-sidenav-container {
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
   right: 0;
+  mat-sidenav {
+    background: rgba(0, 0, 0, 0.8);
+    overflow-y: auto;
+  }
 }
 
 main {
