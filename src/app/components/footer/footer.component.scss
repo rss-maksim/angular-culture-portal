@@ -1,5 +1,30 @@
+@import '../../../variables';
+
 footer {
-  padding: 50px;
-  background-color: crimson;
-  margin-top: 50px;
+  position: fixed;
+  width: 100vw;
+  height: 70px;
+  z-index: 10;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  bottom: 0;
+  padding: 25px 60px;
+  line-height: 20px;
+  color: $contrast-text-color;
+  font-family: $primary-font-family;
+  .footer__github-link {
+    display: inline-flex;
+    align-items: center;
+    color: $contrast-text-color;
+    .footer__github-icon {
+      display: block;
+      width: 20px;
+      height: 20px;
+      margin-right: 7px;
+      background: url("../../../assets/images/GitHub-Mark-120px-plus.png");
+      background-size: cover;
+      filter: invert(100%);
+    }
+  }
 }

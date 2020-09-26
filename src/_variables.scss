@@ -1,12 +1,25 @@
+$breakpoint-desktop: 1920px;
+$breakpoint-laptop: 1366px;
 $breakpoint-tablet: 768px;
+$breakpoint-mobile: 320px;
+
+$primary-font-family: "Lato";
+$primary-bold-font-family: "Lato Black";
+
 
 $header-background-color: #455a64;
 $header-color: #fff;
 $color-white: #fff;
+$main-text-color: #000;
+$contrast-text-color: #fff;
+$background-color: #ededed;
+$footer-background-color: #000;
 // author of a day
 $author-of-day-background-color: #fff;
 $author-of-day-button-background-color: $header-background-color;
 $author-of-day-button-color: #fff;
+
+
 
 $search-widget-background-color: $header-background-color;
 

@@ -1,18 +1,18 @@
 <div>
-  <p class="header">{{'MAIN_PAGE.ARCHITECT_OF_THE_DAY' | translate}}</p>
-  <div *ngIf="authorOfDay; else spinner" class="author-of-day">
-    <div class="col">
-      <h1>{{authorOfDay.name}}</h1>
-      <a [routerLink]="['/author',authorOfDay.id]">
-        <img src="{{authorOfDay.image}}" alt="{{authorOfDay.name}}">
-      </a>
-      <p>{{authorOfDay.years}}</p>
-    </div>
-    <div class="col">
+  <mat-card *ngIf="authorOfDay; else spinner" class="card">
+    <mat-card-title class="card__header">{{'MAIN_PAGE.ARCHITECT_OF_THE_DAY' | translate}}</mat-card-title>
+      <img mat-card-image src="{{authorOfDay.image}}" alt="{{authorOfDay.name}}">
+    <mat-card-header>
+      <mat-card-title>{{authorOfDay.name}}</mat-card-title>
+      <mat-card-subtitle>{{authorOfDay.years}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
       <p>{{authorOfDay.shortDescription}}</p>
-      <a [routerLink]="['/author',authorOfDay.id]" class="button-more">{{'ARCHITECTS.MORE' | translate}}</a>
-    </div>
-  </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <a mat-raised-button [routerLink]="['/author',authorOfDay.id]" class="button-more">{{'ARCHITECTS.MORE' | translate}}</a>
+    </mat-card-actions>
+  </mat-card>
   <ng-template #spinner>
     <div class="spinner-container">
       <mat-spinner color="white"></mat-spinner>

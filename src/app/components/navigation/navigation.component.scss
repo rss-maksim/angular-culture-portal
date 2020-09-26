@@ -8,19 +8,28 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media screen and (min-width: $breakpoint-mobile) and (max-width: calc(#{$breakpoint-tablet} - 1px)) {
+    justify-content: center;
+  }
 
   &-logo {
     display: flex;
     flex-direction: column;
-    color: #ffffff;
-    font-family: "Italianno", cursive;
+    color: $contrast-text-color;
+    font-family: $primary-font-family;
     text-decoration: none;
   }
   &-title {
     font-size: 30px;
+    @media screen and (min-width: $breakpoint-mobile) and (max-width: calc(#{$breakpoint-tablet} - 1px)) {
+      font-size: 26px;
+    }
   }
   &-topic {
     font-size: 20px;
+    @media screen and (min-width: $breakpoint-mobile) and (max-width: calc(#{$breakpoint-tablet} - 1px)) {
+      font-size: 18px;
+    }
   }
 
   &-list {
@@ -38,12 +47,14 @@
   }
 
   &-link {
-    color: #ffffff;
+    color: $contrast-text-color;
+    font-family: $primary-bold-font-family;
+
     text-decoration: none;
 
     &.active,
     &:hover {
-      color: #43a047;
+      color: #ff0300;
     }
   }
 }
