@@ -20,6 +20,7 @@ import { AppLanguageStore } from './services/language-store.service';
 import { PaginatorPipe } from './pipes/paginator.pipe';
 import { AppLoadAuthorsEffect } from 'src/app/redux/effects/load-authors.effect';
 import { MglTimelineModule } from 'angular-mgl-timeline';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 import { MainComponent } from './pages/main/main.component';
 import { AuthorsListComponent } from './pages/authors-list/authors-list.component';
@@ -45,6 +46,7 @@ import { MapComponent } from './components/map/map.component';
 import { MasterpieceComponent } from './components/masterpiece/masterpiece.component';
 import { VideoComponent } from './components/video/video.component';
 import { MainPageBackgroundComponent } from './components/main-page-background/main-page-background.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -79,7 +81,9 @@ const lang = AppLanguageStore.loadLocale();
     VideoComponent,
     MapComponent,
     TimelineComponent,
-    MainPageBackgroundComponent
+    MainPageBackgroundComponent,
+    MapComponent,
+    CarouselComponent,
   ],
   imports: [
     BrowserModule,
@@ -109,7 +113,8 @@ const lang = AppLanguageStore.loadLocale();
       },
       defaultLanguage: lang || Lang.en,
     }),
-    MglTimelineModule
+    MglTimelineModule,
+    MatCarouselModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

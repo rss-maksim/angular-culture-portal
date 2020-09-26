@@ -25,7 +25,9 @@ export class VideoComponent implements OnInit {
         map((event: KeyboardEvent): boolean => event.key === 'Escape')
       )
       .subscribe((value: boolean) => {
-        this.isOpen = !value;
+        if (value) {
+          this.isOpen = false;
+        }
       });
   }
 

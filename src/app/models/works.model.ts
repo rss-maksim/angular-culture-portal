@@ -1,7 +1,7 @@
 export interface WorksModel {
   description: string;
   date: string;
-  img?: string;
+  img?: string | string[];
   lat?: number;
   lng?: number;
 }

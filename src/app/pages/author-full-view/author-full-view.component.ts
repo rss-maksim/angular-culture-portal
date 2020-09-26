@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { IAppStore } from '../../redux/state.model';
 import { AuthorsService } from '../../services/authors.service';
 import { AuthorModel } from '../../models/author.model';
+import { WorksModel } from '../../models/works.model';
 
 @Component({
   selector: 'app-author-full-view',
@@ -25,4 +26,14 @@ export class AuthorFullViewComponent implements OnInit {
     });
   }
 
+  getPhotos(works: WorksModel[]): string[] {
+    // @ts-ignore
+    return works.reduce((acc, { img }: WorksModel) => {
+      if (Array.isArray(img)) {
+        return [...acc, ...img];
+      }
+      return [...acc, img];
+    }, [])
+      .filter((img: string) => Boolean(img));
+  }
 }

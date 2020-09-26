@@ -24,4 +24,8 @@
     <h4 class="architect-section-title">{{'ARCHITECT.VIDEO' | translate}}</h4>
     <app-video [video]="architect.video"></app-video>
   </div>
+  <div class="architect-carousel centered">
+    <h4 class="architect-section-title">{{'ARCHITECT.GALLERY' | translate}}</h4>
+    <app-carousel [photos]="getPhotos(architect.works)"></app-carousel>
+  </div>
 </div>
