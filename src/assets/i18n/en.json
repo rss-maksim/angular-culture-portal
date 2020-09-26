@@ -3,7 +3,9 @@
     "HOME": "Home",
     "CULTURE_PORTAL": "Culture Portal",
     "ARCHITECTS_OF_BELARUS": "Architects of Belarus",
-    "ARCHITECT_OF_THE_DAY": "Architect of the day"
+    "ARCHITECT_OF_THE_DAY": "Architect of the day",
+    "HEAD": "This portal is dedicated to the architects of Belarus",
+    "DESCRIPTION": "As an art form, architecture enters into the sphere of spiritual and material culture. Unlike utilitarian construction and aesthetic activities, such as design, architecture as an art solves artistic-figurative problems, that is, it expresses in artistic images a person's ideas about space and time and a person's place in the surrounding world."
   },
   "ARCHITECTS": {
     "MENU_ITEM": "Architects",
