@@ -6,17 +6,31 @@ footer {
   height: 70px;
   z-index: 10;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: space-between;
   bottom: 0;
   padding: 25px 60px;
   line-height: 20px;
   color: $contrast-text-color;
   font-family: $primary-font-family;
+  @media screen and (min-width: $breakpoint-mobile) and (max-width: calc(#{$breakpoint-tablet} - 1px)) {
+    padding: 25px 20px;
+  }
+  @media screen and (min-width: $breakpoint-mobile) and (max-width: 619px) {
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
+  @media screen and (min-width: $breakpoint-mobile) and (max-width: 369px) {
+    font-size: 12px !important;
+  }
   .footer__github-link {
     display: inline-flex;
     align-items: center;
     color: $contrast-text-color;
+    @media screen and (min-width: $breakpoint-mobile) and (max-width: 619px) {
+      margin-top: 10px;
+    }
     .footer__github-icon {
       display: block;
       width: 20px;

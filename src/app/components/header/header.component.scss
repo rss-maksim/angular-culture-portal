@@ -9,14 +9,18 @@ header {
   position: fixed;
   top: 0;
   z-index: 10;
+  @media screen and (min-width: $breakpoint-mobile) and (max-width: calc(#{$breakpoint-tablet} - 1px)) {
+    padding: 0 20px;
+  }
   .mobile-menu-btn {
     background: transparent;
     border: 0;
     margin-right: 20px;
     border-radius: 50%;
+    display: none;
 
-    @media (min-width: $breakpoint-tablet) {
-      display: none;
+    @media screen and (min-width: $breakpoint-mobile) and (max-width: calc(#{$breakpoint-tablet} - 1px)) {
+      display: block;
     }
   }
 
