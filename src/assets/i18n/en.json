@@ -20,7 +20,8 @@
   },
   "TEAM": {
     "MENU_ITEM": "Team",
-    "OUR_TEAM": "Our Team"
+    "OUR_TEAM": "Our Team",
+    "ROLE": "Role: {{value}}"
   },
   "WORKLOG": {
     "MENU_ITEM": "Worklog",

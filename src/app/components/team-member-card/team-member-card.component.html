@@ -1,8 +1,8 @@
 <mat-card class="card">
-  <img mat-card-image src="{{ member.avatarUrl}}">
+  <img mat-card-image src="{{ member.avatarUrl }}" />
   <mat-card-header>
     <mat-card-title>{{ member.name }}</mat-card-title>
-    <mat-card-subtitle>Role: {{ member.role}}</mat-card-subtitle>
+    <mat-card-subtitle> {{ 'TEAM.ROLE' | translate: { value: member.role } }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-actions>
     <a class="github-link" href="{{ member.githubUrl }}" target="_blank"></a>
