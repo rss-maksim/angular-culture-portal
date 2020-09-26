@@ -1,4 +1,5 @@
-@import "../../../variables";
+@import '../../../variables';
+@import '../../../mixins';
 
 .video {
   &-watch-btn {
@@ -6,6 +7,7 @@
     height: 45px;
     background-color: $header-background-color;
     margin-top: 20px;
+    @include hoveredButton;
   }
 
   &-overlay {
@@ -41,7 +43,7 @@
   iframe {
     height: 100%;
     width: 100%;
-    background: rgba($black-color, .87);
+    background: rgba($black-color, 0.87);
     border: 0;
   }
 }
