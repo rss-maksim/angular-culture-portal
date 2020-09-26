@@ -20,7 +20,8 @@
   },
   "TEAM": {
     "MENU_ITEM": "Каманда",
-    "OUR_TEAM": "Наша Каманда"
+    "OUR_TEAM": "Наша Каманда",
+    "ROLE": "Роля: {{value}}"
   },
   "WORKLOG": {
     "MENU_ITEM": "Працоўны журнал",

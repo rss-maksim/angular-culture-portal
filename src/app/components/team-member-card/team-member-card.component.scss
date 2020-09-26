@@ -1,6 +1,6 @@
 @import '../../../variables';
 
-.card{
+.card {
   width: 250px;
   height: 370px;
   background: rgba(0, 0, 0, 0.2);
@@ -8,7 +8,7 @@
   margin: 10px 20px;
   position: relative;
   cursor: pointer;
-  transition: .5s;
+  transition: 0.5s;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -19,6 +19,7 @@
   img {
     width: 250px;
     height: 250px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
   }
   mat-card-header {
     justify-content: center;
@@ -44,7 +45,7 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: url("../../../assets/images/GitHub-Mark-120px-plus.png");
+    background: url('../../../assets/images/GitHub-Mark-120px-plus.png');
     background-size: cover;
     filter: invert(100%);
   }
@@ -52,10 +53,10 @@
 
 @keyframes fadeIn {
   0% {
-    opacity:0;
+    opacity: 0;
     transform: translateY(-40px);
   }
   100% {
-    opacity:1;
+    opacity: 1;
   }
 }
