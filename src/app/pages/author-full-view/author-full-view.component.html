@@ -12,8 +12,16 @@
     </div>
   </div>
   <div class="architect-biography">
-    <h4 class="architect-biography-title">{{'ARCHITECT.BIOGRAPHY' | translate}}</h4>
+    <h4 class="architect-section-title">{{'ARCHITECT.BIOGRAPHY' | translate}}</h4>
     <app-timeline [biography]="architect.biography"></app-timeline>
     <app-map [sights]='architect.works'></app-map>
+  </div>
+  <div class="architect-masterpiece centered">
+    <h4 class="architect-section-title">{{'ARCHITECT.MASTERPIECES' | translate}}</h4>
+    <app-masterpiece [works]="architect.works"></app-masterpiece>
+  </div>
+  <div class="architect-video centered">
+    <h4 class="architect-section-title">{{'ARCHITECT.VIDEO' | translate}}</h4>
+    <app-video [video]="architect.video"></app-video>
   </div>
 </div>

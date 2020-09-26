@@ -11,7 +11,12 @@
     "MORE": "Падрабязна"
   },
   "ARCHITECT": {
-    "BIOGRAPHY": "Біяграфія"
+    "BIOGRAPHY": "Біяграфія",
+    "MASTERPIECES": "Шэдэўры",
+    "WORK": "Твор",
+    "DATE": "Дата",
+    "VIDEO": "Відэа",
+    "WATCH_VIDEO": "Глядзець відэа"
   },
   "TEAM": {
     "MENU_ITEM": "Каманда",

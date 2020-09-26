@@ -11,7 +11,12 @@
     "MORE": "More"
   },
   "ARCHITECT": {
-    "BIOGRAPHY": "Biography"
+    "BIOGRAPHY": "Biography",
+    "MASTERPIECES": "Masterpieces",
+    "WORK": "Work",
+    "DATE": "Date",
+    "VIDEO": "Video",
+    "WATCH_VIDEO": "Watch video"
   },
   "TEAM": {
     "MENU_ITEM": "Team",
