@@ -1,10 +1,9 @@
-<mat-card class="card">
-  <img mat-card-image src="{{ member.avatarUrl }}" />
-  <mat-card-header>
-    <mat-card-title>{{ member.name }}</mat-card-title>
-    <mat-card-subtitle> {{ 'TEAM.ROLE' | translate: { value: member.role } }}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-actions>
-    <a class="github-link" href="{{ member.githubUrl }}" target="_blank"></a>
-  </mat-card-actions>
-</mat-card>
+<a class="github-link" href="{{ member.githubUrl }}" target="_blank">
+  <mat-card class="card">
+    <img mat-card-image src="{{ member.avatarUrl }}" />
+    <mat-card-header>
+      <mat-card-title>{{ member.name }}</mat-card-title>
+      <mat-card-subtitle> {{ 'TEAM.ROLE' | translate: { value: member.role } }}</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</a>

@@ -19,7 +19,7 @@ main {
   height: calc(100vh - 140px);
   z-index: 3;
   overflow-y: auto;
-  //overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
