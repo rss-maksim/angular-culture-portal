@@ -1,0 +1,4100 @@
+{
+    "pipes": [
+        {
+            "name": "PaginatorPipe",
+            "id": "pipe-PaginatorPipe-08866ef34eacbe5b9139471e3bc046b4",
+            "file": "src/app/pipes/paginator.pipe.ts",
+            "type": "pipe",
+            "description": "",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "transform",
+                    "args": [
+                        {
+                            "name": "authors",
+                            "type": "AuthorModel[]"
+                        },
+                        {
+                            "name": "page",
+                            "type": "number"
+                        },
+                        {
+                            "name": "cardPerPage",
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "AuthorModel[]",
+                    "typeParameters": [],
+                    "line": 10,
+                    "jsdoctags": [
+                        {
+                            "name": "authors",
+                            "type": "AuthorModel[]",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "page",
+                            "type": "number",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "cardPerPage",
+                            "type": "number",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "ngname": "paginator",
+            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\n\nimport { AuthorModel } from 'src/app/models/author.model';\n\n@Pipe({\n  name: 'paginator'\n})\nexport class PaginatorPipe implements PipeTransform {\n\n  transform(authors: AuthorModel[], page: number, cardPerPage: number): AuthorModel[] {\n    return authors\n      ? authors.slice((page - 1) * cardPerPage, page * cardPerPage)\n      : authors;\n  }\n}\n"
+        }
+    ],
+    "interfaces": [
+        {
+            "name": "ActivityPlaceModel",
+            "id": "interface-ActivityPlaceModel-8d8fa0764fe8d71cd7e1faecb60fdbbf",
+            "file": "src/app/models/activity-place.model.ts",
+            "type": "interface",
+            "sourceCode": "export interface ActivityPlaceModel {\n  lat: string;\n  lon: string;\n}\n",
+            "properties": [
+                {
+                    "name": "lat",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "lon",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "AuthorModel",
+            "id": "interface-AuthorModel-9b8a2a10f9f3f6adc177e7354ae5ed35",
+            "file": "src/app/models/author.model.ts",
+            "type": "interface",
+            "sourceCode": "import { ActivityPlaceModel } from './activity-place.model';\nimport { WorksImagesModel } from './works-images.model';\nimport { WorksModel } from './works.model';\nimport { BiographyModel } from './biography.model';\n\nexport interface AuthorModel {\n  id: string;\n  name: string;\n  shortDescription: string;\n  fullDescription: string;\n  placeOfBirth: string;\n  years: string;\n  image: string;\n  biography: BiographyModel[];\n  works?: WorksModel[];\n  video?: string;\n  worksImages?: WorksImagesModel[];\n  activityPlace?: ActivityPlaceModel[];\n}\n",
+            "properties": [
+                {
+                    "name": "activityPlace",
+                    "type": "ActivityPlaceModel[]",
+                    "optional": true,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "biography",
+                    "type": "BiographyModel[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "fullDescription",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "id",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "image",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "name",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "placeOfBirth",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "shortDescription",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "video",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 16
+                },
+                {
+                    "name": "works",
+                    "type": "WorksModel[]",
+                    "optional": true,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "worksImages",
+                    "type": "WorksImagesModel[]",
+                    "optional": true,
+                    "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "years",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "AuthorsList",
+            "id": "interface-AuthorsList-fd4d767b0451438ddb73a085edadc494",
+            "file": "src/app/services/authors.service.ts",
+            "type": "interface",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { HttpClient } from '@angular/common/http';\nimport { Observable, of } from 'rxjs';\nimport { tap } from 'rxjs/operators';\nimport { select, Store } from '@ngrx/store';\n\nimport { AuthorModel } from '../models/author.model';\nimport { AUTHORS_FILE, AUTHORS_EXTENSION } from '../const';\nimport { IAppStore } from '../redux/state.model';\nimport { selectAuthorById, selectAuthors, selectLocale, selectRandomAuthor } from '../redux/selectors/appReducer.selector';\nimport { changeAuthors, loadAuthors } from '../redux/actions';\n\ninterface AuthorsList {\n  [lang: string]: AuthorModel[];\n}\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class AuthorsService {\n  private authors: AuthorsList = {};\n  private locale$: Observable<string>;\n  private locale: string;\n\n  constructor(private http: HttpClient, private store: Store<IAppStore>) {\n    this.locale$ = this.store.select(selectLocale);\n    this.locale$.subscribe(locale => {\n      this.locale = locale;\n      if (this.authors[this.locale]) {\n        this.store.dispatch(changeAuthors({ authors: this.authors[this.locale] }));\n      } else {\n        this.store.dispatch(loadAuthors());\n      }\n    });\n  }\n\n  loadAuthors(): Observable<AuthorModel[]> {\n    const url = `${AUTHORS_FILE}${this.locale}${AUTHORS_EXTENSION}`;\n    const allAuthors = this.authors[this.locale]\n      ? of(this.authors[this.locale])\n      : this.http\n        .get<AuthorModel[]>(url)\n        .pipe(\n          tap(authors => this.authors[this.locale] = authors),\n        );\n    return allAuthors;\n  }\n\n  getAuthors(): Observable<AuthorModel[]> {\n    return this.store.pipe(select(selectAuthors));\n  }\n\n  getAuthor(authorId: string): Observable<AuthorModel> {\n    return this.store.pipe(select(selectAuthorById, authorId));\n  }\n\n  getAuthorOfDay(): Observable<AuthorModel> {\n    return this.store.pipe(select(selectRandomAuthor));\n  }\n}\n",
+            "properties": [],
+            "indexSignatures": [
+                {
+                    "id": "index-declaration-fd4d767b0451438ddb73a085edadc494",
+                    "args": [
+                        {
+                            "name": "lang",
+                            "type": "string"
+                        }
+                    ],
+                    "returnType": "AuthorModel[]",
+                    "line": 13
+                }
+            ],
+            "kind": 159,
+            "methods": []
+        },
+        {
+            "name": "BiographyModel",
+            "id": "interface-BiographyModel-bf139067395ed82490f6844d166268b3",
+            "file": "src/app/models/biography.model.ts",
+            "type": "interface",
+            "sourceCode": "export interface BiographyModel {\n  description: string;\n  date: string;\n}\n",
+            "properties": [
+                {
+                    "name": "date",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "description",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "IAppReducer",
+            "id": "interface-IAppReducer-ada8ce89d16b94cb8d4686fad085c03a",
+            "file": "src/app/redux/state.model.ts",
+            "type": "interface",
+            "sourceCode": "import { AuthorModel } from '../models/author.model';\n\nexport interface IAppReducer {\n  locale: string;\n  filter: string;\n  authors: AuthorModel[];\n}\n\nexport interface IAppStore {\n  appReducer: IAppReducer;\n}\n",
+            "properties": [
+                {
+                    "name": "authors",
+                    "type": "AuthorModel[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "filter",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "locale",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "IAppStore",
+            "id": "interface-IAppStore-ada8ce89d16b94cb8d4686fad085c03a",
+            "file": "src/app/redux/state.model.ts",
+            "type": "interface",
+            "sourceCode": "import { AuthorModel } from '../models/author.model';\n\nexport interface IAppReducer {\n  locale: string;\n  filter: string;\n  authors: AuthorModel[];\n}\n\nexport interface IAppStore {\n  appReducer: IAppReducer;\n}\n",
+            "properties": [
+                {
+                    "name": "appReducer",
+                    "type": "IAppReducer",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "ILanguage",
+            "id": "interface-ILanguage-ad973d8fb4986902730e401c154028bd",
+            "file": "src/app/models/language.model.ts",
+            "type": "interface",
+            "sourceCode": "export enum Lang {\n  en = 'en',\n  ru = 'ru',\n  by = 'by'\n}\n\nexport interface ILanguage {\n  name: Lang;\n  label: string;\n}\n",
+            "properties": [
+                {
+                    "name": "label",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "name",
+                    "type": "Lang",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "WorksImagesModel",
+            "id": "interface-WorksImagesModel-dcf53bd0c8ef61d8cdfa377341e1793a",
+            "file": "src/app/models/works-images.model.ts",
+            "type": "interface",
+            "sourceCode": "export interface WorksImagesModel {\n  imageUrl: string;\n  date: string;\n}\n",
+            "properties": [
+                {
+                    "name": "date",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "imageUrl",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "WorksModel",
+            "id": "interface-WorksModel-0cbe8778b552e51663462755ce65c134",
+            "file": "src/app/models/works.model.ts",
+            "type": "interface",
+            "sourceCode": "export interface WorksModel {\n  description: string;\n  date: string;\n  img?: string;\n  lat?: number;\n  lng?: number;\n}\n",
+            "properties": [
+                {
+                    "name": "date",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "description",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "img",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "lat",
+                    "type": "number",
+                    "optional": true,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "lng",
+                    "type": "number",
+                    "optional": true,
+                    "description": "",
+                    "line": 6
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        }
+    ],
+    "injectables": [
+        {
+            "name": "AppLanguageStore",
+            "id": "injectable-AppLanguageStore-0c01292c5cd660a9166b5f5309ca0756",
+            "file": "src/app/services/language-store.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "loadLocale",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 13,
+                    "modifierKind": [
+                        115
+                    ]
+                },
+                {
+                    "name": "saveLocale",
+                    "args": [
+                        {
+                            "name": "locale",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 9,
+                    "modifierKind": [
+                        115
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "locale",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "description": "",
+            "sourceCode": "import { Injectable } from '@angular/core';\n\nimport { LOCALE_KEY } from '../const';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class AppLanguageStore {\n  static saveLocale(locale: string): void {\n    localStorage.setItem(LOCALE_KEY, locale);\n  }\n\n  static loadLocale(): string {\n    return localStorage.getItem(LOCALE_KEY);\n  }\n}\n",
+            "type": "injectable"
+        },
+        {
+            "name": "AppLoadAuthorsEffect",
+            "id": "injectable-AppLoadAuthorsEffect-8df6badac16b149190c88f1e5aee4cfb",
+            "file": "src/app/redux/effects/load-authors.effect.ts",
+            "properties": [
+                {
+                    "name": "getAuthors$",
+                    "defaultValue": "this.actions$.pipe(\n    ofType(LOAD_AUTHORS),\n    switchMap(() => this.authorsService.loadAuthors()),\n    map(authors => changeAuthors({ authors }))\n  )",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "decorators": [
+                        {
+                            "name": "Effect",
+                            "stringifiedArguments": ""
+                        }
+                    ],
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methods": [],
+            "description": "",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { Actions, Effect, ofType } from '@ngrx/effects';\nimport { switchMap, map } from 'rxjs/operators';\n\nimport { LOAD_AUTHORS } from '../const';\nimport { AuthorsService } from '../../services/authors.service';\nimport { changeAuthors } from '../actions';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class AppLoadAuthorsEffect {\n  constructor(private actions$: Actions, private authorsService: AuthorsService) { }\n\n  @Effect()\n  public getAuthors$ = this.actions$.pipe(\n    ofType(LOAD_AUTHORS),\n    switchMap(() => this.authorsService.loadAuthors()),\n    map(authors => changeAuthors({ authors }))\n  );\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "actions$",
+                        "type": "Actions"
+                    },
+                    {
+                        "name": "authorsService",
+                        "type": "AuthorsService"
+                    }
+                ],
+                "line": 12,
+                "jsdoctags": [
+                    {
+                        "name": "actions$",
+                        "type": "Actions",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "authorsService",
+                        "type": "AuthorsService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "type": "injectable"
+        },
+        {
+            "name": "AuthorsService",
+            "id": "injectable-AuthorsService-fd4d767b0451438ddb73a085edadc494",
+            "file": "src/app/services/authors.service.ts",
+            "properties": [
+                {
+                    "name": "authors",
+                    "defaultValue": "{}",
+                    "type": "AuthorsList",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "locale",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "locale$",
+                    "type": "Observable<string>",
+                    "optional": false,
+                    "description": "",
+                    "line": 22,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "getAuthor",
+                    "args": [
+                        {
+                            "name": "authorId",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<AuthorModel>",
+                    "typeParameters": [],
+                    "line": 53,
+                    "jsdoctags": [
+                        {
+                            "name": "authorId",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getAuthorOfDay",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Observable<AuthorModel>",
+                    "typeParameters": [],
+                    "line": 57
+                },
+                {
+                    "name": "getAuthors",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Observable<AuthorModel[]>",
+                    "typeParameters": [],
+                    "line": 49
+                },
+                {
+                    "name": "loadAuthors",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Observable<AuthorModel[]>",
+                    "typeParameters": [],
+                    "line": 37
+                }
+            ],
+            "description": "",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { HttpClient } from '@angular/common/http';\nimport { Observable, of } from 'rxjs';\nimport { tap } from 'rxjs/operators';\nimport { select, Store } from '@ngrx/store';\n\nimport { AuthorModel } from '../models/author.model';\nimport { AUTHORS_FILE, AUTHORS_EXTENSION } from '../const';\nimport { IAppStore } from '../redux/state.model';\nimport { selectAuthorById, selectAuthors, selectLocale, selectRandomAuthor } from '../redux/selectors/appReducer.selector';\nimport { changeAuthors, loadAuthors } from '../redux/actions';\n\ninterface AuthorsList {\n  [lang: string]: AuthorModel[];\n}\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class AuthorsService {\n  private authors: AuthorsList = {};\n  private locale$: Observable<string>;\n  private locale: string;\n\n  constructor(private http: HttpClient, private store: Store<IAppStore>) {\n    this.locale$ = this.store.select(selectLocale);\n    this.locale$.subscribe(locale => {\n      this.locale = locale;\n      if (this.authors[this.locale]) {\n        this.store.dispatch(changeAuthors({ authors: this.authors[this.locale] }));\n      } else {\n        this.store.dispatch(loadAuthors());\n      }\n    });\n  }\n\n  loadAuthors(): Observable<AuthorModel[]> {\n    const url = `${AUTHORS_FILE}${this.locale}${AUTHORS_EXTENSION}`;\n    const allAuthors = this.authors[this.locale]\n      ? of(this.authors[this.locale])\n      : this.http\n        .get<AuthorModel[]>(url)\n        .pipe(\n          tap(authors => this.authors[this.locale] = authors),\n        );\n    return allAuthors;\n  }\n\n  getAuthors(): Observable<AuthorModel[]> {\n    return this.store.pipe(select(selectAuthors));\n  }\n\n  getAuthor(authorId: string): Observable<AuthorModel> {\n    return this.store.pipe(select(selectAuthorById, authorId));\n  }\n\n  getAuthorOfDay(): Observable<AuthorModel> {\n    return this.store.pipe(select(selectRandomAuthor));\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "http",
+                        "type": "HttpClient"
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<IAppStore>"
+                    }
+                ],
+                "line": 23,
+                "jsdoctags": [
+                    {
+                        "name": "http",
+                        "type": "HttpClient",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<IAppStore>",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "type": "injectable"
+        },
+        {
+            "name": "ScopeService",
+            "id": "injectable-ScopeService-775a7703504a93187fdd10631c09f6e4",
+            "file": "src/app/services/scope.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "saveScope",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 24
+                }
+            ],
+            "description": "",
+            "sourceCode": "import { Injectable } from '@angular/core';\n\nimport { SCOPES } from '../constants/scope.const';\nimport { SELF_EVALUATION, STORAGE_EVALUATION_KEY } from '../constants/scope-self-evaluation.const';\nimport { Scope } from '../models/scope.model';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class ScopeService {\n  constructor() {\n    const storedEvaluation = localStorage.getItem(STORAGE_EVALUATION_KEY);\n    let evaluation: number[][] = SELF_EVALUATION;\n    if (storedEvaluation) {\n      try {\n        evaluation = JSON.parse(storedEvaluation);\n      } catch (error) {\n        evaluation = SELF_EVALUATION;\n      }\n    }\n    SCOPES.setAllCurrentPoints(evaluation);\n  }\n\n  saveScope(): void {\n    const storedEvaluation = SCOPES.scopesToArray();\n    localStorage.setItem(STORAGE_EVALUATION_KEY, JSON.stringify(storedEvaluation));\n  }\n\n  get scope(): Scope {\n    return SCOPES;\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 10
+            },
+            "accessors": {
+                "scope": {
+                    "name": "scope",
+                    "getSignature": {
+                        "name": "scope",
+                        "type": "",
+                        "returnType": "Scope",
+                        "line": 29
+                    }
+                }
+            },
+            "type": "injectable"
+        }
+    ],
+    "classes": [
+        {
+            "name": "AppPage",
+            "id": "class-AppPage-a0db91bfa3b9914e9048612074084ee6",
+            "file": "e2e/src/app.po.ts",
+            "type": "class",
+            "sourceCode": "import { browser, by, element } from 'protractor';\n\nexport class AppPage {\n  navigateTo(): Promise<unknown> {\n    return browser.get(browser.baseUrl) as Promise<unknown>;\n  }\n\n  getTitleText(): Promise<string> {\n    return element(by.css('app-root .content span')).getText() as Promise<string>;\n  }\n}\n",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "getTitleText",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<string>",
+                    "typeParameters": [],
+                    "line": 8
+                },
+                {
+                    "name": "navigateTo",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<unknown>",
+                    "typeParameters": [],
+                    "line": 4
+                }
+            ],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "Scope",
+            "id": "class-Scope-9a951ca27c0bd4fd03f30e66f4695a3e",
+            "file": "src/app/models/scope.model.ts",
+            "type": "class",
+            "sourceCode": "export class Scope {\n  private aCurrentPoints: number;\n\n  constructor(public description: string, public maxPoints: number, public scopes?: Scope[]) { }\n\n  set currentPoints(points: number) {\n    this.aCurrentPoints = points;\n  }\n\n  get currentPoints(): number {\n    return this.scopes\n      ? this.scopes.reduce((total, { currentPoints }) => total + currentPoints, 0)\n      : this.aCurrentPoints;\n  }\n\n  get step(): number {\n    return this.maxPoints > 0 ? (this.maxPoints / 2) : 5;\n  }\n\n  get min(): number {\n    return Math.min(this.maxPoints, 0);\n  }\n\n  get max(): number {\n    return Math.max(this.maxPoints, 0);\n  }\n\n  setAllCurrentPoints(points: number | any[]): void {\n    if (this.scopes) {\n      this.scopes.forEach((scope, index) => scope.setAllCurrentPoints(points[index]));\n    } else {\n      this.currentPoints = points as number;\n    }\n  }\n\n  scopesToArray(): number[] | number {\n    if (this.scopes) {\n      return this.scopes.reduce((total, scope) => [...total, scope.scopesToArray()], []);\n    }\n    return this.currentPoints;\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxPoints",
+                        "type": "number"
+                    },
+                    {
+                        "name": "scopes",
+                        "type": "Scope[]",
+                        "optional": true
+                    }
+                ],
+                "line": 2,
+                "jsdoctags": [
+                    {
+                        "name": "description",
+                        "type": "string",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "maxPoints",
+                        "type": "number",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "scopes",
+                        "type": "Scope[]",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "properties": [
+                {
+                    "name": "aCurrentPoints",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 2,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "description",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "maxPoints",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 4,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "scopes",
+                    "type": "Scope[]",
+                    "optional": true,
+                    "description": "",
+                    "line": 4,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "scopesToArray",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "[] | number",
+                    "typeParameters": [],
+                    "line": 36
+                },
+                {
+                    "name": "setAllCurrentPoints",
+                    "args": [
+                        {
+                            "name": "points",
+                            "type": "number | any[]"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 28,
+                    "jsdoctags": [
+                        {
+                            "name": "points",
+                            "type": "number | any[]",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "accessors": {
+                "currentPoints": {
+                    "name": "currentPoints",
+                    "setSignature": {
+                        "name": "currentPoints",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "points",
+                                "type": "number"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 6,
+                        "jsdoctags": [
+                            {
+                                "name": "points",
+                                "type": "number",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "currentPoints",
+                        "type": "number",
+                        "returnType": "number",
+                        "line": 10
+                    }
+                },
+                "step": {
+                    "name": "step",
+                    "getSignature": {
+                        "name": "step",
+                        "type": "number",
+                        "returnType": "number",
+                        "line": 16
+                    }
+                },
+                "min": {
+                    "name": "min",
+                    "getSignature": {
+                        "name": "min",
+                        "type": "number",
+                        "returnType": "number",
+                        "line": 20
+                    }
+                },
+                "max": {
+                    "name": "max",
+                    "getSignature": {
+                        "name": "max",
+                        "type": "number",
+                        "returnType": "number",
+                        "line": 24
+                    }
+                }
+            },
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
+    "directives": [],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-e46b3c09d226574ebae8fbcff6394b91",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [
+                "./app.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent { }\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../variables\";\n\n.mat-sidenav {\n  width: 75%;\n  background-color: $header-background-color;\n}\n\n.mat-sidenav-container {\n  position: absolute;\n  left: 0;\n  top: 0;\n  bottom: 0;\n  right: 0;\n}\n\nmain {\n  margin-top: 70px;\n}\n",
+                    "styleUrl": "./app.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<mat-sidenav-container>\n  <mat-sidenav class=\"mat-sidenav\" #sidenav role=\"navigation\">\n    <app-sidenav></app-sidenav>\n  </mat-sidenav>\n  <mat-sidenav-content>\n    <app-header (sidenavToggle)=\"sidenav.toggle()\"></app-header>\n    <main>\n      <router-outlet></router-outlet>\n    </main>\n    <app-footer></app-footer>\n  </mat-sidenav-content>\n</mat-sidenav-container>\n"
+        },
+        {
+            "name": "AuthorFullViewComponent",
+            "id": "component-AuthorFullViewComponent-ba2dd447f63cd737f9e46523c2a07b5f",
+            "file": "src/app/pages/author-full-view/author-full-view.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-author-full-view",
+            "styleUrls": [
+                "./author-full-view.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./author-full-view.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-author-full-view',\n  templateUrl: './author-full-view.component.html',\n  styleUrls: ['./author-full-view.component.scss']\n})\nexport class AuthorFullViewComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./author-full-view.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<p>{{'AUTHOR_PAGE.REMOVE_ME' | translate}}</p>\n"
+        },
+        {
+            "name": "AuthorOfDayComponent",
+            "id": "component-AuthorOfDayComponent-66e5f9a04f0c22366bdd45af20b811f8",
+            "file": "src/app/components/author-of-day/author-of-day.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-author-of-day",
+            "styleUrls": [
+                "./author-of-day.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./author-of-day.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "authorOfDay",
+                    "line": 11,
+                    "type": "AuthorModel"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\nimport { AuthorModel } from 'src/app/models/author.model';\n\n@Component({\n  selector: 'app-author-of-day',\n  templateUrl: './author-of-day.component.html',\n  styleUrls: ['./author-of-day.component.scss']\n})\nexport class AuthorOfDayComponent {\n  @Input() authorOfDay: AuthorModel;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import '../../../variables';\n@import '../../../mixins';\n\n.header {\n  @include divider;\n  font-size: 24px;\n  font-weight: bold;\n}\n\n.spinner-container {\n  display: flex;\n  justify-content: center;\n  padding: 50px;\n}\n\n.author-of-day {\n  background-color: $author-of-day-background-color;\n  width: 100%;\n  padding: 40px;\n  display: flex;\n  justify-content: center;\n  @media (max-width: $breakpoint-tablet) {\n    flex-direction: column;\n  }\n}\n\n.col {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-between;\n}\n\nimg {\n  height: 400px;\n  border-radius: 10px;\n  transition: 0.5s;\n\n  &:hover {\n    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);\n    transform: scale(1.1);\n  }\n}\n\n.button-more {\n  @include button;\n}\n",
+                    "styleUrl": "./author-of-day.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div>\n  <p class=\"header\">Architect of the day</p>\n  <div *ngIf=\"authorOfDay; else spinner\" class=\"author-of-day\">\n    <div class=\"col\">\n      <h1>{{authorOfDay.name}}</h1>\n      <a [routerLink]=\"['/author',authorOfDay.id]\">\n        <img src=\"{{authorOfDay.image}}\" alt=\"{{authorOfDay.name}}\">\n      </a>\n      <p>{{authorOfDay.years}}</p>\n    </div>\n    <div class=\"col\">\n      <p>{{authorOfDay.shortDescription}}</p>\n      <a [routerLink]=\"['/author',authorOfDay.id]\" class=\"button-more\">More</a>\n    </div>\n  </div>\n  <ng-template #spinner>\n    <div class=\"spinner-container\">\n      <mat-spinner color=\"white\"></mat-spinner>\n    </div>\n  </ng-template>\n</div>\n"
+        },
+        {
+            "name": "AuthorsCardsListComponent",
+            "id": "component-AuthorsCardsListComponent-e85b862ba4810e8a3fd75fdcec18a5e5",
+            "file": "src/app/components/authors-cards-list/authors-cards-list.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-authors-cards-list",
+            "styleUrls": [
+                "./authors-cards-list.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./authors-cards-list.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "authors$",
+                    "type": "Observable<AuthorModel[]>",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "cardsPerPage",
+                    "defaultValue": "5",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "page",
+                    "defaultValue": "1",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 23
+                },
+                {
+                    "name": "onMoreClick",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "modifierKind": [
+                        114
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onPaginatorClick",
+                    "args": [
+                        {
+                            "name": "$event",
+                            "type": "PageEvent"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31,
+                    "modifierKind": [
+                        114
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "$event",
+                            "type": "PageEvent",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { PageEvent } from '@angular/material/paginator';\nimport { Router } from '@angular/router';\nimport { Observable } from 'rxjs';\n\nimport { AuthorsService } from 'src/app/services/authors.service';\nimport { AuthorModel } from 'src/app/models/author.model';\n\n@Component({\n  selector: 'app-authors-cards-list',\n  templateUrl: './authors-cards-list.component.html',\n  styleUrls: ['./authors-cards-list.component.scss']\n})\nexport class AuthorsCardsListComponent implements OnInit {\n\n  public authors$: Observable<AuthorModel[]>;\n\n  public page = 1;\n  public cardsPerPage = 5;\n\n  constructor(private authorsService: AuthorsService, private router: Router) { }\n\n  ngOnInit(): void {\n    this.authors$ = this.authorsService.getAuthors();\n  }\n\n  public onMoreClick(id: string): void {\n    this.router.navigate(['author', id]);\n  }\n\n  public onPaginatorClick($event: PageEvent): void {\n    this.page = $event.pageIndex + 1;\n    this.cardsPerPage = $event.pageSize;\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "#host-div {\n  display: flex;\n  flex-direction: column;\n}\n\n#cards {\n  display: grid;\n  justify-items: center;\n  grid-template-columns: 1fr;\n  gap: 25px;\n  margin-top: 70px;\n  @media screen and (min-width: 270px) {\n    margin-top: 20px;\n  }\n  @media screen and (min-width: 650px) {\n    margin: 20px 20px 0 20px;\n    grid-template-columns: repeat(2, 1fr);\n  }\n  @media screen and (min-width: 1000px) {\n    grid-template-columns: repeat(3, 1fr);\n  }\n  @media screen and (min-width: 1500px) {\n    grid-template-columns: repeat(4, 1fr);\n  }\n}\n\nmat-card {\n  width: 200px;\n  height: 350px;\n  padding: 10px;\n  @media screen and (min-width: 320px) {\n    width: 300px;\n  }\n  overflow: hidden;\n  border-radius: 10px;\n  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);\n}\n\nmat-card-header {\n  margin-bottom: 10px;\n}\n\nmat-card-subtitle {\n  margin-bottom: 10px;\n}\n\n.more-button {\n  position: absolute;\n  bottom: 10px;\n  left: 10px;\n}\n\n.avatar {\n  width: 60px;\n  height: 60px;\n  border-radius: 20%;\n}\n\n.description {\n  padding-right: 10px;\n  max-height: 180px;\n  overflow-y: auto;\n}\n",
+                    "styleUrl": "./authors-cards-list.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "authorsService",
+                        "type": "AuthorsService"
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router"
+                    }
+                ],
+                "line": 19,
+                "jsdoctags": [
+                    {
+                        "name": "authorsService",
+                        "type": "AuthorsService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div id=\"host-div\" *ngIf=\"(authors$ | async) as authors\">\n  <div id=\"cards\">\n    <mat-card *ngFor=\"let author of authors | paginator : page : cardsPerPage\" [class.mat-elevation-z]=\"true\">\n      <mat-card-header>\n        <img class=\"avatar\" matCardAvatar src=\"{{author.image}}\" alt=\"Image\">\n        <mat-card-title>\n          {{author.name}}\n        </mat-card-title>\n      </mat-card-header>\n      <div class=\"description\">\n        <mat-card-subtitle>\n          {{author.years}}\n        </mat-card-subtitle>\n        <mat-card-subtitle>\n          {{author.placeOfBirth}}\n        </mat-card-subtitle>\n        {{author.shortDescription}}\n      </div>\n      <mat-card-actions>\n        <button class=\"more-button\" mat-raised-button (click)=\"onMoreClick(author.id)\">More...</button>\n      </mat-card-actions>\n    </mat-card>\n  </div>\n  <mat-paginator [length]=\"authors.length\" [pageSize]=\"cardsPerPage\" [pageSizeOptions]=\"[5, 10]\"\n    (page)=\"onPaginatorClick($event)\">\n  </mat-paginator>\n</div>\n"
+        },
+        {
+            "name": "AuthorsListComponent",
+            "id": "component-AuthorsListComponent-47258ff727719486ce4008dde14945b1",
+            "file": "src/app/pages/authors-list/authors-list.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-authors-list",
+            "styleUrls": [
+                "./authors-list.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./authors-list.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 11
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n@Component({\n  selector: 'app-authors-list',\n  templateUrl: './authors-list.component.html',\n  styleUrls: ['./authors-list.component.scss']\n})\nexport class AuthorsListComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./authors-list.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 7
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<app-search-widget></app-search-widget>\n<app-authors-cards-list></app-authors-cards-list>\n"
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-642c6c4e474cd5a0ac760dfda26b2fc9",
+            "file": "src/stories/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-button",
+            "styleUrls": [
+                "./button.css"
+            ],
+            "styles": [],
+            "template": "<button   type=\"button\"\n   (click)=\"onClick.emit($event)\"\n   [ngClass]=\"classes\"\n   [ngStyle]=\"{ 'background-color': backgroundColor }\"\n >\n   {{ label }}\n </button>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "backgroundColor",
+                    "description": "<p>What background color to use</p>\n",
+                    "line": 26,
+                    "type": "string"
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Button'",
+                    "description": "<p>Button contents</p>\n",
+                    "line": 40
+                },
+                {
+                    "name": "primary",
+                    "defaultValue": "false",
+                    "description": "<p>Is this the principal call to action on the page?</p>\n",
+                    "line": 20
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'medium'",
+                    "description": "<p>How large should the button be?</p>\n",
+                    "line": 32,
+                    "type": "\"small\" | \"medium\" | \"large\""
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onClick",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "description": "<p>Optional click handler</p>\n",
+                    "line": 46,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.css'],\n})\nexport default class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-button {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-weight: 700;\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  line-height: 1;\n}\n.storybook-button--primary {\n  color: white;\n  background-color: #1ea7fd;\n}\n.storybook-button--secondary {\n  color: #333;\n  background-color: transparent;\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n}\n.storybook-button--small {\n  font-size: 12px;\n  padding: 10px 16px;\n}\n.storybook-button--medium {\n  font-size: 14px;\n  padding: 11px 20px;\n}\n.storybook-button--large {\n  font-size: 16px;\n  padding: 12px 24px;\n}\n",
+                    "styleUrl": "./button.css"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "classes": {
+                    "name": "classes",
+                    "getSignature": {
+                        "name": "classes",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 48
+                    }
+                }
+            }
+        },
+        {
+            "name": "EvaluationComponent",
+            "id": "component-EvaluationComponent-1e8ecd280b9e3a06ffd65a39585b1fdc",
+            "file": "src/app/components/evaluation/evaluation.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-evaluation",
+            "styleUrls": [
+                "./evaluation.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./evaluation.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "scope",
+                    "type": "Scope",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17
+                },
+                {
+                    "name": "onSliderChanged",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MatSliderChange"
+                        },
+                        {
+                            "name": "slider",
+                            "type": "Scope"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21,
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "MatSliderChange",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "slider",
+                            "type": "Scope",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "saveUpdates",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { MatSliderChange } from '@angular/material/slider';\n\nimport { ScopeService } from 'src/app/services/scope.service';\nimport { Scope } from 'src/app/models/scope.model';\n\n@Component({\n  selector: 'app-evaluation',\n  templateUrl: './evaluation.component.html',\n  styleUrls: ['./evaluation.component.scss']\n})\nexport class EvaluationComponent implements OnInit {\n  scope: Scope;\n\n  constructor(private scopeService: ScopeService) { }\n\n  ngOnInit(): void {\n    this.scope = this.scopeService.scope;\n  }\n\n  onSliderChanged(event: MatSliderChange, slider: Scope): void {\n    slider.currentPoints = event.value;\n  }\n\n  saveUpdates(): void {\n    this.scopeService.saveScope();\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../../mixins\";\n\nh1 {\n  @include divider;\n}\n",
+                    "styleUrl": "./evaluation.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "scopeService",
+                        "type": "ScopeService"
+                    }
+                ],
+                "line": 13,
+                "jsdoctags": [
+                    {
+                        "name": "scopeService",
+                        "type": "ScopeService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"evaluation\">\n  <h1>{{'WORKLOG.SELF_EVALUATION' | translate}}</h1>\n  <app-scope [scope]=\"scope\" [isRoot]=\"true\" (update)=\"saveUpdates()\"></app-scope>\n</div>\n"
+        },
+        {
+            "name": "FooterComponent",
+            "id": "component-FooterComponent-868f3962f21c76b835aad91a76be5501",
+            "file": "src/app/components/footer/footer.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-footer",
+            "styleUrls": [
+                "./footer.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./footer.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-footer',\n  templateUrl: './footer.component.html',\n  styleUrls: ['./footer.component.scss']\n})\nexport class FooterComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "footer {\n  padding: 50px;\n  background-color: crimson;\n  margin-top: 50px;\n}\n",
+                    "styleUrl": "./footer.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<footer>\n  <p>footer component</p>\n</footer>\n"
+        },
+        {
+            "name": "HeaderComponent",
+            "id": "component-HeaderComponent-246e2a69dc126a3bd76c6328dd3b93e2",
+            "file": "src/stories/header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-header",
+            "styleUrls": [
+                "./header.css"
+            ],
+            "styles": [],
+            "template": "<header>    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          primary\n          size=\"small\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </header>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "line": 53,
+                    "type": "unknown"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onCreateAccount",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 62,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogin",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 56,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogout",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 59,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-header',\n  template: `<header>\n    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          primary\n          size=\"small\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </header>`,\n  styleUrls: ['./header.css'],\n})\nexport default class HeaderComponent {\n  @Input()\n  user: unknown = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".wrapper {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\nsvg {\n  display: inline-block;\n  vertical-align: top;\n}\n\nh1 {\n  font-weight: 900;\n  font-size: 20px;\n  line-height: 1;\n  margin: 6px 0 6px 10px;\n  display: inline-block;\n  vertical-align: top;\n}\n\nbutton + button {\n  margin-left: 10px;\n}\n",
+                    "styleUrl": "./header.css"
+                }
+            ],
+            "stylesData": ""
+        },
+        {
+            "name": "HeaderComponent",
+            "id": "component-HeaderComponent-910454c7fc032e3508270c87501ea5ad-1",
+            "file": "src/app/components/header/header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-header",
+            "styleUrls": [
+                "./header.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./header.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "sidenavToggle",
+                    "defaultValue": "new EventEmitter()",
+                    "line": 9,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "toggle",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 11
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'app-header',\n  templateUrl: './header.component.html',\n  styleUrls: ['./header.component.scss']\n})\nexport class HeaderComponent {\n  @Output() public sidenavToggle = new EventEmitter();\n\n  toggle(): void {\n    this.sidenavToggle.emit();\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../../variables\";\n\nheader {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  min-height: 70px;\n  padding: 0 20px;\n  background-color: $header-background-color;\n  position: fixed;\n  top: 0;\n  z-index: 10;\n\n  .mobile-menu-btn {\n    background: transparent;\n    border: 0;\n    margin-right: 20px;\n    border-radius: 50%;\n\n    @media (min-width: $breakpoint-tablet) {\n      display: none;\n    }\n  }\n\n  .mat-icon-menu {\n    color: $color-white;\n  }\n}\n\n.header {\n  width: 100%;\n  min-height: 70px;\n}\n",
+                    "styleUrl": "./header.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "isDuplicate": true,
+            "duplicateId": 1,
+            "duplicateName": "HeaderComponent-1",
+            "templateData": "<header class=\"header\">\n  <button class=\"mobile-menu-btn\" isIconButton=\"true\" isRoundButton=\"true\" mat-mini-fab mat-icon-button aria-label=\"Menu icon\" (click)=\"toggle()\">\n    <mat-icon class=\"mat-icon-menu\" aria-hidden=\"false\">menu</mat-icon>\n  </button>\n  <app-navigation></app-navigation>\n  <app-languages></app-languages>\n</header>\n"
+        },
+        {
+            "name": "LanguagesComponent",
+            "id": "component-LanguagesComponent-c6cac31e6f2053b8eb4e4e39f2dff2a4",
+            "file": "src/app/components/languages/languages.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-languages",
+            "styleUrls": [
+                "./languages.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./languages.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "currentLocale$",
+                    "type": "Observable<string>",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "locales",
+                    "type": "ILanguage[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 24
+                },
+                {
+                    "name": "select",
+                    "args": [
+                        {
+                            "name": "locale",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 29,
+                    "jsdoctags": [
+                        {
+                            "name": "locale",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Store, select } from '@ngrx/store';\nimport { Observable } from 'rxjs';\nimport { TranslateService } from '@ngx-translate/core';\n\nimport { languages } from 'src/app/constants/language.const';\nimport { ILanguage } from 'src/app/models/language.model';\nimport { AppLanguageStore } from 'src/app/services/language-store.service';\nimport { IAppStore } from 'src/app/redux/state.model';\nimport { selectLocale } from 'src/app/redux/selectors/appReducer.selector';\nimport { changeLocale } from 'src/app/redux/actions';\n\n@Component({\n  selector: 'app-languages',\n  templateUrl: './languages.component.html',\n  styleUrls: ['./languages.component.scss'],\n})\nexport class LanguagesComponent implements OnInit {\n  locales: ILanguage[];\n  currentLocale$: Observable<string>;\n\n  constructor(private store: Store<IAppStore>, private translateService: TranslateService) { }\n\n  ngOnInit(): void {\n    this.locales = languages;\n    this.currentLocale$ = this.store.pipe(select(selectLocale));\n  }\n\n  select(locale: string): void {\n    AppLanguageStore.saveLocale(locale);\n    this.store.dispatch(changeLocale({ locale }));\n    this.translateService.use(locale);\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  margin-left: auto;\n}\n\n.languages {\n  &-btn-menu {\n    text-transform: uppercase;\n    background-color: #90a4ae;\n    color: #ffffff;\n    cursor: pointer;\n  }\n}\n",
+                    "styleUrl": "./languages.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "store",
+                        "type": "Store<IAppStore>"
+                    },
+                    {
+                        "name": "translateService",
+                        "type": "TranslateService"
+                    }
+                ],
+                "line": 20,
+                "jsdoctags": [
+                    {
+                        "name": "store",
+                        "type": "Store<IAppStore>",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "translateService",
+                        "type": "TranslateService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"languages\">\n  <button class=\"languages-btn-menu\" mat-mini-fab color=\"accent\" [matMenuTriggerFor]=\"menu\" isRoundButton=\"true\" aria-label=\"Example icon button with a bookmark icon\">\n    {{currentLocale$ | async}}\n  </button>\n  <mat-menu #menu=\"matMenu\">\n    <button mat-menu-item *ngFor=\"let locale of locales\" (click)=\"select(locale.name)\">{{locale.label}}</button>\n  </mat-menu>\n</div>\n"
+        },
+        {
+            "name": "MainComponent",
+            "id": "component-MainComponent-6a7ec5dee385bb6a2c7060a96255a737",
+            "file": "src/app/pages/main/main.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-main",
+            "styleUrls": [
+                "./main.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./main.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "authorOfDay$",
+                    "type": "Observable<AuthorModel>",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Observable } from 'rxjs';\n\nimport { AuthorModel } from 'src/app/models/author.model';\nimport { AuthorsService } from 'src/app/services/authors.service';\n\n@Component({\n  selector: 'app-main',\n  templateUrl: './main.component.html',\n  styleUrls: ['./main.component.scss']\n})\nexport class MainComponent implements OnInit {\n  authorOfDay$: Observable<AuthorModel>;\n\n  constructor(private authorsService: AuthorsService) { }\n\n  ngOnInit(): void {\n    this.authorOfDay$ = this.authorsService.getAuthorOfDay();\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "h1 {\n  background-color: crimson;\n}\n",
+                    "styleUrl": "./main.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "authorsService",
+                        "type": "AuthorsService"
+                    }
+                ],
+                "line": 13,
+                "jsdoctags": [
+                    {
+                        "name": "authorsService",
+                        "type": "AuthorsService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<h1>portal description</h1>\n<app-author-of-day [authorOfDay]=\"authorOfDay$ | async\"></app-author-of-day>\n"
+        },
+        {
+            "name": "NavigationComponent",
+            "id": "component-NavigationComponent-65408f552bba1ae959000b3af4b2b9ec",
+            "file": "src/app/components/navigation/navigation.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-navigation",
+            "styleUrls": [
+                "./navigation.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./navigation.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "navItems",
+                    "defaultValue": "[]",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 13
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\nimport { navItems as navSections } from 'src/app/const';\n\n@Component({\n  selector: 'app-navigation',\n  templateUrl: './navigation.component.html',\n  styleUrls: ['./navigation.component.scss']\n})\nexport class NavigationComponent implements OnInit {\n  navItems = [];\n\n  ngOnInit(): void {\n    this.navItems = navSections;\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../../variables\";\n\n:host {\n  width: 90%;\n}\n\n.navigation {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n\n  &-logo {\n    display: flex;\n    flex-direction: column;\n    color: #ffffff;\n    font-family: \"Italianno\", cursive;\n    text-decoration: none;\n  }\n  &-title {\n    font-size: 30px;\n  }\n  &-topic {\n    font-size: 20px;\n  }\n\n  &-list {\n    list-style: none;\n    display: flex;\n    @media (max-width: $breakpoint-tablet) {\n      display: none;\n    }\n  }\n\n  &-item {\n    & + & {\n      margin-left: 20px;\n    }\n  }\n\n  &-link {\n    color: #ffffff;\n    text-decoration: none;\n\n    &.active,\n    &:hover {\n      color: #43a047;\n    }\n  }\n}\n",
+                    "styleUrl": "./navigation.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"navigation\">\n  <a class=\"navigation-logo\" routerLink=\"/\">\n    <span class=\"navigation-title\">Culture Portal</span>\n    <span class=\"navigation-topic\">Architects of Belarus</span>\n  </a>\n\n  <ul class=\"navigation-list\">\n    <li class=\"navigation-item\" *ngFor=\"let item of navItems\">\n      <a class=\"navigation-link\" [routerLink]=\"item.path\" routerLinkActive=\"active\"\n        [routerLinkActiveOptions]=\"item.path === '/' ? { exact: true } : {}\">{{ item.name | translate }}</a>\n    </li>\n  </ul>\n</div>\n"
+        },
+        {
+            "name": "Page404Component",
+            "id": "component-Page404Component-93c1418f99aa4d176974d119fb75e6a2",
+            "file": "src/app/pages/page404/page404.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-page404",
+            "styleUrls": [
+                "./page404.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./page404.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-page404',\n  templateUrl: './page404.component.html',\n  styleUrls: ['./page404.component.scss']\n})\nexport class Page404Component { }\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../../mixins\";\n\n.page-not-found {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n\n.image {\n  margin: 50px;\n}\n\n.button {\n  @include button;\n}\n",
+                    "styleUrl": "./page404.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div class=\"page-not-found\">\n  <img src=\"../../../assets/404.png\" alt=\"page 404\" class=\"image\">\n  <h2>{{'404_PAGE.NOT_FOUND' | translate}}</h2>\n  <a class=\"navigation-link\" routerLink=\"/\" class=\"button\">{{'404_PAGE.BACK' | translate}}</a>\n</div>\n"
+        },
+        {
+            "name": "PageComponent",
+            "id": "component-PageComponent-cca1a8911321fa17756ce90c90de65cc",
+            "file": "src/stories/page.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-page",
+            "styleUrls": [
+                "./page.css"
+            ],
+            "styles": [],
+            "template": "<article>    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"onLogout.emit($event)\"\n      (onLogin)=\"onLogin.emit($event)\"\n      (onCreateAccount)=\"onCreateAccount.emit($event)\"\n    ></storybook-header>\n    <section>\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://www.learnstorybook.com\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Learn Storybook\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\">\n          docs\n        </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "line": 66,
+                    "type": "unknown"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onCreateAccount",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 75,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogin",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 69,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogout",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 72,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-page',\n  template: `<article>\n    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"onLogout.emit($event)\"\n      (onLogin)=\"onLogin.emit($event)\"\n      (onCreateAccount)=\"onCreateAccount.emit($event)\"\n    ></storybook-header>\n    <section>\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://www.learnstorybook.com\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Learn Storybook\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\">\n          docs\n        </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>`,\n  styleUrls: ['./page.css'],\n})\nexport default class PageComponent {\n  @Input()\n  user: unknown = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n\n// export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (\n//   <article>\n//     <Header user={user} onLogin={onLogin} onLogout={onLogout} onCreateAccount={onCreateAccount} />\n\n// );\n// Page.propTypes = {\n//   user: PropTypes.shape({}),\n//   onLogin: PropTypes.func.isRequired,\n//   onLogout: PropTypes.func.isRequired,\n//   onCreateAccount: PropTypes.func.isRequired,\n// };\n\n// Page.defaultProps = {\n//   user: null,\n// };\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "section {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 24px;\n  padding: 48px 20px;\n  margin: 0 auto;\n  max-width: 600px;\n  color: #333;\n}\n\nh2 {\n  font-weight: 900;\n  font-size: 32px;\n  line-height: 1;\n  margin: 0 0 4px;\n  display: inline-block;\n  vertical-align: top;\n}\n\np {\n  margin: 1em 0;\n}\n\na {\n  text-decoration: none;\n  color: #1ea7fd;\n}\n\nul {\n  padding-left: 30px;\n  margin: 1em 0;\n}\n\nli {\n  margin-bottom: 8px;\n}\n\n.tip {\n  display: inline-block;\n  border-radius: 1em;\n  font-size: 11px;\n  line-height: 12px;\n  font-weight: 700;\n  background: #e7fdd8;\n  color: #66bf3c;\n  padding: 4px 12px;\n  margin-right: 10px;\n  vertical-align: top;\n}\n\n.tip-wrapper {\n  font-size: 13px;\n  line-height: 20px;\n  margin-top: 40px;\n  margin-bottom: 40px;\n}\n\n.tip-wrapper svg {\n  display: inline-block;\n  height: 12px;\n  width: 12px;\n  margin-right: 4px;\n  vertical-align: top;\n  margin-top: 3px;\n}\n\n.tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
+                    "styleUrl": "./page.css"
+                }
+            ],
+            "stylesData": ""
+        },
+        {
+            "name": "ScopeComponent",
+            "id": "component-ScopeComponent-b6d58313d9679be2912dd96c66bf836f",
+            "file": "src/app/components/scope/scope.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-scope",
+            "styleUrls": [
+                "./scope.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./scope.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "isRoot",
+                    "line": 13,
+                    "type": "boolean"
+                },
+                {
+                    "name": "scope",
+                    "line": 14,
+                    "type": "Scope"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "update",
+                    "defaultValue": "new EventEmitter<number>()",
+                    "line": 15,
+                    "type": "EventEmitter<number>"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "points",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21
+                },
+                {
+                    "name": "onSliderChanged",
+                    "args": [
+                        {
+                            "type": "MatSliderChange"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25,
+                    "jsdoctags": [
+                        {
+                            "type": "MatSliderChange",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onUpdate",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31
+                },
+                {
+                    "name": "updatePoints",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\nimport { MatSliderChange } from '@angular/material/slider';\n\nimport { Scope } from 'src/app/models/scope.model';\n\n@Component({\n  selector: 'app-scope',\n  templateUrl: './scope.component.html',\n  styleUrls: ['./scope.component.scss']\n})\nexport class ScopeComponent implements OnInit {\n  points: number;\n  @Input() isRoot: boolean;\n  @Input() scope: Scope;\n  @Output() update: EventEmitter<number> = new EventEmitter<number>();\n\n  private updatePoints(): void {\n    this.points = this.isRoot ? Math.max(0, this.scope.currentPoints) : this.scope.currentPoints;\n  }\n\n  ngOnInit(): void {\n    this.updatePoints();\n  }\n\n  onSliderChanged({ value }: MatSliderChange): void {\n    this.scope.currentPoints = value;\n    this.updatePoints();\n    this.update.emit(value);\n  }\n\n  onUpdate(): void {\n    this.updatePoints();\n    this.update.emit(this.scope.currentPoints);\n  }\n\n  get scoreClass(): { score: boolean, 'max-score': boolean, 'min-score': boolean } {\n    return {\n      score: true,\n      'max-score': this.scope.currentPoints >= this.scope.max / 2,\n      'min-score': this.scope.currentPoints < 0 || this.scope.currentPoints < this.scope.max / 2,\n    };\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".scope-header {\n  padding-left: 30px;\n}\n\n.score {\n  text-decoration: underline;\n  font-weight: bold;\n}\n\n.min-score {\n  color: red;\n}\n\n.max-score {\n  color: green;\n}\n\n.scope-container {\n  border: 1px solid black;\n  border-radius: 5px;\n  box-shadow: 5px 5px 5px grey;\n  margin: 10px;\n  padding: 10px;\n}\n\nmat-slider {\n  margin-right: 10px;\n}\n",
+                    "styleUrl": "./scope.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "implements": [
+                "OnInit"
+            ],
+            "accessors": {
+                "scoreClass": {
+                    "name": "scoreClass",
+                    "getSignature": {
+                        "name": "scoreClass",
+                        "type": "literal type",
+                        "returnType": "literal type",
+                        "line": 36
+                    }
+                }
+            },
+            "templateData": "<div *ngIf=\"scope.scopes; else slider\" class=\"scope-container\">\n  <h2 class=\"scope-header\">\n    {{scope.description}}\n    <span [class]=\"scoreClass\">{{points}}</span>\n  </h2>\n  <div *ngFor=\"let subScope of scope.scopes\">\n    <app-scope [scope]=\"subScope\" (update)=\"onUpdate(subScope)\"></app-scope>\n  </div>\n</div>\n<ng-template #slider>\n  <mat-slider [min]=\"scope.min\" [max]=\"scope.max\" [step]=\"scope.step\" [thumbLabel]=\"true\" [value]=\"scope.currentPoints\"\n    (change)=\"onSliderChanged($event)\"></mat-slider>\n  <span [class]=\"scoreClass\">[{{points}}]</span><span> {{scope.description}}</span>\n</ng-template>\n"
+        },
+        {
+            "name": "SearchWidgetComponent",
+            "id": "component-SearchWidgetComponent-30a893d7545880d2a0002bd44996dd9e",
+            "file": "src/app/components/search-widget/search-widget.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-search-widget",
+            "styleUrls": [
+                "./search-widget.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./search-widget.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "filterInputSub",
+                    "type": "Subscription",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "isFilterShown",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "searchLineWidth",
+                    "defaultValue": "0",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21
+                },
+                {
+                    "name": "onSearchClick",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 30,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { AfterViewInit, Component } from '@angular/core';\nimport { fromEvent, Subscription } from 'rxjs';\nimport { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';\nimport { Store } from '@ngrx/store';\n\nimport { changeFilter } from 'src/app/redux/actions';\nimport { IAppReducer } from 'src/app/redux/state.model';\n\n@Component({\n  selector: 'app-search-widget',\n  templateUrl: './search-widget.component.html',\n  styleUrls: ['./search-widget.component.scss']\n})\nexport class SearchWidgetComponent implements AfterViewInit {\n  public isFilterShown = false;\n  public searchLineWidth = 0;\n  public filterInputSub: Subscription;\n\n  constructor(private store: Store<IAppReducer>) { }\n\n  ngAfterViewInit(): void {\n    this.filterInputSub = fromEvent(document.getElementById('filter-input'), 'input')\n      .pipe(\n        map((event: KeyboardEvent) => (event.target as HTMLInputElement).value),\n        debounceTime(400),\n        distinctUntilChanged())\n      .subscribe(filter => this.store.dispatch(changeFilter({ filter })));\n  }\n\n  public onSearchClick(): void {\n    this.searchLineWidth = this.isFilterShown ? 0 : 250;\n    this.isFilterShown = !this.isFilterShown;\n  }\n\n  // changed(event: InputEvent): void {\n  //   const input: HTMLInputElement = event.target as HTMLInputElement;\n  //   const filter = input.value;\n  //   this.store.dispatch(changeFilter({ filter }));\n  // }\n}\n\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../../variables\";\n\n:host {\n  position: fixed;\n  right: 20px;\n  top: 105px;\n  @media screen and (min-width: 270px) {\n    top: 75px\n  }\n  z-index: 1;\n  div{\n    padding-top: 5px;\n  }\n}\n\n.background {\n  background-color: $search-widget-background-color;\n  padding-left: 10px;\n  border-radius: 15px;\n}\n\nmat-form-field {\n  transition: width .5s cubic-bezier(0, 0.8, 0, 1);\n  -moz-transition: width .5s cubic-bezier(0, 0.8, 0, 1);\n  -o-transition: width .5s cubic-bezier(0, 0.8, 0, 1);\n  -webkit-transition: width .5s cubic-bezier(0, 0.8, 0, 1);\n}\n\ninput.mat-input-element {\n  color: $color-white;\n}\n\n::ng-deep .mat-input-element {\n  caret-color: $color-white!important;\n}\n\n::ng-deep .mat-form-field-label {\n  color: #43a047 !important;\n }\n\n ::ng-deep.mat-form-field-underline {\n  background-color: #43a047 !important;\n}\n\n::ng-deep.mat-form-field-ripple {\n background-color: #43a047 !important;;\n}\n",
+                    "styleUrl": "./search-widget.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "store",
+                        "type": "Store<IAppReducer>"
+                    }
+                ],
+                "line": 17,
+                "jsdoctags": [
+                    {
+                        "name": "store",
+                        "type": "Store<IAppReducer>",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "AfterViewInit"
+            ],
+            "templateData": "<div [ngClass]=\"{'background':isFilterShown}\">\n  <mat-form-field [ngStyle]=\"{'width.px': searchLineWidth}\">\n    <mat-label>{{ 'ARCHITECTS.FILTER' | translate}}</mat-label>\n    <input matInput id='filter-input'>\n  </mat-form-field>\n  <button mat-icon-button (click)=\"onSearchClick()\">\n    <mat-icon>search</mat-icon>\n  </button>\n</div>\n"
+        },
+        {
+            "name": "SidenavComponent",
+            "id": "component-SidenavComponent-ae8d26b61a554dcefb4f8e44a09d86e3",
+            "file": "src/app/components/sidenav/sidenav.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-sidenav",
+            "styleUrls": [
+                "./sidenav.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./sidenav.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "navSections",
+                    "defaultValue": "[]",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 13
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\nimport { navItems } from 'src/app/const';\n\n@Component({\n  selector: 'app-sidenav',\n  templateUrl: './sidenav.component.html',\n  styleUrls: ['./sidenav.component.scss']\n})\nexport class SidenavComponent implements OnInit {\n  navSections = [];\n\n  ngOnInit(): void {\n    this.navSections = navItems;\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../../variables\";\n\n.sidenav-container {\n  align-items: center;\n  display: flex;\n  flex-direction: column;\n  font-size: 1.4em;\n  margin-top: 30px;\n\n  .sidenav-title {\n    color: $color-white;\n  }\n\n  .mat-nav-list {\n    margin-top: 20px;\n    width: 100%;\n  }\n\n  .mat-list-item-text {\n    color: $color-white;\n    font-size: 1.3em !important;\n  }\n}\n",
+                    "styleUrl": "./sidenav.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"sidenav-container\">\n  <a class=\"sidenav-home-link\" routerLink=\"/\">\n    <span class=\"sidenav-title\">Culture Portal</span>\n  </a>\n\n  <mat-nav-list>\n    <a mat-list-item [href]=\"item.path\" *ngFor=\"let item of navSections\">\n      <span class=\"mat-list-item-text\">{{ item.name | translate }}</span>\n    </a>\n </mat-nav-list>\n</div>\n"
+        },
+        {
+            "name": "TeamComponent",
+            "id": "component-TeamComponent-3ea81841a4bfb500347977a780a4f939",
+            "file": "src/app/pages/team/team.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-team",
+            "styleUrls": [
+                "./team.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./team.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-team',\n  templateUrl: './team.component.html',\n  styleUrls: ['./team.component.scss']\n})\nexport class TeamComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./team.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<p>{{'TEAM.REMOVE_ME' | translate}}</p>\n"
+        },
+        {
+            "name": "WorklogComponent",
+            "id": "component-WorklogComponent-3a296c86de5b451149091e5f6d61bc21",
+            "file": "src/app/pages/worklog/worklog.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-worklog",
+            "styleUrls": [
+                "./worklog.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./worklog.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-worklog',\n  templateUrl: './worklog.component.html',\n  styleUrls: ['./worklog.component.scss']\n})\nexport class WorklogComponent { }\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../../mixins\";\n\nh1 {\n  @include divider;\n}\n\nh3 {\n  text-align: center;\n}\n\nsection {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  margin: 20px 0;\n}\n\ntable {\n  width: 80%;\n}\n\ntd,\nth,\ntable {\n  border: 1px solid black;\n}\n\n.name,\n.time {\n  text-align: center;\n}\n",
+                    "styleUrl": "./worklog.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<h1>{{'WORKLOG.MENU_ITEM' | translate}}</h1>\n<section>\n  <table>\n    <tbody>\n      <tr>\n        <td colspan=\"2\" class=\"name\">Andrey Knyshenko</td>\n      </tr>\n      <tr>\n        <td colspan=\"2\" class=\"name\">Hanna Slisenka</td>\n      </tr>\n      <tr>\n        <td colspan=\"2\" class=\"name\">Maksim Kirilko</td>\n      </tr>\n      <tr>\n        <td colspan=\"2\" class=\"name\">Morozov Alexy</td>\n      </tr>\n      <tr>\n        <td colspan=\"2\" class=\"name\">Petro Yuskiv</td>\n      </tr>\n      <tr>\n        <td colspan=\"2\" class=\"name\">Raman Haiduchyk</td>\n      </tr>\n      <tr>\n        <td class=\"time\">2</td>\n        <td>Split the major task into small subtasks</td>\n      </tr>\n      <tr>\n        <td class=\"time\">2</td>\n        <td>Make primary structure of the project</td>\n      </tr>\n      <tr>\n        <td class=\"time\">2</td>\n        <td>Prepare authors data</td>\n      </tr>\n      <tr>\n        <td class=\"time\">2</td>\n        <td>Main page</td>\n      </tr>\n      <tr>\n        <td class=\"time\">2</td>\n        <td>Navigation menu</td>\n      </tr>\n      <tr>\n        <td class=\"time\">2</td>\n        <td>Authors page</td>\n      </tr>\n      <tr>\n        <td class=\"time\">2</td>\n        <td>Search widget</td>\n      </tr>\n      <tr>\n        <td class=\"time\">2</td>\n        <td>Author full view page</td>\n      </tr>\n      <tr>\n        <td class=\"time\">2</td>\n        <td>Photo gallery</td>\n      </tr>\n      <tr>\n        <td class=\"time\">2</td>\n        <td>Video</td>\n      </tr>\n      <tr>\n        <td class=\"time\">2</td>\n        <td>Map</td>\n      </tr>\n      <tr>\n        <td class=\"time\">2</td>\n        <td>Translation and languages support</td>\n      </tr>\n      <tr>\n        <td class=\"time\">2</td>\n        <td>Team page</td>\n      </tr>\n      <tr>\n        <td class=\"time\">2</td>\n        <td>WorkLog page</td>\n      </tr>\n      <tr>\n        <td class=\"time\">2</td>\n        <td>Self-Evaluation component</td>\n      </tr>\n      <tr>\n        <td class=\"time\">2</td>\n        <td>StyleGuide page</td>\n      </tr>\n      <tr>\n        <td class=\"time\">2</td>\n        <td>404 page</td>\n      </tr>\n    </tbody>\n  </table>\n\n</section>\n<hr>\n\n<h1>{{'WORKLOG.DIFFICULTIES' | translate}}</h1>\n<section>\n  <h3>{{'WORKLOG.COORDINATING' | translate}}</h3>\n  <h3>{{'WORKLOG.STYLEGIUDE' | translate}}</h3>\n  <h3>{{'WORKLOG.ANIMATION' | translate}}</h3>\n</section>\n<hr>\n<app-evaluation></app-evaluation>\n"
+        }
+    ],
+    "modules": [
+        {
+            "name": "AppMaterialModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "AppModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        },
+                        {
+                            "name": "AuthorFullViewComponent"
+                        },
+                        {
+                            "name": "AuthorOfDayComponent"
+                        },
+                        {
+                            "name": "AuthorsCardsListComponent"
+                        },
+                        {
+                            "name": "AuthorsListComponent"
+                        },
+                        {
+                            "name": "EvaluationComponent"
+                        },
+                        {
+                            "name": "FooterComponent"
+                        },
+                        {
+                            "name": "LanguagesComponent"
+                        },
+                        {
+                            "name": "MainComponent"
+                        },
+                        {
+                            "name": "NavigationComponent"
+                        },
+                        {
+                            "name": "Page404Component"
+                        },
+                        {
+                            "name": "PaginatorPipe"
+                        },
+                        {
+                            "name": "ScopeComponent"
+                        },
+                        {
+                            "name": "SearchWidgetComponent"
+                        },
+                        {
+                            "name": "SidenavComponent"
+                        },
+                        {
+                            "name": "TeamComponent"
+                        },
+                        {
+                            "name": "WorklogComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "AppMaterialModule"
+                        },
+                        {
+                            "name": "AppRoutingModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "AppRoutingModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "appReducer",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/redux/reducers/appReducer.ts",
+                "type": "",
+                "defaultValue": "(state: IAppReducer, action: Action): IAppReducer => reducer(state, action)"
+            },
+            {
+                "name": "AUTHORS_EXTENSION",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/const.ts",
+                "type": "string",
+                "defaultValue": "'.json'"
+            },
+            {
+                "name": "AUTHORS_FILE",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/const.ts",
+                "type": "",
+                "defaultValue": "'https://raw.githubusercontent.com/rss-maksim/angular-culture-portal' +\n  '/develop/src/app/data/architects/'"
+            },
+            {
+                "name": "changeAuthors",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/redux/actions/appActions.ts",
+                "type": "",
+                "defaultValue": "createAction('[Authors] list', props<{ authors: AuthorModel[] }>())"
+            },
+            {
+                "name": "changeFilter",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/redux/actions/appActions.ts",
+                "type": "",
+                "defaultValue": "createAction('[Authors] filter', props<{ filter: string }>())"
+            },
+            {
+                "name": "changeLocale",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/redux/actions/appActions.ts",
+                "type": "",
+                "defaultValue": "createAction('[Language] change', props<{ locale: string }>())"
+            },
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: true\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: false\n}"
+            },
+            {
+                "name": "FEATURE_KEY",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/redux/selectors/appReducer.selector.ts",
+                "type": "string",
+                "defaultValue": "'appReducer'"
+            },
+            {
+                "name": "getRandomAuthorIndex",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/redux/selectors/appReducer.selector.ts",
+                "type": "",
+                "defaultValue": "({ authors: { length } }: IAppReducer = { authors: [] } as IAppReducer) =>\n  Math.floor(Date.now() / MILLISECONDS_IN_DAY) % length"
+            },
+            {
+                "name": "initialState",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/redux/reducers/appReducer.ts",
+                "type": "IAppReducer",
+                "defaultValue": "{\n  locale: AppLanguageStore.loadLocale() || 'en',\n  filter: '',\n  authors: [],\n}"
+            },
+            {
+                "name": "lang",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/app.module.ts",
+                "type": "",
+                "defaultValue": "AppLanguageStore.loadLocale()"
+            },
+            {
+                "name": "languages",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/constants/language.const.ts",
+                "type": "ILanguage[]",
+                "defaultValue": "[\n  {\n    name: Lang.en,\n    label: 'EN'\n  },\n  {\n    name: Lang.ru,\n    label: 'RU'\n  },\n  {\n    name: Lang.by,\n    label: 'BY'\n  }\n]"
+            },
+            {
+                "name": "Large",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LOAD_AUTHORS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/redux/const.ts",
+                "type": "string",
+                "defaultValue": "'LOAD_AUTHORS'"
+            },
+            {
+                "name": "loadAuthors",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/redux/actions/appActions.ts",
+                "type": "",
+                "defaultValue": "() => ({ type: LOAD_AUTHORS })"
+            },
+            {
+                "name": "LOCALE_KEY",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/const.ts",
+                "type": "string",
+                "defaultValue": "'LOCALE'"
+            },
+            {
+                "name": "LoggedIn",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Header.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedIn",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Page.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedOut",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Header.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedOut",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Page.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "MILLISECONDS_IN_DAY",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/redux/selectors/appReducer.selector.ts",
+                "type": "number",
+                "defaultValue": "86400000"
+            },
+            {
+                "name": "navItems",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/const.ts",
+                "type": "[]",
+                "defaultValue": "[\n  { name: 'MAIN_PAGE.HOME', path: '/' },\n  { name: 'ARCHITECTS.MENU_ITEM', path: '/authors' },\n  { name: 'TEAM.MENU_ITEM', path: '/team' },\n  { name: 'WORKLOG.MENU_ITEM', path: '/worklog' },\n  { name: 'STYLEGUIDE', path: '/styleguide' },\n]"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "reducer",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/redux/reducers/appReducer.ts",
+                "type": "",
+                "defaultValue": "createReducer(\n  initialState,\n  on(changeLocale, (state, { locale }) => ({ ...state, locale })),\n  on(changeFilter, (state, { filter }) => ({ ...state, filter })),\n  on(changeAuthors, (state, { authors }) => ({ ...state, authors })),\n)"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "type": "literal type"
+            },
+            {
+                "name": "SCOPES",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/constants/scope.const.ts",
+                "type": "Scope",
+                "defaultValue": "new Scope('Total scope', 280, [\n  new Scope('Min scope', 50, [\n    new Scope('Main page + page with a list of authors + author\\'s page (only pages with content without widgets)', 10),\n    new Scope('Page with team members + page with worklog', 10),\n    new Scope('Page with list of authors contains search widget', 10),\n    new Scope('Portal has two languages', 20),\n  ]),\n  new Scope('Normal scope', 140, [\n    new Scope('Portal has page with styleguide', 20),\n    new Scope('Mobile version is okey', 10),\n    new Scope('Ipad/tablet version is okey', 10),\n    new Scope('Author\\'s page contains timeline', 10),\n    new Scope('Author\\'s page contains video overlay', 10),\n    new Scope('Author\\'s page contains photo gallery', 20),\n    new Scope('Author\\'s page contains map (geowidget)', 10),\n    new Scope('Design (typography, icons, colors, links + buttons + input, ui components are styled)', 20),\n    new Scope('Material-ui / bootstrap is used', 20),\n    new Scope('Portal has third language', 10),\n  ]),\n  new Scope('Extra scope', 90, [\n    new Scope('Confidence of the project presentation', 10),\n    new Scope('Project is made using scully', 10),\n    new Scope('Contentful / netlify cms / other cms is used for content management', 10),\n    new Scope('Animations / special effects like paralax', 20),\n    new Scope('Outstanding design', 20),\n    new Scope(\n      'Storybook/angularplayground/compodoc/other angular documentation tool usage for the page with styles',\n      20\n    ),\n  ]),\n  new Scope('Fines', 0, [\n    new Scope(\n      'There are less than 3 commits from each active team member. Everyone should merge their own PRs',\n      -50\n    ),\n    new Scope('Violations stage2-tasks-requirements', -50),\n    new Scope('No worklog for team', -40),\n    new Scope('Too primitive (ugly for 2020) design / UX', -20),\n  ]),\n])"
+            },
+            {
+                "name": "Secondary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "selectAuthorById",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/redux/selectors/appReducer.selector.ts",
+                "type": "",
+                "defaultValue": "createSelector(\n  selectFeature,\n  ({ authors }: IAppReducer, authorId: string) => authors.find(({ id }) => `${id}` === authorId)\n)"
+            },
+            {
+                "name": "selectAuthors",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/redux/selectors/appReducer.selector.ts",
+                "type": "",
+                "defaultValue": "createSelector(\n  selectFeature,\n  selectFilter,\n  ({ authors }: IAppReducer, filter: string) => filter\n    ? authors.filter(\n      ({ name, placeOfBirth }) => name.toLowerCase().includes(filter) || placeOfBirth.toLowerCase().includes(filter)\n    )\n    : authors\n)"
+            },
+            {
+                "name": "selectFeature",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/redux/selectors/appReducer.selector.ts",
+                "type": "",
+                "defaultValue": "createFeatureSelector<IAppStore, IAppReducer>(FEATURE_KEY)"
+            },
+            {
+                "name": "selectFilter",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/redux/selectors/appReducer.selector.ts",
+                "type": "",
+                "defaultValue": "createSelector(\n  selectFeature,\n  ({ filter }: IAppReducer) => filter\n)"
+            },
+            {
+                "name": "selectLocale",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/redux/selectors/appReducer.selector.ts",
+                "type": "",
+                "defaultValue": "createSelector(\n  selectFeature,\n  ({ locale }: IAppReducer) => locale\n)"
+            },
+            {
+                "name": "selectRandomAuthor",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/redux/selectors/appReducer.selector.ts",
+                "type": "",
+                "defaultValue": "createSelector(\n  selectFeature,\n  (state: IAppReducer) => {\n    return state.authors[getRandomAuthorIndex(state)];\n  }\n)"
+            },
+            {
+                "name": "SELF_EVALUATION",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/constants/scope-self-evaluation.const.ts",
+                "type": "[][]",
+                "defaultValue": "[ // Total scope\n  [ // 50, Min scope\n    10, // Main page + page with a list of authors + author's page (only pages with content without widgets)\n    10, // Page with team members + page with worklog\n    10, // Page with list of authors contains search widget\n    20, // Portal has two languages\n  ],\n  [ // 14, Normal scope\n    20, // Portal has page with styleguide\n    10, // Mobile version is okey\n    10, // Ipad/tablet version is okey\n    10, // Author's page contains timeline\n    10, // Author's page contains video overlay\n    20, // Author's page contains photo gallery\n    10, // Author's page contains map (geowidget)\n    20, // Design (typography, icons, colors, links + buttons + input, ui components are styled)\n    20, // Material-ui / bootstrap is used\n    10, // Portal has third language\n  ],\n  [ // 90, Extra scope\n    10, // Confidence of the project presentation\n    10, // Project is made using scully\n    10, // Contentful / netlify cms / other cms is used for content management\n    20, // Animations / special effects like paralax\n    20, // Outstanding design\n    20, // Storybook/angularplayground/compodoc/other angular documentation tool usage for the page with styles\n  ],\n  [ // Fines\n    0, // There are less than 3 commits from each active team member. Everyone should merge their own PRs\n    0, // Violations stage2-tasks-requirements\n    0, // No worklog for team\n    0, // Too primitive (ugly for 2020) design / UX\n  ],\n]"
+            },
+            {
+                "name": "Small",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "STORAGE_EVALUATION_KEY",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/constants/scope-self-evaluation.const.ts",
+                "type": "string",
+                "defaultValue": "'SELF_EVALUATION'"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "Story<Button>",
+                "defaultValue": "(args: Button) => ({\n  component: Button,\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Header.stories.ts",
+                "type": "Story<Header>",
+                "defaultValue": "(args: Header) => ({\n  component: Header,\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Page.stories.ts",
+                "type": "Story<Page>",
+                "defaultValue": "(args: Page) => ({\n  component: Page,\n  props: args,\n})"
+            }
+        ],
+        "functions": [
+            {
+                "name": "HttpLoaderFactory",
+                "file": "src/app/app.module.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "description": "",
+                "args": [
+                    {
+                        "name": "http"
+                    }
+                ],
+                "returnType": "TranslateHttpLoader",
+                "jsdoctags": [
+                    {
+                        "name": "http",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        ],
+        "typealiases": [],
+        "enumerations": [
+            {
+                "name": "Lang",
+                "childs": [
+                    {
+                        "name": "en",
+                        "value": "en"
+                    },
+                    {
+                        "name": "ru",
+                        "value": "ru"
+                    },
+                    {
+                        "name": "by",
+                        "value": "by"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "description": "",
+                "file": "src/app/models/language.model.ts"
+            }
+        ],
+        "groupedVariables": {
+            "src/app/redux/reducers/appReducer.ts": [
+                {
+                    "name": "appReducer",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/redux/reducers/appReducer.ts",
+                    "type": "",
+                    "defaultValue": "(state: IAppReducer, action: Action): IAppReducer => reducer(state, action)"
+                },
+                {
+                    "name": "initialState",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/redux/reducers/appReducer.ts",
+                    "type": "IAppReducer",
+                    "defaultValue": "{\n  locale: AppLanguageStore.loadLocale() || 'en',\n  filter: '',\n  authors: [],\n}"
+                },
+                {
+                    "name": "reducer",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/redux/reducers/appReducer.ts",
+                    "type": "",
+                    "defaultValue": "createReducer(\n  initialState,\n  on(changeLocale, (state, { locale }) => ({ ...state, locale })),\n  on(changeFilter, (state, { filter }) => ({ ...state, filter })),\n  on(changeAuthors, (state, { authors }) => ({ ...state, authors })),\n)"
+                }
+            ],
+            "src/app/const.ts": [
+                {
+                    "name": "AUTHORS_EXTENSION",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/const.ts",
+                    "type": "string",
+                    "defaultValue": "'.json'"
+                },
+                {
+                    "name": "AUTHORS_FILE",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/const.ts",
+                    "type": "",
+                    "defaultValue": "'https://raw.githubusercontent.com/rss-maksim/angular-culture-portal' +\n  '/develop/src/app/data/architects/'"
+                },
+                {
+                    "name": "LOCALE_KEY",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/const.ts",
+                    "type": "string",
+                    "defaultValue": "'LOCALE'"
+                },
+                {
+                    "name": "navItems",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/const.ts",
+                    "type": "[]",
+                    "defaultValue": "[\n  { name: 'MAIN_PAGE.HOME', path: '/' },\n  { name: 'ARCHITECTS.MENU_ITEM', path: '/authors' },\n  { name: 'TEAM.MENU_ITEM', path: '/team' },\n  { name: 'WORKLOG.MENU_ITEM', path: '/worklog' },\n  { name: 'STYLEGUIDE', path: '/styleguide' },\n]"
+                }
+            ],
+            "src/app/redux/actions/appActions.ts": [
+                {
+                    "name": "changeAuthors",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/redux/actions/appActions.ts",
+                    "type": "",
+                    "defaultValue": "createAction('[Authors] list', props<{ authors: AuthorModel[] }>())"
+                },
+                {
+                    "name": "changeFilter",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/redux/actions/appActions.ts",
+                    "type": "",
+                    "defaultValue": "createAction('[Authors] filter', props<{ filter: string }>())"
+                },
+                {
+                    "name": "changeLocale",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/redux/actions/appActions.ts",
+                    "type": "",
+                    "defaultValue": "createAction('[Language] change', props<{ locale: string }>())"
+                },
+                {
+                    "name": "loadAuthors",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/redux/actions/appActions.ts",
+                    "type": "",
+                    "defaultValue": "() => ({ type: LOAD_AUTHORS })"
+                }
+            ],
+            "src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "type": "literal type"
+                }
+            ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false\n}"
+                }
+            ],
+            "src/app/redux/selectors/appReducer.selector.ts": [
+                {
+                    "name": "FEATURE_KEY",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/redux/selectors/appReducer.selector.ts",
+                    "type": "string",
+                    "defaultValue": "'appReducer'"
+                },
+                {
+                    "name": "getRandomAuthorIndex",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/redux/selectors/appReducer.selector.ts",
+                    "type": "",
+                    "defaultValue": "({ authors: { length } }: IAppReducer = { authors: [] } as IAppReducer) =>\n  Math.floor(Date.now() / MILLISECONDS_IN_DAY) % length"
+                },
+                {
+                    "name": "MILLISECONDS_IN_DAY",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/redux/selectors/appReducer.selector.ts",
+                    "type": "number",
+                    "defaultValue": "86400000"
+                },
+                {
+                    "name": "selectAuthorById",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/redux/selectors/appReducer.selector.ts",
+                    "type": "",
+                    "defaultValue": "createSelector(\n  selectFeature,\n  ({ authors }: IAppReducer, authorId: string) => authors.find(({ id }) => `${id}` === authorId)\n)"
+                },
+                {
+                    "name": "selectAuthors",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/redux/selectors/appReducer.selector.ts",
+                    "type": "",
+                    "defaultValue": "createSelector(\n  selectFeature,\n  selectFilter,\n  ({ authors }: IAppReducer, filter: string) => filter\n    ? authors.filter(\n      ({ name, placeOfBirth }) => name.toLowerCase().includes(filter) || placeOfBirth.toLowerCase().includes(filter)\n    )\n    : authors\n)"
+                },
+                {
+                    "name": "selectFeature",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/redux/selectors/appReducer.selector.ts",
+                    "type": "",
+                    "defaultValue": "createFeatureSelector<IAppStore, IAppReducer>(FEATURE_KEY)"
+                },
+                {
+                    "name": "selectFilter",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/redux/selectors/appReducer.selector.ts",
+                    "type": "",
+                    "defaultValue": "createSelector(\n  selectFeature,\n  ({ filter }: IAppReducer) => filter\n)"
+                },
+                {
+                    "name": "selectLocale",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/redux/selectors/appReducer.selector.ts",
+                    "type": "",
+                    "defaultValue": "createSelector(\n  selectFeature,\n  ({ locale }: IAppReducer) => locale\n)"
+                },
+                {
+                    "name": "selectRandomAuthor",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/redux/selectors/appReducer.selector.ts",
+                    "type": "",
+                    "defaultValue": "createSelector(\n  selectFeature,\n  (state: IAppReducer) => {\n    return state.authors[getRandomAuthorIndex(state)];\n  }\n)"
+                }
+            ],
+            "src/app/app.module.ts": [
+                {
+                    "name": "lang",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/app.module.ts",
+                    "type": "",
+                    "defaultValue": "AppLanguageStore.loadLocale()"
+                }
+            ],
+            "src/app/constants/language.const.ts": [
+                {
+                    "name": "languages",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/constants/language.const.ts",
+                    "type": "ILanguage[]",
+                    "defaultValue": "[\n  {\n    name: Lang.en,\n    label: 'EN'\n  },\n  {\n    name: Lang.ru,\n    label: 'RU'\n  },\n  {\n    name: Lang.by,\n    label: 'BY'\n  }\n]"
+                }
+            ],
+            "src/stories/Button.stories.ts": [
+                {
+                    "name": "Large",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Secondary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Small",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "Story<Button>",
+                    "defaultValue": "(args: Button) => ({\n  component: Button,\n  props: args,\n})"
+                }
+            ],
+            "src/app/redux/const.ts": [
+                {
+                    "name": "LOAD_AUTHORS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/redux/const.ts",
+                    "type": "string",
+                    "defaultValue": "'LOAD_AUTHORS'"
+                }
+            ],
+            "src/stories/Header.stories.ts": [
+                {
+                    "name": "LoggedIn",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Header.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "LoggedOut",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Header.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Header.stories.ts",
+                    "type": "Story<Header>",
+                    "defaultValue": "(args: Header) => ({\n  component: Header,\n  props: args,\n})"
+                }
+            ],
+            "src/stories/Page.stories.ts": [
+                {
+                    "name": "LoggedIn",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Page.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "LoggedOut",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Page.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Page.stories.ts",
+                    "type": "Story<Page>",
+                    "defaultValue": "(args: Page) => ({\n  component: Page,\n  props: args,\n})"
+                }
+            ],
+            "src/app/constants/scope.const.ts": [
+                {
+                    "name": "SCOPES",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/constants/scope.const.ts",
+                    "type": "Scope",
+                    "defaultValue": "new Scope('Total scope', 280, [\n  new Scope('Min scope', 50, [\n    new Scope('Main page + page with a list of authors + author\\'s page (only pages with content without widgets)', 10),\n    new Scope('Page with team members + page with worklog', 10),\n    new Scope('Page with list of authors contains search widget', 10),\n    new Scope('Portal has two languages', 20),\n  ]),\n  new Scope('Normal scope', 140, [\n    new Scope('Portal has page with styleguide', 20),\n    new Scope('Mobile version is okey', 10),\n    new Scope('Ipad/tablet version is okey', 10),\n    new Scope('Author\\'s page contains timeline', 10),\n    new Scope('Author\\'s page contains video overlay', 10),\n    new Scope('Author\\'s page contains photo gallery', 20),\n    new Scope('Author\\'s page contains map (geowidget)', 10),\n    new Scope('Design (typography, icons, colors, links + buttons + input, ui components are styled)', 20),\n    new Scope('Material-ui / bootstrap is used', 20),\n    new Scope('Portal has third language', 10),\n  ]),\n  new Scope('Extra scope', 90, [\n    new Scope('Confidence of the project presentation', 10),\n    new Scope('Project is made using scully', 10),\n    new Scope('Contentful / netlify cms / other cms is used for content management', 10),\n    new Scope('Animations / special effects like paralax', 20),\n    new Scope('Outstanding design', 20),\n    new Scope(\n      'Storybook/angularplayground/compodoc/other angular documentation tool usage for the page with styles',\n      20\n    ),\n  ]),\n  new Scope('Fines', 0, [\n    new Scope(\n      'There are less than 3 commits from each active team member. Everyone should merge their own PRs',\n      -50\n    ),\n    new Scope('Violations stage2-tasks-requirements', -50),\n    new Scope('No worklog for team', -40),\n    new Scope('Too primitive (ugly for 2020) design / UX', -20),\n  ]),\n])"
+                }
+            ],
+            "src/app/constants/scope-self-evaluation.const.ts": [
+                {
+                    "name": "SELF_EVALUATION",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/constants/scope-self-evaluation.const.ts",
+                    "type": "[][]",
+                    "defaultValue": "[ // Total scope\n  [ // 50, Min scope\n    10, // Main page + page with a list of authors + author's page (only pages with content without widgets)\n    10, // Page with team members + page with worklog\n    10, // Page with list of authors contains search widget\n    20, // Portal has two languages\n  ],\n  [ // 14, Normal scope\n    20, // Portal has page with styleguide\n    10, // Mobile version is okey\n    10, // Ipad/tablet version is okey\n    10, // Author's page contains timeline\n    10, // Author's page contains video overlay\n    20, // Author's page contains photo gallery\n    10, // Author's page contains map (geowidget)\n    20, // Design (typography, icons, colors, links + buttons + input, ui components are styled)\n    20, // Material-ui / bootstrap is used\n    10, // Portal has third language\n  ],\n  [ // 90, Extra scope\n    10, // Confidence of the project presentation\n    10, // Project is made using scully\n    10, // Contentful / netlify cms / other cms is used for content management\n    20, // Animations / special effects like paralax\n    20, // Outstanding design\n    20, // Storybook/angularplayground/compodoc/other angular documentation tool usage for the page with styles\n  ],\n  [ // Fines\n    0, // There are less than 3 commits from each active team member. Everyone should merge their own PRs\n    0, // Violations stage2-tasks-requirements\n    0, // No worklog for team\n    0, // Too primitive (ugly for 2020) design / UX\n  ],\n]"
+                },
+                {
+                    "name": "STORAGE_EVALUATION_KEY",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/constants/scope-self-evaluation.const.ts",
+                    "type": "string",
+                    "defaultValue": "'SELF_EVALUATION'"
+                }
+            ]
+        },
+        "groupedFunctions": {
+            "src/app/app.module.ts": [
+                {
+                    "name": "HttpLoaderFactory",
+                    "file": "src/app/app.module.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "http"
+                        }
+                    ],
+                    "returnType": "TranslateHttpLoader",
+                    "jsdoctags": [
+                        {
+                            "name": "http",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "groupedEnumerations": {
+            "src/app/models/language.model.ts": [
+                {
+                    "name": "Lang",
+                    "childs": [
+                        {
+                            "name": "en",
+                            "value": "en"
+                        },
+                        {
+                            "name": "ru",
+                            "value": "ru"
+                        },
+                        {
+                            "name": "by",
+                            "value": "by"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "description": "",
+                    "file": "src/app/models/language.model.ts"
+                }
+            ]
+        },
+        "groupedTypeAliases": {}
+    },
+    "routes": {
+        "name": "<root>",
+        "kind": "module",
+        "className": "AppModule",
+        "children": [
+            {
+                "name": "routes",
+                "filename": "src/app/app-routing.module.ts",
+                "module": "AppRoutingModule",
+                "children": [
+                    {
+                        "path": "",
+                        "component": "MainComponent",
+                        "canActivate": [
+                            "AppAuthorGuard"
+                        ]
+                    },
+                    {
+                        "path": "authors",
+                        "component": "AuthorsListComponent",
+                        "canActivate": [
+                            "AppAuthorGuard"
+                        ]
+                    },
+                    {
+                        "path": "author/:id",
+                        "component": "AuthorFullViewComponent",
+                        "canActivate": [
+                            "AppAuthorGuard"
+                        ]
+                    },
+                    {
+                        "path": "team",
+                        "component": "TeamComponent"
+                    },
+                    {
+                        "path": "worklog",
+                        "component": "WorklogComponent"
+                    },
+                    {
+                        "path": "**",
+                        "component": "Page404Component"
+                    }
+                ],
+                "kind": "module"
+            }
+        ]
+    },
+    "coverage": {
+        "count": 1,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "e2e/src/app.po.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "AppPage",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.module.ts",
+                "type": "function",
+                "linksubtype": "function",
+                "name": "HttpLoaderFactory",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.module.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "lang",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/author-of-day/author-of-day.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AuthorOfDayComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/authors-cards-list/authors-cards-list.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AuthorsCardsListComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/evaluation/evaluation.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "EvaluationComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/footer/footer.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FooterComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/header/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/languages/languages.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LanguagesComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/navigation/navigation.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "NavigationComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/scope/scope.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ScopeComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/search-widget/search-widget.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SearchWidgetComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/sidenav/sidenav.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SidenavComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/const.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AUTHORS_EXTENSION",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/const.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AUTHORS_FILE",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/const.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LOCALE_KEY",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/const.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "navItems",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/constants/language.const.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "languages",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/constants/scope-self-evaluation.const.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SELF_EVALUATION",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/constants/scope-self-evaluation.const.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "STORAGE_EVALUATION_KEY",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/constants/scope.const.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SCOPES",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/guards/author.guard.ts",
+                "type": "guard",
+                "linktype": "guard",
+                "name": "AppAuthorGuard",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/activity-place.model.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ActivityPlaceModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/author.model.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "AuthorModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/13",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/biography.model.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "BiographyModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/language.model.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ILanguage",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/scope.model.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "Scope",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/works-images.model.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "WorksImagesModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/works.model.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "WorksModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/pages/author-full-view/author-full-view.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AuthorFullViewComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/pages/authors-list/authors-list.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AuthorsListComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/pages/main/main.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "MainComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/pages/page404/page404.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "Page404Component",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/pages/team/team.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TeamComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/pages/worklog/worklog.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "WorklogComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/pipes/paginator.pipe.ts",
+                "type": "pipe",
+                "linktype": "pipe",
+                "name": "PaginatorPipe",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/redux/actions/appActions.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "changeAuthors",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/redux/actions/appActions.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "changeFilter",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/redux/actions/appActions.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "changeLocale",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/redux/actions/appActions.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "loadAuthors",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/redux/const.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LOAD_AUTHORS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/redux/effects/load-authors.effect.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "AppLoadAuthorsEffect",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/redux/reducers/appReducer.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "appReducer",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/redux/reducers/appReducer.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "initialState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/redux/reducers/appReducer.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "reducer",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/redux/selectors/appReducer.selector.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "FEATURE_KEY",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/redux/selectors/appReducer.selector.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "getRandomAuthorIndex",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/redux/selectors/appReducer.selector.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "MILLISECONDS_IN_DAY",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/redux/selectors/appReducer.selector.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selectAuthorById",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/redux/selectors/appReducer.selector.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selectAuthors",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/redux/selectors/appReducer.selector.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selectFeature",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/redux/selectors/appReducer.selector.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selectFilter",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/redux/selectors/appReducer.selector.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selectLocale",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/redux/selectors/appReducer.selector.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selectRandomAuthor",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/redux/state.model.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IAppReducer",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/redux/state.model.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IAppStore",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/services/authors.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "AuthorsService",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/services/authors.service.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "AuthorsList",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/services/language-store.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "AppLanguageStore",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/services/scope.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "ScopeService",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.prod.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Large",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Secondary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Small",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedIn",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedOut",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedIn",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedOut",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 83,
+                "coverageCount": "5/6",
+                "status": "very-good"
+            },
+            {
+                "filePath": "src/stories/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}

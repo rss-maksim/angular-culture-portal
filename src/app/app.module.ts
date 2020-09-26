@@ -44,6 +44,7 @@ import { TimelineComponent } from './components/timeline/timeline.component';
 import { MapComponent } from './components/map/map.component';
 import { MasterpieceComponent } from './components/masterpiece/masterpiece.component';
 import { VideoComponent } from './components/video/video.component';
+import { MainPageBackgroundComponent } from './components/main-page-background/main-page-background.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -76,7 +77,9 @@ const lang = AppLanguageStore.loadLocale();
     TimelineComponent,
     MasterpieceComponent,
     VideoComponent,
-    MapComponent
+    MapComponent,
+    TimelineComponent,
+    MainPageBackgroundComponent
   ],
   imports: [
     BrowserModule,

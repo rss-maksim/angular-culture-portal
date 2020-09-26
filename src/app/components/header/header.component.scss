@@ -5,12 +5,10 @@ header {
   display: flex;
   align-items: center;
   min-height: 70px;
-  padding: 0 20px;
-  background-color: $header-background-color;
+  padding: 0 60px;
   position: fixed;
   top: 0;
   z-index: 10;
-
   .mobile-menu-btn {
     background: transparent;
     border: 0;
