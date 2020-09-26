@@ -28,8 +28,17 @@ mgl-timeline-entry-dot {
   }
 }
 
-.ng-star-inserted.expanded {
+.ng-star-inserted {
+  &.expanded {
+    mgl-timeline-entry-header {
+      color: $color-white;
+    }
+
+    mgl-timeline-entry-content {
+      color: $header-background-color;
+    }
+  }
   mgl-timeline-entry-header {
-    color: #ffffff;
+    color: $header-background-color;
   }
 }
