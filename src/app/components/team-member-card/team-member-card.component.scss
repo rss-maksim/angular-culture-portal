@@ -1,62 +1,58 @@
 @import '../../../variables';
 
-.card {
-  width: 250px;
-  height: 370px;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 0;
-  margin: 10px 20px;
-  position: relative;
-  cursor: pointer;
-  transition: 0.5s;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  animation: fadeIn ease 1s;
-  &:hover {
-    transform: translateY(10px);
-  }
-  img {
-    width: 250px;
-    height: 250px;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
-  }
-  mat-card-header {
-    justify-content: center;
-    mat-card-title {
-      font-size: 21px;
-      font-family: $primary-font-family;
-      color: $contrast-text-color;
-    }
-    mat-card-subtitle {
-      font-size: 14px;
-      font-family: $primary-font-family;
-      color: $contrast-text-color;
-      opacity: 0.8;
-    }
-  }
-  mat-card-actions {
-    display: flex;
-    justify-content: center;
-    padding: 0;
-  }
-  .github-link {
-    display: block;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: url('../../../assets/images/GitHub-Mark-120px-plus.png');
-    background-size: cover;
-    filter: invert(100%);
-  }
-}
+.github-link {
+  cursor: default;
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-40px);
-  }
-  100% {
-    opacity: 1;
+  .card {
+    width: 250px;
+    height: 320px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+    margin: 10px 20px;
+    position: relative;
+    transition: 0.5s;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    //cursor: url("/assets/images/github-icon-32-red.png"), auto;
+    cursor: pointer;
+    animation: fadeIn ease 1s;
+
+    &:hover {
+      transform: translateY(10px);
+    }
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    img {
+      width: 250px;
+      height: 250px;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+    }
+
+    mat-card-header {
+      justify-content: center;
+      text-align: center;
+
+      mat-card-title {
+        font-size: 21px;
+        font-family: $primary-font-family;
+        color: $contrast-text-color;
+      }
+
+      mat-card-subtitle {
+        font-size: 14px;
+        font-family: $primary-font-family;
+        color: $contrast-text-color;
+        opacity: 0.8;
+      }
+    }
   }
 }
