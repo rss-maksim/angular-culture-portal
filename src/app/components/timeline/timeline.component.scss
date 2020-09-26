@@ -13,7 +13,7 @@ mgl-timeline {
 }
 
 mgl-timeline-entry.odd {
-  @media screen and (min-width: $breakpoint-tablet) {
+  @media screen and (min-width: 997px) {
     margin-left: calc(50% + 5px);
   }
 }

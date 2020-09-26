@@ -32,4 +32,8 @@ header {
 .header {
   width: 100%;
   min-height: 70px;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 0 16px;
+  }
 }
